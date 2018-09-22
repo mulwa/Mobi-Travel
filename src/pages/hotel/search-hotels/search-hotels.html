@@ -1,0 +1,188 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+<!-- Header  -->
+<ion-header no-border>
+  <header-one title="Search Hotels"></header-one>
+</ion-header>
+
+<!-- Content  -->
+<ion-content padding>
+
+  <ion-grid>
+
+    <!-- Location Search Options  -->
+    <ion-row class="animated zoomIn" justify-content-center align-items-center>
+      <ion-card>
+        <ion-card-header text-center color="color1" text-uppercase>
+          Going To
+        </ion-card-header>
+        <ion-card-content>
+          <ion-item (tap)="getLocation()">
+            <ion-label>
+              <ion-icon name="ios-pin" color="color1"></ion-icon>
+            </ion-label>
+            <ion-input type="text" placeholder="Your Destination" [(ngModel)]="searchObjects.originLocationName"></ion-input>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+
+    <!-- Dates  -->
+    <ion-row class="animated zoomIn" justify-content-center align-items-center style="height: 100%">
+
+      <!-- Check-in Date  -->
+      <ion-col col-5 text-center>
+        <p class="title">Check-in</p>
+        <ion-card (tap)="openCalendar()">
+          <ion-card-content>
+            <p class="date">{{searchObjects.departureDate | date: 'dd'}}</p>
+            <p>{{searchObjects.departureDate | date: 'MMM'}} &nbsp;{{searchObjects.departureDate | date: 'yy'}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <!-- Date Icon  -->
+      <ion-col col-2 text-center>
+        <ion-icon color="color3" name="ios-calendar" style="zoom:2.5;"></ion-icon>
+      </ion-col>
+
+      <!-- Check-out Date  -->
+      <ion-col col-5 text-center>
+        <p class="title">Check-out</p>
+        <ion-card (tap)="openCalendar()">
+          <ion-card-content>
+            <p class="date">{{searchObjects.returnDate | date: 'dd'}}</p>
+            <p>{{searchObjects.returnDate | date: 'MMM'}} &nbsp;{{searchObjects.returnDate | date: 'yy'}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <!-- Rooms  -->
+    <ion-card>
+      <ion-row class="animated zoomIn" justify-content-center align-items-center style="height: 100%">
+
+        <!-- Increase Room  -->
+        <ion-col col-4 text-center>
+          <button ion-button clear item-end color="color1" [disabled]="searchObjects.totalRoom == 0" (tap)="searchObjects.totalRoom = searchObjects.totalRoom - 1 "> 
+            <ion-icon name="remove-circle" style="zoom:1.5;"></ion-icon> 
+          </button>
+        </ion-col>
+
+        <!-- Total Room Number  -->
+        <ion-col col-4 text-center>
+          <span><b>Rooms: {{searchObjects.totalRoom}} </b></span>
+        </ion-col>
+
+        <!-- Decrease Room  -->
+        <ion-col col-4 text-center>
+          <button ion-button clear item-end color="color1" (tap)="searchObjects.totalRoom = searchObjects.totalRoom + 1 "> 
+            <ion-icon name="add-circle" style="zoom:1.5;"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <!-- Passengers  -->
+    <ion-row class="animated zoomIn" justify-content-center align-items-center style="height: 100%">
+
+      <!-- Adults  -->
+      <ion-col col-4 text-center>
+        <p class="title">Adults</p>
+        <ion-card>
+          <ion-card-content no-padding>
+            <ion-row justify-content-center align-items-center>
+
+              <!-- Increase  -->
+              <ion-col col-12 no-padding>
+                <button ion-button clear item-end color="color1" (tap)="searchObjects.adultNumber = searchObjects.adultNumber + 1 ">
+                  <ion-icon name="add-circle" style="zoom:1.5;"></ion-icon>
+                </button>
+              </ion-col>
+
+              <!-- Total Number  -->
+              <ion-col col-12 no-padding>
+                <span>{{searchObjects.adultNumber}}</span>
+              </ion-col>
+
+              <!-- Decrease -->
+              <ion-col col-12 no-padding>
+                <button ion-button clear item-end color="color1" [disabled]="searchObjects.adultNumber == 0" (tap)="searchObjects.adultNumber = searchObjects.adultNumber - 1 ">
+                  <ion-icon name="remove-circle" style="zoom:1.5;"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <!-- Child  -->
+      <ion-col col-4 text-center>
+        <p class="title">Child</p>
+        <ion-card>
+          <ion-card-content no-padding>
+            <ion-row justify-content-center align-items-center>
+
+              <!-- Increase  -->
+              <ion-col col-12 no-padding>
+                <button ion-button clear item-end color="color1" (tap)="searchObjects.childNumber = searchObjects.childNumber + 1 ">
+                  <ion-icon name="add-circle" style="zoom:1.5;"></ion-icon>
+                </button>
+              </ion-col>
+
+              <!-- Total Number  -->
+              <ion-col col-12 no-padding>
+                <span>{{searchObjects.childNumber}}</span>
+              </ion-col>
+
+              <!-- Decrease -->
+              <ion-col col-12 no-padding>
+                <button ion-button clear item-end color="color1" [disabled]="searchObjects.childNumber == 0" (tap)="searchObjects.childNumber = searchObjects.childNumber - 1 ">
+                  <ion-icon name="remove-circle" style="zoom:1.5;"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <!-- Infants  -->
+      <ion-col col-4 text-center>
+        <p class="title">Infants</p>
+        <ion-card>
+          <ion-card-content no-padding>
+            <ion-row justify-content-center align-items-center>
+
+              <!-- Increase  -->
+              <ion-col col-12 no-padding>
+                <button ion-button clear item-end color="color1" (tap)="searchObjects.infantNumber = searchObjects.infantNumber + 1 ">
+                  <ion-icon name="add-circle" style="zoom:1.5;"></ion-icon>
+                </button>
+              </ion-col>
+
+              <!-- Total Number  -->
+              <ion-col col-12 no-padding>
+                <span>{{searchObjects.infantNumber}}</span>
+              </ion-col>
+
+              <!-- Decrease -->
+              <ion-col col-12 no-padding>
+                <button ion-button clear item-end color="color1" [disabled]="searchObjects.infantNumber == 0" (tap)="searchObjects.infantNumber = searchObjects.infantNumber - 1 ">
+                  <ion-icon name="remove-circle" style="zoom:1.5;"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<!-- Footer  -->
+<ion-footer text-center>
+  <button ion-button class="custom-btn" (tap)="findHotels()">Find Hotels</button>
+</ion-footer>

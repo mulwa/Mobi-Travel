@@ -1,0 +1,102 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-one title="Search Car"></header-one>
+</ion-header>
+
+<!-- Content  -->
+<ion-content padding>
+  <ion-grid no-padding>
+
+    <!-- Locations  -->
+    <ion-row>
+      <ion-col col-12>
+        <ion-list inset>
+
+          <!-- Origin Location  -->
+          <ion-item (tap)="getLocationOrigin()">
+            <ion-label>
+              <ion-icon color="color2" name="pin"></ion-icon>
+            </ion-label>
+            <ion-input type="text" placeholder="Picking Up Location" [(ngModel)]="searchObjects.originLocationName">
+            </ion-input>
+          </ion-item>
+
+          <!-- Destination Location  -->
+          <ion-item (tap)="getLocationDestination()">
+            <ion-label>
+              <ion-icon color="color2" name="pin"></ion-icon>
+            </ion-label>
+            <ion-input type="text" placeholder="Picking Off Location" [(ngModel)]="searchObjects.destinationLocationname">
+            </ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <!-- Dates  -->
+    <ion-row class="animated zoomIn" justify-content-center align-items-center style="height: 100%">
+      <!-- Pick Up Date  -->
+      <ion-col col-5 text-center>
+        <p class="title">Pick Up Date</p>
+        <ion-card (tap)="openCalendar()">
+          <ion-card-content>
+            <p class="date">{{searchObjects.departureDate | date: 'dd'}}</p>
+            <p>{{searchObjects.departureDate | date: 'MMM'}} &nbsp;{{searchObjects.departureDate | date: 'yy'}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <!-- Date Icon  -->
+      <ion-col col-2 text-center>
+        <ion-icon color="color3" name="ios-calendar" style="zoom:2.5;"></ion-icon>
+      </ion-col>
+
+      <!-- Pick Off Date  -->
+      <ion-col col-5 text-center>
+        <p class="title">Pick Off Date</p>
+        <ion-card (tap)="openCalendar()">
+          <ion-card-content>
+            <p class="date">{{searchObjects.returnDate | date: 'dd'}}</p>
+            <p>{{searchObjects.returnDate | date: 'MMM'}} &nbsp;{{searchObjects.returnDate | date: 'yy'}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <!-- Times  -->
+    <ion-row class="animated zoomIn" justify-content-center align-items-center style="height: 100%">
+
+      <!-- Pick Up Time  -->
+      <ion-col col-5 text-center>
+        <p class="title">Pick Up Time</p>
+        <ion-card>
+          <ion-datetime class="time" displayFormat="HH:mm A" placeholder="Pick Up Time" [(ngModel)]="myDate"></ion-datetime>
+        </ion-card>
+      </ion-col>
+
+      <!-- Time Icon  -->
+      <ion-col col-2 text-center>
+        <ion-icon color="color3" name="ios-time" style="zoom:2.5;"></ion-icon>
+      </ion-col>
+
+      <!-- Pick Off Time  -->
+      <ion-col col-5 text-center>
+        <p class="title">Drop Off Time</p>
+        <ion-card>
+          <ion-datetime class="time" displayFormat="HH:mm A" placeholder="Drop Off Time" [(ngModel)]="myDate"></ion-datetime>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<!-- Footer  -->
+<ion-footer text-center>
+  <button ion-button class="custom-btn" (tap)="findCar()">Find Car</button>
+</ion-footer>

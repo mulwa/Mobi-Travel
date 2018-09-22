@@ -1,0 +1,111 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-two title="Hotel Details"></header-two>
+</ion-header>
+
+<!-- Content  -->
+<ion-content fullscreen elestic-header>
+
+  <!-- Hotel Location Map Icon  -->
+  <ion-fab top right edge>
+    <button ion-fab color="danger" (tap)="openLocationMap()"><ion-icon name="ios-pin-outline"></ion-icon></button>
+  </ion-fab>
+
+  <!-- Image Slider of Hotel  -->
+  <ion-slides slidesPerView="1" pager loop="true" effect="slide" autoplay="5000" class="image-slider" style="direction:ltr">
+    <ion-slide *ngFor="let img of hotelDetails.image" [ngStyle]="{'background' : 'linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(' + img + ')'}">
+      <div class="slider-contents">
+
+        <!-- Name of Hotel  -->
+        <p class="name">
+          {{ hotelDetails.name }}
+        </p>
+
+        <!-- Reviews and Type of Hotel -->
+        <p class="reviews">{{hotelDetails.totalReviews}} Reviews | {{hotelDetails.type}} hotel</p>
+
+        <!-- Hotel Ratings  -->
+        <rating [(ngModel)]="hotelDetails.star" readOnly="false" max="{{hotelDetails.star}}" emptyStarIconName="ios-star-outline"
+          halfStarIconName="star-half" starIconName="ios-star" nullable="true">
+        </rating>
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+  <!-- Details of Hotel  -->
+  <section class="details-section">
+
+    <!-- Hotel Price  -->
+    <div class="price-section">
+      <ion-item text-left no-lines class="price">
+        PRICE
+        <span item-end>${{hotelDetails.price}}/per nights</span>
+      </ion-item>
+    </div>
+
+    <!-- Hotel Overview  -->
+    <ion-list no-lines>
+      <ion-list-header>
+        <p>Overview</p>
+      </ion-list-header>
+      <ion-item text-wrap>
+        <p>{{hotelDetails.overview}}</p>
+      </ion-item>
+    </ion-list>
+
+    <!-- Amenities  -->
+    <ion-list no-lines>
+      <ion-list-header>
+        <p>Amenities</p>
+      </ion-list-header>
+      <ion-row wrap justify-content-center align-items-center class="features">
+        <ion-col col-3 *ngFor="let feature of hotelDetails.amenities; let i = index" class='cell-{{i}}'>
+          <i class="{{feature.icon}}"></i>
+          <span class="item-block">{{feature.name}}</span>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+
+    <!-- Contact Information  -->
+    <ion-list no-lines>
+      <ion-list-header>
+        <p>Contact Information </p>
+      </ion-list-header>
+      <ion-item text-wrap>
+        <ion-icon name="ios-pin-outline" item-start color="color2"></ion-icon>
+        <p>{{hotelDetails.address}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="ios-globe-outline" item-start color="color2"></ion-icon>
+        <p>{{hotelDetails.website}}</p>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="ios-call-outline" item-start color="color2"></ion-icon>
+        <p>{{hotelDetails.phone}}</p>
+      </ion-item>
+    </ion-list>
+
+    <!-- Description  -->
+    <ion-list no-lines>
+      <ion-list-header>
+        <p>Description </p>
+      </ion-list-header>
+      <ion-item text-wrap>
+        <p text-justify [innerHTML]="hotelDetails.details"></p>
+      </ion-item>
+    </ion-list>
+  </section>
+</ion-content>
+
+<!-- Footer  -->
+<ion-footer>
+  <button ion-button large full no-margin class="custom-btn" (tap)="goToOrderPage()">
+    Book Now
+  </button>
+</ion-footer>

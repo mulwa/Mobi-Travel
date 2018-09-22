@@ -1,0 +1,87 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+<!-- Payment Page  -->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-two title="Credit Card Details"></header-two>
+</ion-header>
+
+<!-- Content  -->
+<ion-content>
+
+  <!-- Card Options  -->
+  <ion-card color="color2">
+    <ion-card-header text-center>
+      Select Your Card
+    </ion-card-header>
+
+    <ion-row radio-group [(ngModel)]="selectedCard">
+
+      <!-- Master Card  -->
+      <ion-col>
+        <ion-item>
+          <ion-label><img src="assets/imgs/cards/mastercard.png"></ion-label>
+          <ion-radio value="mastercard"></ion-radio>
+        </ion-item>
+      </ion-col>
+
+      <!-- Visa Card  -->
+      <ion-col>
+        <ion-item>
+          <ion-label><img src="assets/imgs/cards/visa.png"></ion-label>
+          <ion-radio value="visa"></ion-radio>
+        </ion-item>
+      </ion-col>
+
+      <!-- Amex Card  -->
+      <ion-col>
+        <ion-item>
+          <ion-label><img src="assets/imgs/cards/amex.png"></ion-label>
+          <ion-radio value="amex"></ion-radio>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <!-- Payment Form  -->
+  <div class="form-content">
+
+    <form class="animated zoomIn">
+      <ion-list>
+
+        <!-- Cardholder Name -->
+        <ion-item>
+          <ion-label stacked color="color2">Cardholder Name</ion-label>
+          <ion-input type="text" placeholder="Cardholder Name"></ion-input>
+        </ion-item>
+
+        <!-- Card Number -->
+        <ion-item>
+          <ion-label stacked color="color2">Card Number</ion-label>
+          <ion-input type="text" placeholder="Card Number"></ion-input>
+        </ion-item>
+
+        <!-- Expire Date -->
+        <ion-item>
+          <ion-label stacked color="color2">Expire Date</ion-label>
+          <ion-input type="text" placeholder="Expire Date"></ion-input>
+        </ion-item>
+
+        <!-- CVC -->
+        <ion-item>
+          <ion-label stacked color="color2">CVC</ion-label>
+          <ion-input type="text" placeholder="CVC"></ion-input>
+        </ion-item>
+      </ion-list>
+    </form>
+  </div>
+</ion-content>
+
+<!-- Footer  -->
+<ion-footer>
+  <button ion-button large full no-margin class="custom-btn" (tap)="openCongratulationPage()">PAY $440</button>
+</ion-footer>

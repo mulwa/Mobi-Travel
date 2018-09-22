@@ -1,0 +1,21 @@
+user-information {
+    .container {
+        text-align: center;
+        .contents {
+            display: inline-block;
+            text-align: center;
+            width: 80%;
+            form {
+                ion-list {
+                    .item {
+                        padding-left: 0;
+                        margin-bottom: 10px;
+                        .text-input {
+                            padding: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

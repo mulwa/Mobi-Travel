@@ -1,0 +1,89 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-two title="Car Details"></header-two>
+</ion-header>
+
+<!-- Content  -->
+<ion-content>
+
+  <!-- Name of Car  -->
+  <p class="car-name">{{carDetails.name}}</p>
+
+  <!-- Car Type  -->
+  <p text-center>
+    <ion-badge color="color2">{{carDetails.carType}}</ion-badge>
+  </p>
+
+  <!-- Car Image  -->
+  <div class="car-image">
+    <img [src]="carDetails.image" imageViewer>
+  </div>
+
+  <!-- Car Features  -->
+  <ion-grid>
+    <ion-row justify-content-center align-items-center padding-bottom>
+
+      <!-- Car Door Count  -->
+      <ion-col col-4 class="custom-col">
+        <i class="fa fa-arrows" aria-hidden="true"></i>
+        <p class="p1">{{carDetails.doorCount}}</p>
+        <p class="p2">Doors</p>
+      </ion-col>
+
+      <!-- Car Seats  -->
+      <ion-col col-4 class="custom-col">
+        <i class="fa fa-wheelchair" aria-hidden="true"></i>
+        <p class="p1">{{carDetails.seats}}</p>
+        <p class="p2">Seats</p>
+      </ion-col>
+
+      <!-- Transmission  -->
+      <ion-col col-4>
+        <i class="fa fa-car" aria-hidden="true"></i>
+        <p class="p1">{{carDetails.transmission}}</p>
+        <p class="p2">Transmission</p>
+      </ion-col>
+    </ion-row>
+
+    <div class="border"></div>
+
+    <ion-row justify-content-center align-items-center padding-top>
+
+      <!-- Status Air Conditioning  -->
+      <ion-col col-4 class="custom-col">
+        <i class="fa fa-snowflake-o" aria-hidden="true"></i>
+        <p class="p1" *ngIf="carDetails.isAirConditioned=='yes'">Yes</p>
+        <p class="p1" *ngIf="carDetails.isAirConditioned!='yes'">No</p>
+        <p class="p2">Air Conditioning</p>
+      </ion-col>
+
+      <!--  Mileage -->
+      <ion-col col-4 class="custom-col">
+        <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
+        <p class="p1" *ngIf="carDetails.isUnlimitedMileage=='yes'">Yes</p>
+        <p class="p1" *ngIf="carDetails.isUnlimitedMileage!='yes'">No</p>
+        <p class="p2">Mileage</p>
+      </ion-col>
+
+      <!-- Driver Age  -->
+      <ion-col col-4>
+        <i class="fa fa-id-card" aria-hidden="true"></i>
+        <p class="p1">{{carDetails.driverAge}}</p>
+        <p class="p2">Driver Age</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<!-- Footer  -->
+<ion-footer>
+  <button ion-button large full no-margin class="custom-btn" (tap)="goToCheckoutPage()">
+    Book Now
+  </button>
+</ion-footer>

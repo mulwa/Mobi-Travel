@@ -1,0 +1,77 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-three title="DAC-IAD"></header-three>
+</ion-header>
+
+<!-- Content  -->
+<ion-content>
+  <!-- List of Flights  -->
+  <ion-card class="animated fadeIn" *ngFor="let flight of flights">
+    <ion-item>
+
+      <!-- Plane Icon  -->
+      <ion-avatar item-start>
+        <ion-icon color="color3" name="ios-jet" style="zoom:1.5;"></ion-icon>
+      </ion-avatar>
+
+      <!-- Name of Airlines  -->
+      <h2 text-wrap>{{flight.airlinesName}}</h2>
+
+      <!-- Date of Flight  -->
+      <p>{{ flight.date | date }}</p>
+
+      <!-- View Details Option Button  -->
+      <ion-col text-right item-end>
+        <button ion-button small color="color1" (tap)="goToViewDetailsPage()">View Deal</button>
+      </ion-col>
+    </ion-item>
+
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row justify-content-center align-items-center>
+
+          <!-- Departure -->
+          <ion-col col-3 text-center>
+            <!-- Departure Time  -->
+            <h2 ion-text><b>{{ flight.departureTime }}</b></h2>
+
+            <!--  Departure Location -->
+            <p>{{flight.from}}</p>
+          </ion-col>
+
+          <!-- Total Hour  -->
+          <ion-col col-3 text-center>
+            <ion-row justify-content-center align-items-center>
+              <img src="assets/imgs/dot.png">
+            </ion-row>
+
+            <ion-row justify-content-center align-items-center>
+              <p><b>{{ flight.totalHour }}</b></p>
+            </ion-row>
+          </ion-col>
+
+          <!-- Arrival  -->
+          <ion-col col-3 text-center>
+            <!-- Arrival TIme  -->
+            <h2 ion-text><b>{{ flight.returnTime }}</b></h2>
+
+            <!-- Arrival Location  -->
+            <p>{{flight.to}}</p>
+          </ion-col>
+
+          <!-- Flight Price  -->
+          <ion-col col-3 text-right>
+            <p class="price">${{ flight.price }}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

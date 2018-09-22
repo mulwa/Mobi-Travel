@@ -1,0 +1,127 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-two title="Train Details"></header-two>
+</ion-header>
+
+<!-- Content  -->
+<ion-content>
+
+  <!-- Locations -->
+  <div class="section-one">
+    <ion-row justify-content-center align-items-center padding-top>
+
+      <!-- Origin Location  -->
+      <ion-col col-5 text-center>
+        <p class="title">From</p>
+        <p class="place-name">Canada</p>
+      </ion-col>
+
+      <!-- Train Icon  -->
+      <ion-col col-2 text-center>
+        <ion-icon color="white" name="ios-train" style="zoom:2.5;"></ion-icon>
+      </ion-col>
+
+      <!-- Destination Location  -->
+      <ion-col col-5 text-center>
+        <p class="title">To</p>
+        <p class="place-name">Germany</p>
+      </ion-col>
+
+      <!-- Trip Type  -->
+      <p class="type">One Way</p>
+    </ion-row>
+  </div>
+
+  <!-- Booking Summery  -->
+  <div class="section-two">
+    <ion-card padding>
+
+      <!-- Train Details  -->
+      <ion-card-header text-wrap color="color2">
+        <ion-item>
+          <!-- Name of Train  -->
+          <h2 class="train-name">Ciremal</h2>
+
+          <!-- Type of Train  -->
+          <ion-badge class="train-type" color="color1">Executive(A)</ion-badge>
+
+          <!-- Price of Per Seat  -->
+          <h2 item-end class="price">$90/seat</h2>
+        </ion-item>
+      </ion-card-header>
+
+      <!-- Date and Times  -->
+      <ion-card-content class="date-info" padding-top>
+
+        <!-- Departure Date  -->
+        <ion-row>
+          <ion-col col-12 text-center>
+            <h2 ion-text><b>{{ departureDate | date }}</b></h2>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="animated zoomIn" justify-content-center align-items-center>
+
+          <!-- Start Time  -->
+          <ion-col col-4 text-center>
+            <h2 ion-text><b>6:15 am</b></h2>
+          </ion-col>
+
+          <!-- Duration  -->
+          <ion-col col-4 text-center>
+            <ion-row justify-content-center align-items-center>
+              <img src="assets/imgs/dot.png">
+            </ion-row>
+
+            <ion-row justify-content-center align-items-center>
+              <p><b>23h 10m</b></p>
+            </ion-row>
+          </ion-col>
+
+          <!-- End Time  -->
+          <ion-col col-4 text-center>
+            <h2 ion-text><b>7:25 pm</b></h2>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Passengers  -->
+    <ion-card>
+      <ion-card-content>
+        <div class="passenger">
+          <p text-center class="title">Passengers</p>
+          <ion-row class="animated zoomIn" justify-content-center align-items-center>
+            <ion-col col-4 text-center>
+              <p><span class="number">2</span> Adults</p>
+            </ion-col>
+            <ion-col col-4 text-center>
+              <p><span class="number">2</span> Child</p>
+            </ion-col>
+            <ion-col col-4 text-center>
+              <p><span class="number">2</span> Infants</p>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+<!-- Footer  -->
+<ion-footer>
+  <ion-row justify-content-right align-items-right>
+    <ion-col col-8 text-left>
+      <p class="price">Total Price: USD1200</p>
+    </ion-col>
+    <ion-col col-4>
+      <button ion-button large full no-margin class="custom-btn" (tap)="goToCheckoutPage()">Checkout</button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

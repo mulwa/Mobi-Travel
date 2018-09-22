@@ -1,0 +1,15 @@
+page-profile {
+    ion-content {
+        .profile-photo {
+            text-align: center;
+            ion-fab {
+                left: 52%;
+            }
+            img {
+                border-radius: 50%;
+                border: 5px solid color($colors, color2);
+                width: 30%;
+            }
+        }
+    }
+}

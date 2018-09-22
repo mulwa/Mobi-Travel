@@ -1,0 +1,102 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+<!-- Contact Us Page  -->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-one title="Contact Us"></header-one>
+</ion-header>
+
+<!-- Contents  -->
+<ion-content>
+
+  <!-- Google Map  -->
+  <div #map id="map"></div>
+
+  <section>
+    <!-- Company Contact Information  -->
+    <ion-card class="content">
+      <ion-list no-lines class="infos">
+
+        <!-- Address  -->
+        <ion-item text-wrap>
+          <ion-icon item-start name="pin" color="color1"></ion-icon>
+          <p>{{contactInfos.address}}</p>
+        </ion-item>
+
+        <!-- Email  -->
+        <ion-item>
+          <ion-icon name="mail" color="primary" item-start></ion-icon>
+          <p>Email</p>
+          {{contactInfos.email}}
+          <a button ion-button medium color="primary" item-end href="mailto:{{contactInfos.email}}">Send Mail</a>
+        </ion-item>
+
+        <!-- Mobile  -->
+        <ion-item>
+          <ion-icon item-start name="call" color="danger"></ion-icon>
+          <p>Mobile</p>
+          {{contactInfos.phone}}
+          <a button ion-button medium item-end color="danger" href="tel:{{contactInfos.phone}}">Call</a>
+        </ion-item>
+
+        <!-- Whatsapp  -->
+        <ion-item>
+          <ion-icon item-start name="logo-whatsapp" color="secondary"></ion-icon>
+          <p>Whatsapp</p>
+          {{contactInfos.whatsapp}}
+          <a button ion-button medium item-end color="secondary" href="whatsapp://send?text=Hello from ThemesBuckets&phone=+{{contactInfos.phone}}&abid=+{{contactInfos.phone}}">Open App</a>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <!-- Contact Form  -->
+    <ion-card class="contact-form" padding-top>
+      <p class="contact-title">FEEL FREE TO DROP US A MESSAGE!</p>
+      <form novalidate>
+        <ion-row>
+          <ion-col>
+            <ion-list inset>
+              <!-- User Name -->
+              <ion-item>
+                <ion-label>
+                  <ion-icon color="color1" name="md-person"></ion-icon>
+                </ion-label>
+                <ion-input type="text" placeholder="Your Name*">
+                </ion-input>
+              </ion-item>
+
+              <!-- Email -->
+              <ion-item>
+                <ion-label>
+                  <ion-icon color="color1" name="md-mail"></ion-icon>
+                </ion-label>
+                <ion-input type="email" placeholder="Your Email*">
+                </ion-input>
+              </ion-item>
+
+              <!-- Message  -->
+              <ion-item>
+                <ion-label>
+                  <ion-icon color="color1" name="chatbubbles"></ion-icon>
+                </ion-label>
+                <ion-textarea placeholder="Your Message*" rows="3">
+                </ion-textarea>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+
+        <!-- Button  -->
+        <ion-row>
+          <ion-col>
+            <button ion-button block round color="color1">Send</button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-card>
+  </section>
+</ion-content>

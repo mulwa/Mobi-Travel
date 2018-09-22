@@ -1,0 +1,53 @@
+$color-primary : #795548;
+$color-secondary: #e38d25;
+page-bus-list {
+    ion-header{
+        background-color:color($colors, color2)
+    }
+    ion-content {        
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        border-color: transparent;
+        .center{
+            text-align:center;
+        }
+        .hr{
+            font-size: 2px;
+            color: #e38d25;
+        }
+        .card {
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
+            border-radius: 1px;
+            .price {
+                color: color($colors, color2);
+                font-size: 1.8rem;
+                font-weight: bold;
+            }
+        }
+        .bal-section{        
+            text-align: center;        
+            background-color: #FFF;            
+            transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    
+            h2{
+                font-size: 12px;
+                color:$color-primary;
+                font-weight: bold;                               
+                
+            } 
+            h4{
+                font-size: 11px;                
+                font-weight: bold;
+                margin: 0;
+                
+            }
+                  
+            
+        }
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #000;
+        }
+    }
+}

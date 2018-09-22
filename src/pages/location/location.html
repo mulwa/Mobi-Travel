@@ -1,0 +1,24 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+<!-- Location Search Page  -->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-three title="Select Location"></header-three>
+</ion-header>
+
+<!-- Contents  -->
+<ion-content>
+  <!-- Location Search Input Box  -->
+  <ion-searchbar (ionInput)="getItems($event)" animated="true" placeholder="Search Location"></ion-searchbar>
+
+  <!-- List Of Locations  -->
+  <ion-list>
+    <ion-item *ngFor="let location of locations" tappable (tap)="chooseLocation(location)">
+      <h2>{{ location.name }}</h2>
+    </ion-item>
+  </ion-list>
+</ion-content>

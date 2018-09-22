@@ -1,0 +1,26 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-one title="Language"></header-one>
+</ion-header>
+
+<!-- Content  -->
+<ion-content padding>
+  <ion-list radio-group class="animated fadeIn">
+    <ion-list-header no-lines>
+      Change Language
+    </ion-list-header>
+
+    <!-- List of Languages  -->
+    <ion-item *ngFor="let language of languages; let i=index">
+      <ion-label>{{'LANGUAGES.' + i + '.VALUE' | translate}}</ion-label>
+      <ion-radio color="color1" [checked]="language.ID == 'en'" value="{{'LANGUAGES.' + i + '.VALUE' | translate}}" (click)="changeLanguage(language)">
+      </ion-radio>
+    </ion-item>
+  </ion-list>
+</ion-content>

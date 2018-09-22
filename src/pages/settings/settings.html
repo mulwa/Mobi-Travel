@@ -1,0 +1,87 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+<!-- Settings Page  -->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-one title="Settings"></header-one>
+</ion-header>
+
+<!-- Content  -->
+<ion-content padding>
+  <ion-list no-lines>
+
+    <ion-list-header no-lines>
+      General
+    </ion-list-header>
+
+    <!-- Language Change Options  -->
+    <ion-item>
+      <ion-icon name='settings' item-start color="color2"></ion-icon>
+      <ion-label>Change Language </ion-label>
+      <ion-select [(ngModel)]="language" (ionChange)="changeLanguage(language)">
+        <ion-option [selected]="language.ID == 'en'" *ngFor="let language of languages; let i=index" [value]="'LANGUAGES.' + i + '.ID' | translate">{{'LANGUAGES.' + i + '.VALUE' | translate}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Notifications  -->
+    <ion-item>
+      <ion-toggle [(ngModel)]="enableNotifications"></ion-toggle>
+      <ion-label class="label"> Enable notifications </ion-label>
+      <ion-icon name='notifications' item-start color="color2"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-list no-lines>
+
+    <ion-list-header no-lines>
+      Currency
+    </ion-list-header>
+
+    <!-- Payment Method  -->
+    <ion-item>
+      <ion-icon name='card' item-start color="color2"></ion-icon>
+      <ion-label>Payment Method</ion-label>
+      <ion-select [(ngModel)]="paymentMethod">
+        <ion-option *ngFor="let method of paymentMethods" [value]="method">{{method}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- Currency Settings Option  -->
+    <ion-item no-lines>
+      <ion-icon name='logo-usd' item-start color="color2"></ion-icon>
+      <ion-label>Currency</ion-label>
+      <ion-select [(ngModel)]="currency">
+        <ion-option *ngFor="let currency of currencies" [value]="currency">{{currency}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <!-- Others  -->
+  <ion-list no-lines>
+    <ion-list-header>
+      Other
+    </ion-list-header>
+    <ion-item>
+      Rate Us
+    </ion-item>
+    <ion-item>
+      Share with friends
+    </ion-item>
+    <ion-item>
+      Feedback
+    </ion-item>
+    <ion-item>
+      Privacy Policy
+    </ion-item>
+    <ion-item>
+      <ion-icon name='power' item-start color="color2"></ion-icon>
+      <button ion-button (click)="logOut()" item-end>
+        Logout
+      </button>
+    </ion-item>
+  </ion-list>
+</ion-content>

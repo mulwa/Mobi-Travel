@@ -1,0 +1,25 @@
+<!-- List of Deals  -->
+<div class="contents">
+  <ion-list no-lines *ngFor="let deal of deals">
+    <ion-item class="animated fadeInLeft">
+
+      <!-- Deal Image -->
+      <ion-thumbnail item-start>
+        <img [src]="deal.image">
+      </ion-thumbnail>
+
+      <!-- Details  -->
+      <div class="details">
+        <!-- Name of Deal -->
+        <h2 text-wrap>{{deal.name}} </h2>
+
+        <!-- Deal Details  -->
+        <p text-wrap>{{deal.details}}</p>
+
+        <!-- Price  -->
+        <span class="price">${{deal.price}}</span>
+
+      </div>
+    </ion-item>
+  </ion-list>
+</div>

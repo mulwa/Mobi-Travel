@@ -1,0 +1,25 @@
+page-congratulation {
+    .scroll-content {
+        background: linear-gradient(to right bottom, color($colors, color1), color($colors, color2));
+        color: #fff;
+        text-align: center;
+        .title {
+            font-size: 4rem;
+            font-weight: bold;
+        }
+        .contents {
+            width: 80%;
+            display: inline-block;
+            font-size: 18px;
+        }
+    }
+    animation: fade-in .8s ease-in-out;
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+}

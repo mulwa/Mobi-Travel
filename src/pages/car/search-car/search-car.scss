@@ -1,0 +1,45 @@
+page-search-car {
+    ion-content {
+        .title {
+            color: color($colors, color3);
+            font-weight: 500;
+        }
+        .date {
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: color($colors, color1);
+        }
+        .time {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: color($colors, color1);
+        }
+        ion-list {
+            .item-input {
+                ion-label {
+                    color: #000;
+                    margin-left: 10px;
+                }
+            }
+            .item {
+                border: 1px solid color($colors, color3) !important;
+                padding-left: 0;
+                margin-bottom: 10px;
+                .text-input {
+                    padding: 5px;
+                }
+                *::-webkit-input-placeholder {
+                    color: color($colors, color3);
+                }
+            }
+        }
+    }
+    ion-footer {
+        .custom-btn {
+            background: linear-gradient(to right bottom, color($colors, color1), color($colors, color2));
+            padding: 2.2rem 7.2rem;
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+}

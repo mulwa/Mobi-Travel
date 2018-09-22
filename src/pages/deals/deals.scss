@@ -1,0 +1,25 @@
+page-deals {
+    .cards {
+        .card-one {
+            margin-bottom: 5%;
+        }
+        .card-two {
+            box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.41);
+            border-radius: 10px;
+            width: 80%;
+            margin-left: 10%;
+            padding: 10%;
+            margin-top: -20%;
+            position: relative;
+            .card-title {
+                font-size: 1.5em;
+                font-weight: 500;
+                color: color($colors, color2);
+            }
+            .card-subtitle {
+                font-size: 1.0em;
+                color: color($colors, color2);
+            }
+        }
+    }
+}

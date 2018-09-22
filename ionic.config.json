@@ -1,0 +1,8 @@
+{
+  "name": "TravelAgency",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "app_id": ""
+}

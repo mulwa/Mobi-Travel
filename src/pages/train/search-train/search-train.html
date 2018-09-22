@@ -1,0 +1,155 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-one title="Search Train"></header-one>
+</ion-header>
+
+<!-- Content  -->
+<ion-content padding>
+
+  <!-- Trip Type  -->
+  <ion-segment color="color1" no-padding [(ngModel)]="searchObjects.tripType" style="direction:ltr">
+    <ion-segment-button value="oneWay">
+      One Way
+    </ion-segment-button>
+    <ion-segment-button value="roundTrip">
+      Round Trip
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-grid no-padding>
+    <ion-list inset>
+
+      <!-- Origin Location  -->
+      <ion-item (tap)="getLocationOrigin()">
+        <ion-label>
+          <ion-icon color="color2" name="pin"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="From" [(ngModel)]="searchObjects.originLocationName">
+        </ion-input>
+      </ion-item>
+
+      <!--  Destination Location -->
+      <ion-item (tap)="getLocationDestination()">
+        <ion-label>
+          <ion-icon color="color2" name="pin"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="To" [(ngModel)]="searchObjects.destinationLocationname">
+        </ion-input>
+      </ion-item>
+
+      <!-- Departure Date  -->
+      <ion-card (tap)="openCalendar()">
+        <ion-card-content>
+          <p class="date">
+            <ion-icon color="color2" name="md-calendar"></ion-icon>&nbsp; <span>{{searchObjects.departureDate | date}}</span>
+          </p>
+        </ion-card-content>
+      </ion-card>
+
+      <!-- Passengers  -->
+      <ion-row class="animated zoomIn" justify-content-center align-items-center style="height: 100%">
+
+        <!-- Adults  -->
+        <ion-col col-4 text-center>
+          <p class="custom-title">Adults</p>
+          <ion-card>
+            <ion-card-content no-padding>
+              <ion-row justify-content-center align-items-center>
+
+                <!-- Increase  -->
+                <ion-col col-12 no-padding>
+                  <button ion-button clear item-end color="color1" (tap)="searchObjects.adultNumber = searchObjects.adultNumber + 1 ">
+                  <ion-icon name="add-circle" style="zoom:1.5;"></ion-icon>
+                </button>
+                </ion-col>
+
+                <!-- Total Number  -->
+                <ion-col col-12 no-padding>
+                  <span>{{searchObjects.adultNumber}}</span>
+                </ion-col>
+
+                <!-- Decrease -->
+                <ion-col col-12 no-padding>
+                  <button ion-button clear item-end color="color1" [disabled]="searchObjects.adultNumber == 0" (tap)="searchObjects.adultNumber = searchObjects.adultNumber - 1 ">
+                  <ion-icon name="remove-circle" style="zoom:1.5;"></ion-icon>
+                </button>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <!-- Child  -->
+        <ion-col col-4 text-center>
+          <p class="custom-title">Child</p>
+          <ion-card>
+            <ion-card-content no-padding>
+              <ion-row justify-content-center align-items-center>
+
+                <!-- Increase  -->
+                <ion-col col-12 no-padding>
+                  <button ion-button clear item-end color="color1" (tap)="searchObjects.childNumber = searchObjects.childNumber + 1 ">
+                  <ion-icon name="add-circle" style="zoom:1.5;"></ion-icon>
+                </button>
+                </ion-col>
+
+                <!-- Total Number  -->
+                <ion-col col-12 no-padding>
+                  <span>{{searchObjects.childNumber}}</span>
+                </ion-col>
+
+                <!-- Decrease -->
+                <ion-col col-12 no-padding>
+                  <button ion-button clear item-end color="color1" [disabled]="searchObjects.childNumber == 0" (tap)="searchObjects.childNumber = searchObjects.childNumber - 1 ">
+                  <ion-icon name="remove-circle" style="zoom:1.5;"></ion-icon>
+                </button>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <!-- Infants  -->
+        <ion-col col-4 text-center>
+          <p class="custom-title">Infants</p>
+          <ion-card>
+            <ion-card-content no-padding>
+              <ion-row justify-content-center align-items-center>
+
+                <!-- Increase  -->
+                <ion-col col-12 no-padding>
+                  <button ion-button clear item-end color="color1" (tap)="searchObjects.infantNumber = searchObjects.infantNumber + 1 ">
+                  <ion-icon name="add-circle" style="zoom:1.5;"></ion-icon>
+                </button>
+                </ion-col>
+
+                <!-- Total Number  -->
+                <ion-col col-12 no-padding>
+                  <span>{{searchObjects.infantNumber}}</span>
+                </ion-col>
+
+                <!-- Decrease -->
+                <ion-col col-12 no-padding>
+                  <button ion-button clear item-end color="color1" [disabled]="searchObjects.infantNumber == 0" (tap)="searchObjects.infantNumber = searchObjects.infantNumber - 1 ">
+                  <ion-icon name="remove-circle" style="zoom:1.5;"></ion-icon>
+                </button>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+  </ion-grid>
+</ion-content>
+
+<!-- Footer  -->
+<ion-footer text-center>
+  <button ion-button class="custom-btn" (tap)="findTrain()">Find Train</button>
+</ion-footer>

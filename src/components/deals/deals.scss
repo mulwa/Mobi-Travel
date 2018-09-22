@@ -1,0 +1,25 @@
+deals {
+    .contents {
+        .list {
+            margin: 0;
+            .item {
+                ion-thumbnail {
+                    margin: 0;
+                    img {
+                        width: 100px;
+                        height: 80px;
+                        border-radius: 10px;
+                        box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.14);
+                    }
+                }
+            }
+            .details {
+                padding: 10px;
+                .price {
+                    color: color($colors, color3);
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+}

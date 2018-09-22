@@ -1,0 +1,42 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+<!-- Header  -->
+<ion-header no-border>
+  <header-three title="Hotels"></header-three>
+</ion-header>
+
+<!-- Content  -->
+<ion-content padding>
+  <div *ngIf="hotels.length > 0">
+    <!-- List of Hotels  -->
+    <ion-list no-lines no-margin *ngFor="let hotel of hotels" (tap)="viewDetails(hotel)">
+      <ion-item class="animated fadeInLeft">
+
+        <!-- Hotel Image -->
+        <ion-thumbnail item-start>
+          <img [src]="hotel.image[0]">
+        </ion-thumbnail>
+
+        <!-- Name of Hotel -->
+        <p text-wrap class="name">{{hotel.name }}</p>
+
+        <!-- Hotel Review and Type  -->
+        <p class="reviews">{{hotel.totalReviews}} Reviews | {{hotel.type}} hotel</p>
+
+        <ion-item style="background: transparent" no-padding>
+
+          <!-- Hotel Ratings  -->
+          <rating [(ngModel)]="hotel.star" readOnly="false" max="{{hotel.star}}" emptyStarIconName="ios-star-outline" halfStarIconName="star-half"
+            starIconName="ios-star" nullable="true">
+          </rating>
+
+          <!-- Price  -->
+          <ion-badge item-end>USD{{hotel.price}}</ion-badge>
+        </ion-item>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

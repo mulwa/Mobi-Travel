@@ -1,0 +1,29 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-one title="Deals"></header-one>
+</ion-header>
+<!-- End Header  -->
+
+<!-- Content  -->
+<ion-content>
+  <!-- List of Deals  -->
+  <div class="cards" *ngFor="let deal of deals">
+    <!-- Deal Image  -->
+    <ion-card class="card-one">
+      <img [src]="deal.image" imageViewer />
+    </ion-card>
+    <!-- Details of Deal  -->
+    <ion-card class="card-two">
+      <!-- Deal Name  -->
+      <div class="card-title">{{deal.name}}</div>
+      <!-- Deal Details  -->
+      <div class="card-subtitle">{{deal.details}}</div>
+    </ion-card>
+  </div>
+</ion-content>

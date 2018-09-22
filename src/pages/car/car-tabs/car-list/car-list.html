@@ -1,0 +1,25 @@
+<!-- List of Cars  -->
+<ion-content padding>
+  <div *ngIf="cars.length > 0">
+    <ion-list no-lines no-margin *ngFor="let car of cars" (tap)="viewDetails(car)">
+      <ion-item class="animated fadeInLeft">
+
+        <!-- Car Image  -->
+        <ion-thumbnail item-start>
+          <img [src]="car.image" imageViewer>
+        </ion-thumbnail>
+
+        <!-- Car Name  -->
+        <p text-wrap class="name">{{car.name }}</p>
+
+        <!-- Car Type  -->
+        <p>
+          <ion-badge color="color2">{{car.carType}}</ion-badge>
+        </p>
+
+        <!-- Select Option Button  -->
+        <button ion-button clear item-end color="color1">Select</button>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,33 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-three title="Cruise List"></header-three>
+</ion-header>
+
+<!-- Content  -->
+<ion-content padding>
+  <div *ngIf="cruises.length > 0">
+    <!-- List of Cruises  -->
+    <ion-list no-lines no-margin *ngFor="let cruise of cruises" (tap)="goToViewDetailsPage(cruise)">
+      <ion-item class="animated fadeInLeft">
+
+        <!-- Boat Image -->
+        <ion-thumbnail item-start>
+          <img [src]="cruise.image">
+        </ion-thumbnail>
+
+        <!-- Name of Boat -->
+        <p text-wrap class="name">{{cruise.boatName }}</p>
+        <p text-wrap>{{cruise.subname}}</p>
+
+        <!-- Price  -->
+        <ion-badge color="color2">USD{{cruise.price}}</ion-badge>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

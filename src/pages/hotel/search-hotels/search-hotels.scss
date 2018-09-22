@@ -1,0 +1,26 @@
+page-search-hotels {
+    ion-content {
+        .card {
+            .card-header {
+                font-size: 2.6rem;
+            }
+        }
+        .title {
+            color: color($colors, color3);
+            font-weight: 500;
+        }
+        .date {
+            font-size: 2.2rem;
+            font-weight: 500;
+            color: color($colors, color1);
+        }
+    }
+    ion-footer {
+        .custom-btn {
+            background: linear-gradient(to right bottom, color($colors, color1), color($colors, color2));
+            padding: 2.2rem 7.2rem;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+}

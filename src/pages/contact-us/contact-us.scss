@@ -1,0 +1,59 @@
+page-contact-us {
+    #map {
+        height: 40%;
+    }
+    .card {
+        position: relative !important;
+        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.41);
+        border-radius: 10px;
+        width: 90%;
+        margin-left: 5%;
+        .infos {
+            display: inline-block;
+            text-align: center;
+            ion-label {
+                font-size: 1.5rem;
+            }
+        }
+    }
+    .card:first-child {
+        margin-top: -20% !important;
+    }
+    .contact-form {
+        text-align: center;
+        .contact-title {
+            font-size: 2rem;
+            font-weight: 500;
+            color: color($colors, color2);
+        }
+        form {
+            ion-list {
+                .item-input {
+                    ion-label {
+                        color: #000;
+                        margin-left: 10px;
+                    }
+                }
+                .item:first-child {
+                    border-top: 1px solid color($colors, color3) !important;
+                    border-bottom: 1px solid color($colors, color3) !important;
+                }
+                .item-inner {
+                    border-top: 1px solid color($colors, color3) !important;
+                    border-bottom: 1px solid color($colors, color3) !important;
+                }
+                .item {
+                    border: 1px solid color($colors, color3) !important;
+                    padding-left: 0;
+                    margin-bottom: 10px;
+                    .text-input {
+                        padding: 5px;
+                    }
+                    *::-webkit-input-placeholder {
+                        color: color($colors, color3);
+                    }
+                }
+            }
+        }
+    }
+}

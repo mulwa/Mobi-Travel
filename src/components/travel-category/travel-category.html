@@ -1,0 +1,13 @@
+<!-- Generated template for the TravelCategoryComponent component -->
+
+<!-- Travel Category List  -->
+<ion-grid>
+  <ion-row class="animated zoomIn" justify-content-center align-items-center>
+    <ion-col col-3 *ngFor="let category of categories" (tap)="goToCategoryPage(category)">
+      <!-- Category Icon  -->
+      <i class="{{category.icon}}" aria-hidden="true"></i>
+      <!-- Category Name  -->
+      <p>{{category.name}}</p>
+    </ion-col>
+  </ion-row>
+</ion-grid>

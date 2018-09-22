@@ -1,0 +1,62 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+<!-- Checkout Page  -->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-two title="Checkout"></header-two>
+</ion-header>
+
+<!-- Content  -->
+
+<ion-content>
+  <!-- Price Summery  -->  
+  <ion-grid>
+    <ion-row>
+      <ion-col col class="bal-section">
+        <h2>Total Cost</h2>
+        <h4>{{ticketCost}}</h4>
+       </ion-col>      
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+      <form [formGroup]="checkOutForm">          
+    <ion-item>
+        <ion-label floating>Passager Name</ion-label>
+        <ion-input formControlName="passenger_name" type="text"  ></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label floating>Phone Number</ion-label>
+          <ion-input formControlName="phone_number" type="number"  ></ion-input>
+        </ion-item>
+      <ion-item>
+          <ion-label floating>Id Number</ion-label>
+          <ion-input formControlName="id_number" type="number"  ></ion-input>
+        </ion-item>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input formControlName="email_address" type="email"  ></ion-input>
+    </ion-item>
+    <ion-item >
+        <ion-label floating>Payment Method</ion-label>
+        <ion-select formControlName="payment_method">
+          <ion-option value="3">Mpesa</ion-option>
+          <ion-option value="2">Card</ion-option>        
+        </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label floating>Total Amount</ion-label>
+          <ion-input disabled="true" formControlName="amount_charged" type="number" [value]="ticketCost" [(ngModel)]="ticketCost"></ion-input>
+        </ion-item> 
+    </form>
+  </ion-list>  
+</ion-content>
+<!-- Footer  -->
+<ion-footer>
+  <button ion-button large full no-margin class="custom-btn" (tap)="goToPaymentPage()">
+    Check Out
+  </button>
+</ion-footer>

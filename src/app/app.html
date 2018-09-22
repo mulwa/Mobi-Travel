@@ -1,0 +1,131 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+<!-- Left Side Menu  -->
+<ion-menu [content]="content" *ngIf="this.platform.dir()=='ltr'" side="left">
+
+  <!-- Header  -->
+  <ion-header>
+    <ion-toolbar>
+      <div class="contents">
+        <div class="left">
+          <img class="logo" src="assets/imgs/avatar.png">
+        </div>
+        <div class="right">
+          <span class="name">Mobi-Ticket</span>          
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Body Content  -->
+  <ion-content>
+
+    <ion-item ion-item *ngFor="let p of pages;  let i=index" (click)="openPage(p.component, i);">
+      <ion-row>
+
+        <!-- Menu Icon  -->
+        <ion-col col-3>
+          <ion-icon color="color2" [name]="p.icon" style="zoom:1.3;"></ion-icon>
+        </ion-col>
+
+        <!--  Name of Menu  -->
+        <ion-col col-9 class="menu-name">
+          <span ion-text color="color2">
+            {{p.title}}
+            <ion-icon color="color2" [name]="selectedMenu == i? 'arrow-down' : 'arrow-forward'" *ngIf="p.subPages" float-right></ion-icon>
+          </span>
+
+          <!-- Sub Menus  -->
+          <ion-list no-lines [hidden]="selectedMenu != i">
+            <ion-item no-border *ngFor="let subPage of p.subPages;let i2=index" text-wrap (click)="openPage(subPage.component)">
+              <ion-row>
+                <!-- Icon of Sub Menu  -->
+                <ion-col col-2><i class="{{subPage.icon}}" aria-hidden="true"></i></ion-col>
+
+                <!-- Name of Sub-menu  -->
+                <ion-col col-10 class="menu-name"><span ion-text color="color2">&nbsp;{{subPage.title}}</span></ion-col>
+              </ion-row>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-content>
+  <!-- End Left Side Menu  -->
+
+  <!-- Footer  -->
+  <ion-footer>
+    <!-- Logout Option  -->
+    <button ion-button full no-margin color="color1" (click)="logout()">
+      <ion-icon name="send"></ion-icon> Logout
+    </button>
+  </ion-footer>
+</ion-menu>
+
+<!-- Right Side Menu  -->
+<ion-menu [content]="content" *ngIf="this.platform.dir()!=='ltr'" side="right">
+
+  <!-- Header  -->
+  <ion-header>
+    <ion-toolbar>
+      <div class="contents">
+        <div class="left">
+          <img class="logo" src="assets/imgs/avatar.png">
+        </div>
+        <div class="right">
+          <span class="name">Hello, Abc Xyz</span>
+          <span>ionicbucket@gmail.com</span>
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Content  -->
+  <ion-content>
+    <ion-item ion-item *ngFor="let p of pages;  let i=index" (click)="openPage(p.component, i);">
+      <ion-row>
+
+        <!-- Menu Icon  -->
+        <ion-col col-3>
+          <ion-icon color="color2" [name]="p.icon" style="zoom:1.3;"></ion-icon>
+        </ion-col>
+
+        <!--  Name of Menu  -->
+        <ion-col col-9 class="menu-name">
+          <span ion-text color="color2">
+            {{p.title}}
+            <ion-icon color="color2" [name]="selectedMenu == i? 'arrow-down' : 'arrow-forward'" *ngIf="p.subPages" float-left></ion-icon>
+          </span>
+
+          <!-- Sub Menus  -->
+          <ion-list no-lines [hidden]="selectedMenu != i">
+            <ion-item no-border *ngFor="let subPage of p.subPages;let i2=index" text-wrap (click)="openPage(subPage.component)">
+              <ion-row>
+                <!-- Sub Menu Icon  -->
+                <ion-col col-2><i class="{{subPage.icon}}" aria-hidden="true"></i></ion-col>
+
+                <!-- Name of Sub Menu  -->
+                <ion-col col-10 class="menu-name"><span ion-text color="color2">&nbsp;{{subPage.title}}</span></ion-col>
+              </ion-row>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-content>
+
+  <!-- Footer  -->
+  <ion-footer>
+    <!-- Logout Option  -->
+    <button ion-button full no-margin color="color1" (click)="logout()">
+      <ion-icon name="send"></ion-icon> Logout
+    </button>
+  </ion-footer>
+</ion-menu>
+<!-- End Right Side Menu  -->
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

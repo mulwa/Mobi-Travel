@@ -1,0 +1,18 @@
+page-car-list {
+    .list {
+        .item {
+            ion-thumbnail {
+                img {
+                    width: 150px;
+                    height: 100px;
+                }
+            }
+            .name {
+                font-size: 1.6rem;
+                font-weight: 500;
+                color: #000000;
+                text-transform: uppercase;
+            }
+        }
+    }
+}

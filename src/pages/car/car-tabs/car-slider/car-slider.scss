@@ -1,0 +1,33 @@
+page-car-slider {
+    .card {
+        box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.74);
+        border-radius: 10px;
+        .car-name {
+            font-size: 2rem;
+            color: #000000;
+            font-weight: 500;
+            text-align: left;
+            text-transform: uppercase;
+            padding: 16px 0px;
+        }
+        .car-type {
+            text-align: left;
+            padding-bottom: 30px;
+        }
+        img {
+            padding-top: 20px 0px;
+            margin-bottom: 20px;
+            height: 20vh !important;
+        }
+        .custom-btn {
+            background: linear-gradient(to right bottom, color($colors, color1), color($colors, color2));
+            padding: 2.2rem 7.2rem;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+    ion-slides,
+    .swiper-container {
+        width: 100%;
+    }
+}

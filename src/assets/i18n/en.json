@@ -1,0 +1,41 @@
+{
+  "LANGUAGE": "English Language",
+  "LANGUAGES": [
+    {
+      "ID": "ar",
+      "VALUE": "Arabic"
+    },
+    {
+      "ID": "bn",
+      "VALUE": "Bangla"
+    },
+    {
+      "ID": "en",
+      "VALUE": "English"
+    },
+    {
+      "ID": "es",
+      "VALUE": "Spanish"
+    },
+    {
+      "ID": "fr",
+      "VALUE": "French"
+    },
+    {
+      "ID": "it",
+      "VALUE": "Italian"
+    },
+    {
+      "ID": "ja",
+      "VALUE": "Japanese"
+    },
+    {
+      "ID": "pt",
+      "VALUE": "Portugues"
+    },
+    {
+      "ID": "zh",
+      "VALUE": "Chinese"
+    }
+  ]
+}

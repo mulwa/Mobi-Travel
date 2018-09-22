@@ -1,0 +1,16 @@
+<!-- Recommend Destination Slider  -->
+<ion-slides padding-left padding-right #slider spaceBetween="10" slidesPerView="1.2" loop="true" effect="slide" autoplay="5000"
+  style="direction:ltr">
+  <ion-slide *ngFor="let slide of recommendDestination" [ngStyle]="{'background' : 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(' + slide.image + ')'}">
+    <div class="contents">
+      <h2>{{slide.country}}</h2>
+      <p>
+        <i class="fa fa-h-square" aria-hidden="true"></i> {{slide.totalHotels}} Hotels
+      </p>
+      <p>
+        Avarage Price: US
+        <ion-icon ios="logo-usd" md="logo-usd" color="danger"></ion-icon> {{slide.avgPrice}}
+      </p>
+    </div>
+  </ion-slide>
+</ion-slides>

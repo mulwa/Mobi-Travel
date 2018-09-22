@@ -1,0 +1,119 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+
+<!-- Header  -->
+<ion-header no-border >
+  <header-three title="{{from_name}}-{{to_name}}"></header-three>
+</ion-header>
+
+<!-- Content  -->
+<ion-content>   
+    <div class="center" >
+      <h2><ion-badge text-center>{{travel_date}}</ion-badge></h2>
+    </div>       
+
+  <!-- new layout --> 
+ <!-- <ion-card class="animated fadeIn" *ngFor="let bus of buses">    
+    <ion-item>      
+      <ion-avatar item-start>
+        <ion-icon color="color3" name="ios-bus" style="zoom:1.5;"></ion-icon>
+      </ion-avatar>
+      <ion-grid>
+        <ion-row>
+          <ion-col>           
+      <h4>{{bus.route}}</h4>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col text-left item-start>            
+          <ion-badge color="color1">{{bus.seats_available}}</ion-badge>
+          </ion-col>         
+        <ion-col text-right item-end>
+          <button ion-button small  (tap)="goToViewDetailsPage1(bus)">View Deal</button>
+        </ion-col>       
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="bal-section">
+            <h4>{{bus.price[0].name}}</h4>
+          </ion-col>
+        </ion-row>
+      </ion-grid>      
+    </ion-item>    
+  </ion-card> -->
+
+
+  <ion-card class="animated fadeIn" *ngFor="let bus of buses" (tap)="goToViewDetailsPage1(bus)">
+    <!-- Bus Infos  -->    
+      <!-- Bus Icon  -->
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+            <ion-grid>
+              <ion-row>
+                <ion-col class="bal-section">
+                  <h2>Depart</h2>
+                  <h4>{{bus.departure_time.split(",")[1] }}</h4>
+                  <h4>{{bus.departure_time.split(",")[0]}}</h4>
+                  <hr>                 
+                </ion-col>                                                
+              </ion-row>
+              <ion-row>
+                  <ion-col  class="bal-section">
+                    <hr>
+                    <h2>Arrival</h2>
+                    <h4>{{bus.arrival_time.split(",")[1]}}</h4>
+                    <h4>{{bus.arrival_time.split(",")[0]}}</h4>
+                  </ion-col>
+                </ion-row>
+            </ion-grid>
+
+          </ion-col> <!--end first col od 4-->
+          <ion-col col-8>
+              <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                       <!-- Name of bus  -->
+                    <h4 class="title">{{bus.route}}</h4>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col text-center item-center class="bal-section">
+                      <!-- Bus Type  -->
+                      <h4>Seats Available {{bus.seats_available}} </h4>                                      
+                    </ion-col>                    
+                    <!-- View Details was here Page Button Option  -->                     
+                  </ion-row>
+                  <ion-row>
+                      <ion-col class="bal-section">                          
+                          <!-- <h4 *ngIf="bus.total_seats == 11">Nissan</h4>
+                          <h4 *ngIf="bus.total_seats ">Bus</h4> -->
+                          <div *ngIf="bus.total_seats== 11">
+                            <h4>Vehicle Type Nissan</h4>
+                          </div>
+                          <div *ngIf="bus.total_seats > 11">
+                              <h4>Vehicle Type Bus</h4>
+                            </div>
+                          
+                          
+                        </ion-col>
+                  </ion-row>
+                </ion-grid>
+          </ion-col> <!--end second  row of 8-->          
+        </ion-row>
+        <ion-row>
+          <ion-col class="bal-section">
+              <h2>{{bus.price[0].name}}</h2>
+            </ion-col>
+        </ion-row>
+      </ion-grid>     
+       
+  </ion-card>
+
+
+
+</ion-content>

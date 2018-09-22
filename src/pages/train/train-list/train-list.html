@@ -1,0 +1,80 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-three title="Trains"></header-three>
+</ion-header>
+
+<!-- Content  -->
+<ion-content>
+
+  <!-- List of Bus  -->
+  <ion-card class="animated fadeIn" *ngFor="let train of trains">
+
+    <!-- Train Info  -->
+    <ion-item>
+
+      <!-- Train Icon  -->
+      <ion-avatar item-start>
+        <ion-icon color="color3" name="ios-train" style="zoom:1.5;"></ion-icon>
+      </ion-avatar>
+
+      <!-- Name of Train  -->
+      <h2 text-wrap>{{train.name}}</h2>
+
+      <!-- Train Tyoe  -->
+      <ion-badge color="color1">{{train.type}}</ion-badge>
+
+      <!-- View Details Order Page Button Option  -->
+      <ion-col text-right item-end>
+        <button ion-button small color="color1" (tap)="goToViewDetailsPage()"> Select</button>
+      </ion-col>
+    </ion-item>
+
+    <!-- Date/Times  -->
+    <ion-card-content>
+      <ion-grid>
+        <ion-row justify-content-center align-items-center>
+
+          <!-- Departure  -->
+          <ion-col col-3 text-center>
+            <!-- Departure Time  -->
+            <h2 ion-text><b>{{ train.startTime }}</b></h2>
+
+            <!--  Departure Location -->
+            <p>{{train.from}}</p>
+          </ion-col>
+
+          <!-- Total Hour  -->
+          <ion-col col-3 text-center>
+            <ion-row justify-content-center align-items-center>
+              <img src="assets/imgs/dot.png">
+            </ion-row>
+
+            <ion-row justify-content-center align-items-center>
+              <p><b>{{ train.totalHour }}</b></p>
+            </ion-row>
+          </ion-col>
+
+          <!-- Arrival  -->
+          <ion-col col-3 text-center>
+            <!-- Arrival Time  -->
+            <h2 ion-text><b>{{ train.stopTime }}</b></h2>
+
+            <!-- Arrival Location  -->
+            <p>{{train.to}}</p>
+          </ion-col>
+
+          <!-- Per Seat Price  -->
+          <ion-col col-3 text-right>
+            <p class="price">${{ train.price }}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

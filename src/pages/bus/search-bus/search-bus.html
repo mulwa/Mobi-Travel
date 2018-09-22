@@ -1,0 +1,62 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-one title="Search Bus"></header-one>
+</ion-header>
+
+<!-- Content  -->
+<ion-content padding>
+
+  <!-- Trip Type  -->
+  <ion-segment color="color1" no-padding [(ngModel)]="searchObjects.tripType" style="direction:ltr">
+    <ion-segment-button value="oneWay">
+      One Way
+    </ion-segment-button>
+    <ion-segment-button value="roundTrip">
+      Round Trip
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-grid no-padding>    
+    <ion-list inset>
+      <!-- Origin Location  -->
+      <ion-item (tap)="getLocationOrigin()">
+        <ion-label>
+          <ion-icon color="color2" name="pin"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Picking Up Location"   [(ngModel)]="searchObjects.originLocationName">
+        </ion-input>
+      </ion-item>
+
+      <!-- Destination Location  -->
+      <ion-item (tap)="getLocationDestination()">
+        <ion-label>
+          <ion-icon color="color2" name="pin"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Picking Off Location"  [(ngModel)]="searchObjects.destinationLocationname">
+        </ion-input>
+      </ion-item>
+
+      <!-- Departure Date  -->   
+      
+      <ion-item >
+          <ion-label floating>Travel Date</ion-label>
+          <ion-select [(ngModel)]="travel_date">
+            <ion-option [value]="date.name" *ngFor="let date of travel_dates">{{date.name}}</ion-option>    
+          </ion-select>
+        </ion-item> 
+
+    </ion-list>
+  
+  </ion-grid>
+</ion-content>
+
+<!-- Footer  -->
+<ion-footer text-center>
+  <button ion-button class="custom-btn" (tap)="findBus()">Find Bus</button>
+</ion-footer>

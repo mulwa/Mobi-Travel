@@ -1,0 +1,73 @@
+page-flight-details {
+    .scroll-content {
+        .section-one {
+            background: color($colors, color2);
+            padding-bottom: 20%;
+            .country-code {
+                font-size: 5.2rem;
+                color: #fff;
+            }
+            p {
+                line-height: 0;
+                text-transform: uppercase;
+                color: #fff;
+                font-weight: 500;
+            }
+        }
+        .section-two {
+            .card {
+                position: relative !important;
+                box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.41);
+                border-radius: 10px;
+                width: 90%;
+                margin-left: 5%;
+                .passenger {
+                    .title {
+                        font-size: 2rem;
+                        color: color($colors, color3);
+                        text-transform: uppercase;
+                    }
+                    .number {
+                        font-size: 4rem;
+                        color: color($colors, color2);
+                    }
+                    p {
+                        color: color($colors, color3);
+                    }
+                }
+                .trip-info {
+                    .title {
+                        font-size: 2rem;
+                        color: color($colors, color3);
+                        text-transform: uppercase;
+                    }
+                    p {
+                        font-size: 1.5rem;
+                        color: #000;
+                    }
+                    .col1 {
+                        border-right: 1px solid color($colors, color3);
+                    }
+                }
+            }
+            .card:first-child {
+                margin-top: -10% !important;
+            }
+        }
+    }
+    ion-footer {
+        .price {
+            font-size: 2rem;
+            margin: 0;
+            padding: 5px 5px;
+            color: color($colors, color1);
+            font-weight: 500;
+        }
+        .custom-btn {
+            background: linear-gradient(to right bottom, color($colors, color1), color($colors, color2));
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+}

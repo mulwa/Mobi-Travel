@@ -1,0 +1,16 @@
+travel-category {
+    ion-grid {
+        text-align: center;
+        padding: 30px 0px !important;
+        ion-row {
+            i {
+                font-size: 3rem !important;
+                color: color($colors, color2);
+            }
+            p {
+                font-size: 1.2rem !important;
+                color: color($colors, color3);
+            }
+        }
+    }
+}

@@ -1,0 +1,81 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+<!-- Langding Page  -->
+
+<!-- Header  -->
+<ion-header no-border>
+  <ion-navbar transparent>
+    <!-- Skip Button  -->
+    <ion-buttons right>
+      <button ion-button color="light" *ngIf="slideIndex < slides.length - 1" (click)="goToHomePage()">SKIP</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<!-- Content  -->
+<ion-content fullscreen="true" class="container">
+
+  <!-- Slider  -->
+  <ion-slides #slider pager="true" autoplay="3000" (ionSlideWillChange)="onSlideChanged()">
+    <!-- Landing Page Infos  -->
+    <ion-slide *ngFor="let slide of slides" class="slide-background" [ngStyle]="{'background-image': 'url(' + slide.imageUrl +')'}">
+      <div class="slide-text-content">
+
+        <!-- Company Info  -->
+        <div class="company-info animated fadeInDown">
+
+          <!-- Logo  -->
+          <img src="assets/imgs/logo.png">
+
+          <!-- Company Name  -->
+          <h2>Mobi-Ticket</h2>
+
+          <!-- Some Text  -->
+          <div class="slide-text">
+            <p padding>{{slide.text}}</p>
+          </div>
+        </div>
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+  <!-- Buttons  -->
+  <div class="floating-buttons" *ngIf="slideIndex >= slides.length - 1">
+    <div class="btn-container">
+
+      <!-- Social Buttons  -->
+      <ion-row justify-content-center align-items-center class="animated fadeInUp">
+        <!-- Facebook  -->
+        <button ion-fab mini color="white" class="custom-btn">
+            <span class="fa fa-facebook facebook" aria-hidden="true"></span>
+          </button>
+        <!-- Google  -->
+        <button ion-fab mini color="white" class="custom-btn">
+            <span class="fa fa-google google" aria-hidden="true"></span>
+          </button>
+        <!-- Twitter  -->
+        <button ion-fab mini color="white" class="custom-btn">
+            <span class="fa fa-twitter twitter" aria-hidden="true"></span>
+          </button>
+      </ion-row>
+
+      <!-- SignIn/Login Button  -->
+      <ion-row justify-content-center align-items-center class="animated fadeInRight">
+        <button ion-button color="white" class="custom-btn login" (tap)="goToSignInPage()">SIGN IN</button>
+      </ion-row>
+
+      <!-- Sign Up Button  -->
+      <ion-row justify-content-center align-items-center class="animated fadeInRight">
+        <button ion-button clear color="white" (tap)="goToSignUpPage()">Create an Account</button>
+      </ion-row>
+
+      <!-- Skip Button  -->
+      <ion-row justify-content-center align-items-center class="animated fadeInRight">
+        <button ion-button clear color="white" (tap)="goToHomePage()">Skip</button>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

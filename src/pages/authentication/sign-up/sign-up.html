@@ -1,0 +1,79 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+
+<!-- Registration Page -->
+
+<ion-content>
+  <div class="container">
+
+    <!-- Title of Page  -->
+    <div class="top-content" text-center>
+      <div class="animated fadeInDown title">SIGN UP</div>
+    </div>
+
+    <!-- Sign Up Form  -->
+    <div class="form-content">
+
+      <form class="animated slideInUp" [formGroup]="registrationForm">
+        <ion-list>
+
+          <!-- User Name -->
+          <ion-item>
+            <ion-label>
+              <ion-icon ios="ios-person" md="md-person" color="color2"></ion-icon>
+            </ion-label>
+            <ion-input type="text" placeholder="Your Name" name="name" formControlName="name" [(ngModel)]="registrationForm.name" [class.invalid]="!registrationForm.controls.name.valid && registrationForm.controls.name.dirty"></ion-input>
+          </ion-item>
+
+          <!-- Name Validation Message  -->
+          <div class="error-message" *ngIf="!registrationForm.controls.name.valid  && registrationForm.controls.name.dirty">
+            <p>Please enter a valid name.</p>
+          </div>
+
+          <!-- Email Address -->
+          <ion-item>
+            <ion-label>
+              <ion-icon name="md-mail" color="color2"></ion-icon>
+            </ion-label>
+            <ion-input type="email" placeholder="Your Email Address" name="email" formControlName="email" [(ngModel)]="registrationForm.email"
+              [class.invalid]="!registrationForm.controls.email.valid && registrationForm.controls.email.dirty"></ion-input>
+          </ion-item>
+
+          <!-- Email Validation Message  -->
+          <div class="error-message" *ngIf="!registrationForm.controls.email.valid  && registrationForm.controls.email.dirty">
+            <p>Please enter a valid email address.</p>
+          </div>
+
+          <!-- Password -->
+          <ion-item>
+            <ion-label>
+              <ion-icon name="md-eye" color="color2"></ion-icon>
+            </ion-label>
+            <ion-input type="password" placeholder="Your Password" name="password" formControlName="password" [(ngModel)]="registrationForm.password"
+              [class.invalid]="!registrationForm.controls.password.valid && registrationForm.controls.password.dirty"></ion-input>
+          </ion-item>
+
+          <!-- Password Validation Message  -->
+          <div class="error-message" *ngIf="!registrationForm.controls.password.valid  && registrationForm.controls.password.dirty">
+            <p>Please enter a valid password.</p>
+          </div>
+        </ion-list>
+
+        <!-- Sign Up Button  -->
+        <button ion-button round block type="button" class="custom-btn" (tap)="doRegistration()">
+            Sign Up
+        </button>
+
+        <!-- Sign In Button  -->
+        <ion-row justify-content-center align-items-center>
+          <button ion-button clear type="button" color="color3" (tap)="goToLoginPage()">
+              Already have an account? Sign In
+          </button>
+        </ion-row>
+      </form>
+    </div>
+  </div>
+</ion-content>

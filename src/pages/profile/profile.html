@@ -1,0 +1,73 @@
+<!-- 
+  - @author    ThemesBuckets <themebucketbd@gmail.com>
+  - @copyright Copyright (c) 2018
+  - @license   Fulcrumy
+-->
+<!-- Profile Page  -->
+
+<!-- Header  -->
+<ion-header no-border>
+  <header-one title="Profile"></header-one>
+</ion-header>
+
+
+<!-- Contents  -->
+<ion-content padding>
+
+  <!-- Profile Photo Section  -->
+  <div class="profile-photo" padding-top>
+
+    <!-- Photo Change Edit Button  -->
+    <ion-fab top>
+      <button ion-fab mini icon-only color="color1">
+        <ion-icon name="md-create"></ion-icon>
+      </button>
+    </ion-fab>
+
+    <!-- Image Preview  -->
+    <img src="assets/imgs/avatar.png">
+  </div>
+
+  <!-- User Profile Settings Options  -->
+  <div padding>
+    <ion-segment [(ngModel)]="options" style="direction:ltr">
+      <ion-segment-button value="User Info">
+        User Info
+      </ion-segment-button>
+      <ion-segment-button value="Card Info">
+        Card Info
+      </ion-segment-button>
+      <ion-segment-button value="Change Password">
+        Change PWD
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <!-- Settings View   -->
+  <div [ngSwitch]="options" padding-top>
+
+    <!-- User Information Section -->
+    <div *ngSwitchCase="'User Info'">
+      <!-- User Information Component  -->
+      <user-information></user-information>
+      <!-- You will find this component from components folder -->
+      <!-- Source Path - src/components/profile/user-information  -->
+    </div>
+
+    <!-- Credit Card Information Section -->
+    <div *ngSwitchCase="'Card Info'">
+      <!-- Card Information Component  -->
+      <card-information></card-information>
+      <!-- You will find this component from components folder -->
+      <!-- Source Path - src/components/profile/card-information  -->
+    </div>
+
+    <!-- Password Change Section  -->
+    <div *ngSwitchCase="'Change Password'">
+      <!-- Password Change Component  -->
+      <change-password></change-password>
+      <!-- You will find this component from components folder -->
+      <!-- Source Path - src/components/profile/change-password  -->
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,11 @@
+page-location-map {
+    ion-content {
+        background-image: linear-gradient(to right bottom, color($colors, color1), color($colors, color2));
+        background-size: 100% 20%;
+        background-repeat: no-repeat;
+        border-color: transparent;
+    }
+    #map {
+        height: 100%;
+    }
+}
