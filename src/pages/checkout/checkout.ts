@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl, AbstractControl } from '@angular/forms';
 import { TickeType } from './../../models/ticketType';
 import { AuthenticationProvider } from './../../providers/authentication/authentication';
 /**
@@ -38,8 +38,11 @@ export class CheckoutPage implements  OnInit {
   ticketDetails:TickeType;
 
   checkOutForm:FormGroup;
-
+  passangers: FormArray;
+  
   tickeRosMessage:TicketMessage;
+
+   
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -61,17 +64,32 @@ export class CheckoutPage implements  OnInit {
     this.arrayofseats = this.bookingsDetails.arrayofseats;
     this.selected_seat = this.bookingsDetails.selected_seat;
 
-    console.log(this.selected_seat);
+    console.log('selected seats'+ this.selected_seat);
 
     this.getTicket();
+    
     this.initializeForm();
 
   }
   ngOnInit(): void {
-    
+    console.log('number of selected seats'+this.arrayofseats.length)
+    for(let num = 0; num < this.arrayofseats.length; num++){
+      console.log('Loop seat Number' + this.arrayofseats[num])
+      // assign seat to passangers
+      let p_seat = this.arrayofseats[num].trim();
+      this.addPassanger(p_seat);
+    }
+     
   }
   initializeForm(){
-    this.checkOutForm = this.frmbuilder.group({
+    this.checkOutForm = this.frmbuilder.group({       
+      payment_method:'',        
+      passangers: this.frmbuilder.array([])
+
+    })
+  }
+  createItem(seat): FormGroup {
+    return this.frmbuilder.group({
       username:username,
       api_key:api_key,
       action:'ReserveSeats',
@@ -91,9 +109,16 @@ export class CheckoutPage implements  OnInit {
       insurance_charge:'',
       served_by:'test user',
       amount_charged:'',
-      reference_number:''
-
-    })
+      reference_number:'' 
+    });
+  }
+  get passanger() {
+    return this.checkOutForm.get('passangers') as FormArray;
+  }
+  
+  addPassanger(p_seat):void{
+    this.passangers = this.checkOutForm.get('passangers') as FormArray;    
+    this.passangers.push(this.createItem(p_seat))
   }
   getTicket(){
     console.log("calling get ticket details");
@@ -117,32 +142,35 @@ export class CheckoutPage implements  OnInit {
    * --------------------------------------------------------------
    * @method    goToPaymentPage This Function Close Current Modal and Open Payment Page.
    */
-  goToPaymentPage() {
-    console.log(this.checkOutForm.value);
+  goToPaymentPage() {    
     // this.viewCtrl.dismiss();
     // this.navCtrl.setRoot('PaymentPage');
+    console.log(this.passanger.value[0])
+    let numOfPassangers = this.checkOutForm.get('passangers').value.length; 
+   
     let loader = this.loadingCtrl.create({
       content: "Please Wait Reserving your Ticket"      
     });
     loader.present().then(()=>{
-      this.authProvider.reserveBooking(this.checkOutForm.value).subscribe(data =>{
-        loader.dismiss();
-        if(data.response_code === 0){          
-          this.tickeRosMessage = data.ticket_message;
-          let tick_message = this.tickeRosMessage[0].name;
-          this.showToast(tick_message);
-          this.checkOutForm.reset();
-          setTimeout(()=>{
-            this.navCtrl.setRoot('HomePage');
-          },3000)
-        }else{
-          this.showAlert("Reservation failed", data.response_message)
-        }
-
-      },error =>{
-        loader.dismiss();
-        console.log('an  error has occured'+error);
-      })
+      for(let pass= 0; pass < numOfPassangers; pass++){      
+        this.authProvider.reserveBooking(this.passanger.value[pass]).subscribe(data =>{  
+          loader.dismiss();        
+          if(data.response_code === 0){          
+            this.tickeRosMessage = data.ticket_message;
+            let tick_message = this.tickeRosMessage[0].name;
+            this.showToast(tick_message);
+            this.checkOutForm.reset();
+            setTimeout(()=>{
+              this.navCtrl.setRoot('HomePage');
+            },3000)
+          }else{
+            this.showAlert("Reservation failed", data.response_message)
+          }
+        },error =>{
+          loader.dismiss();
+          console.log('an  error has occured'+error);
+        })
+      }      
     })
   }
   showToast(msg:string){

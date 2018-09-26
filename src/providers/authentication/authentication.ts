@@ -82,6 +82,7 @@ export class AuthenticationProvider {
 
   }
   reserveBooking(bookingDetails:any){
+    console.log(bookingDetails)  
     return this.http.post<ReservationRes>(baseUrl,bookingDetails)
 
   }

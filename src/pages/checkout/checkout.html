@@ -1,8 +1,3 @@
-<!-- 
-  - @author    ThemesBuckets <themebucketbd@gmail.com>
-  - @copyright Copyright (c) 2018
-  - @license   Fulcrumy
--->
 <!-- Checkout Page  -->
 
 <!-- Header  -->
@@ -23,40 +18,72 @@
     </ion-row>
   </ion-grid>
   <ion-list>
-      <form [formGroup]="checkOutForm">          
-    <ion-item>
-        <ion-label floating>Passager Name</ion-label>
-        <ion-input formControlName="passenger_name" type="text"  ></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label floating>Phone Number</ion-label>
-          <ion-input formControlName="phone_number" type="number"  ></ion-input>
-        </ion-item>
-      <ion-item>
-          <ion-label floating>Id Number</ion-label>
-          <ion-input formControlName="id_number" type="number"  ></ion-input>
-        </ion-item>
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input formControlName="email_address" type="email"  ></ion-input>
-    </ion-item>
-    <ion-item >
-        <ion-label floating>Payment Method</ion-label>
-        <ion-select formControlName="payment_method">
-          <ion-option value="3">Mpesa</ion-option>
-          <ion-option value="2">Card</ion-option>        
-        </ion-select>
-      </ion-item>
-      <ion-item>
-          <ion-label floating>Total Amount</ion-label>
-          <ion-input disabled="true" formControlName="amount_charged" type="number" [value]="ticketCost" [(ngModel)]="ticketCost"></ion-input>
-        </ion-item> 
+    <form [formGroup]="checkOutForm">   
+    <div class="passagerArray" formArrayName="passangers" *ngFor="let item of checkOutForm.get('passangers').controls; let i = index;">
+        <fieldset  [formGroupName]="i">
+            <legend>Passenger {{i+1}} Details</legend>
+            <ion-item>
+              <ion-label floating>Passager {{i+1}} Name </ion-label>
+              <ion-input formControlName="passenger_name" type="text"></ion-input>
+            </ion-item>          
+            <ion-item >
+                <ion-label floating>Passager {{i+1}} Id </ion-label>
+                <ion-input formControlName="id_number" type="text"></ion-input>
+            </ion-item>
+          <ion-item>
+              <ion-label floating>Passager {{i+1}} Phone Number</ion-label>
+              <ion-input  formControlName="phone_number" type="number"  ></ion-input>
+          </ion-item>
+          <ion-item >
+              <ion-label floating>Passager {{i+1}} Email Address </ion-label>
+              <ion-input formControlName="email_address" type="text"></ion-input>
+          </ion-item>
+          <ion-item hidden>
+              <ion-label floating>Total Amount</ion-label>
+              <ion-input disabled="true" formControlName="amount_charged" type="number" [value]="ticketCost" [(ngModel)]="ticketCost"></ion-input>
+          </ion-item> 
+        </fieldset>
+
+    </div>      
+        <!-- Card Options  -->
+  <ion-card color="color3">
+      <ion-card-header text-center>
+        Select Your Payment Method
+      </ion-card-header>
+  
+      <ion-row radio-group formControlName="payment_method">  
+        <!-- Master Card  -->
+        <ion-col>
+          <ion-item>
+            <ion-label><img src="assets/imgs/cards/cash.png"></ion-label>
+            <ion-radio value="1"></ion-radio>
+          </ion-item>
+        </ion-col>
+  
+        <!-- Visa Card  -->
+        <ion-col>
+          <ion-item>
+            <ion-label><img src="assets/imgs/cards/jambopay.png"></ion-label>
+            <ion-radio value="2"></ion-radio>
+          </ion-item>
+        </ion-col>
+  
+        <!-- Amex Card  -->
+        <ion-col>
+          <ion-item>
+            <ion-label><img src="assets/imgs/cards/mpesa.png"></ion-label>
+            <ion-radio value="3"></ion-radio>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+      
     </form>
   </ion-list>  
 </ion-content>
 <!-- Footer  -->
 <ion-footer>
   <button ion-button large full no-margin class="custom-btn" (tap)="goToPaymentPage()">
-    Check Out
+    Check Out Ksh {{ticketCost}}
   </button>
 </ion-footer>

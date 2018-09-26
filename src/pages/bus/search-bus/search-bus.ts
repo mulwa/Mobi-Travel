@@ -115,7 +115,7 @@ export class SearchBusPage implements OnInit {
       to_name: this.to_name,
       from_name:this.from_name
     }
-    console.log(this.from_id + 'destination id'+ this.to_id + 'date'+this.travel_date)
+    console.log(this.from_id + 'destination id'+ this.to_id + 'date'+this.travel_date)    
     const modal = this.modalCtrl.create('BusListPage', {travelDetails:travelDetails});
     modal.present();
   }

@@ -23,11 +23,23 @@
         </ion-row>
       </ion-grid>
 
-      <ion-grid style="margin-bottom :20x;">
+      <ion-card *ngIf="seatSelectedForBooking.length > 0">
+          <ion-card-content>      
+            <ion-item>
+              <h4>Ticket Price Summary</h4>        
+              <!-- Structural directive - only visible on selection -->
+              <div class="font14 marginTB10">
+                  <div class="wordWrap">No of Seats: {{seatSelectedForBooking.length}} </div>
+                  <div>Ticket Price : {{ticketPrice}} * {{seatSelectedForBooking.length}} = {{currency}}.{{ticketPrice*seatSelectedForBooking.length}} </div>            
+              </div>
+            </ion-item>  
+          </ion-card-content>
+        </ion-card>
+
+      <ion-grid style="margin-bottom :10x;">
           <ion-row>
-            <ion-col col-6 class="bal-section" *ngIf="totalSeats">
-              <h2>Seats available</h2>
-              <h4>{{totalSeats}}</h4>
+            <ion-col  class="title-section" >              
+              <h4>{{selected_bus_name}}</h4>
              </ion-col>            
           </ion-row>
         </ion-grid>   
@@ -57,18 +69,6 @@
       </ion-card-content>
     </ion-card>
   </div>
-  <ion-card *ngIf="seatSelectedForBooking.length > 0">
-    <ion-card-content>      
-      <ion-item>
-        <h4>Ticket Price Summary</h4>        
-        <!-- Structural directive - only visible on selection -->
-        <div class="font14 marginTB10">
-            <div class="wordWrap">No of Seats: {{seatSelectedForBooking.length}} </div>
-            <div>Ticket Price : {{ticketPrice}} * {{seatSelectedForBooking.length}} = {{currency}}.{{ticketPrice*seatSelectedForBooking.length}} </div>            
-        </div>
-      </ion-item>  
-    </ion-card-content>
-  </ion-card>
   
 </ion-content>
 

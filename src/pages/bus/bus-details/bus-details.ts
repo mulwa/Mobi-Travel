@@ -38,10 +38,11 @@ export class BusDetailsPage {
 
   to_name:string;
   from_name:string;
+  selected_bus_name:string;
 
   ticketPrice: number = 10;  
   totalPrice: number = 0;
-  currency: string = "Ksh";
+  currency: string = "Ksh"; 
 
   seatSelectedForBooking: string[] = [];
 
@@ -52,6 +53,7 @@ export class BusDetailsPage {
     this.departureDate = new Date();
 
     this.busdetails = navParams.get('busDetails');
+      this.selected_bus_name = this.busdetails.selected_bus_name;
       this.from_id  = this.busdetails.from_id;
       this.to_id = this.busdetails.to_id;
       this.travel_date= this.busdetails.travel_date;
@@ -59,7 +61,7 @@ export class BusDetailsPage {
       this.to_name = this.busdetails.to_name;
       this.from_name = this.busdetails.from_name;
 
-      console.log(this.selected_vehicle);
+    
       this.getVehicleDetails();
   }
 
@@ -92,8 +94,9 @@ export class BusDetailsPage {
 
   // Open Checkout Page
   goToCheckoutPage() {
-    console.log(this.seatsSelected);
-    this.no_of_seats = this.seatsSelected.length;
+    // seatsSelected
+    console.log(this.seatSelectedForBooking);
+    this.no_of_seats = this.seatSelectedForBooking.length;
     console.log('no of seats selected'+this.no_of_seats);
     let bookingDetails = {
       from_id: this.from_id,
@@ -101,9 +104,10 @@ export class BusDetailsPage {
       travel_date:this.travel_date,
       selected_vehicle:this.selected_vehicle,
       seater:this.seater,
-      arrayofseats:this.seatsSelected,
+      arrayofseats:this.seatSelectedForBooking,
       selected_seat: this.no_of_seats
     }
+    console.log('booking details '+bookingDetails)
     this.navCtrl.setRoot('CheckoutPage',{data:bookingDetails});   
     
   }

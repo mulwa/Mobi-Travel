@@ -1,12 +1,5 @@
-<!-- 
-  - @author    ThemesBuckets <themebucketbd@gmail.com>
-  - @copyright Copyright (c) 2018
-  - @license   Fulcrumy
--->
-
 <ion-list no-lines>
   <ion-list-header>All Notification</ion-list-header>
-
   <!-- List of  Notification -->
   <button ion-item text-wrap (click)="close()" *ngFor="let notification of allNotifications">{{notification}}</button>
 </ion-list>

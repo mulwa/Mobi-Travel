@@ -5,7 +5,7 @@ import { AuthenticationProvider } from './../../../providers/authentication/auth
 
 
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ModalController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ModalController, LoadingController, ToastController } from 'ionic-angular';
 import { DataProvider } from '../../../providers/data/data';
 
 @IonicPage()
@@ -28,10 +28,7 @@ export class BusListPage {
 
   total_seats:number;
   seats_available:number;
-  price:Price;
-
-  
-
+  price:Price; 
   
 
 
@@ -42,31 +39,29 @@ export class BusListPage {
   to_name:string;
   from_name:string;
 
+  vehicles_found:boolean = true;
+
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
     private  authProvider: AuthenticationProvider,
+    private  toastCtrl:ToastController,
     private busProvider:BusProvider,
     private loadingCtrl:LoadingController,
     public modalCtrl: ModalController,
     public dataProvider: DataProvider) {
 
       this.traveldetails = navParams.get('travelDetails');
+      console.log('from bus list page'+ JSON.stringify(this.traveldetails));
       this.from_id  = this.traveldetails.from_id;
       this.to_id = this.traveldetails.to_id;
       this.travel_date= this.traveldetails.travel_date;
       this.to_name = this.traveldetails.to_name;
-      this.from_name = this.traveldetails.from_name;
-      
-
-
-    
+      this.from_name = this.traveldetails.from_name;    
 
     this.getAllBuses();
-  }
-
-  
+  }  
  
   getAllBuses(){
     let loader = this.loadingCtrl.create({
@@ -75,19 +70,21 @@ export class BusListPage {
     loader.present().then(()=>{
       this.busProvider.getSchedule(this.from_id
         ,this.to_id,this.travel_date).subscribe(data =>{
-          loader.dismiss();
-          console.log(data.bus[0].destinations)
+          loader.dismiss();         
           
           if(data.response_code ==0){          
             this.buses = data.bus;
-            console.log(this.buses)
-
+            console.log(this.buses.price)
             
-            console.log(this.buses.departure_time)
-            
-            this.departure_array = this.buses[0].departure_time.split(",");
-            this.arrival_array = this.buses[0].arrival_time.split(",");
-            console.log(this.departure_array);
+            if(data.bus[0] !== undefined){                           
+              console.log(this.buses.departure_time)            
+              this.departure_array = this.buses[0].departure_time.split(",");
+              this.arrival_array = this.buses[0].arrival_time.split(",");
+              console.log(this.departure_array);
+            }else{
+              
+              this.showToast(`There are No Available Vehicles For the Selected Route`)
+            }        
               
           }     
         
@@ -96,16 +93,37 @@ export class BusListPage {
         console.log(error)
       })
 
-    })
-   
+    })   
     
   }
+  showToast(msg:string){
+    let toast = this.toastCtrl.create({
+      message : msg,
+      duration : 6000,
+      position : 'bottom'
+    });
+    toast.present();
+  }
+  calculateTimeDiff(start, end) {
+    start = start.split(":");
+    end = end.split(":");
+    var startDate = new Date(0, 0, 0, start[0], start[1], 0);
+    var endDate = new Date(0, 0, 0, end[0], end[1], 0);
+    var diff = endDate.getTime() - startDate.getTime();
+    var hours = Math.floor(diff / 1000 / 60 / 60);
+    diff -= hours * 1000 * 60 * 60;
+    var minutes = Math.floor(diff / 1000 / 60);
+    
+    return (hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
+}
+
 
   /**
    * Open Details Page of Selected Bus
    */ 
-  goToViewDetailsPage1(bus:Bus):void{    
+  goToViewDetailsPage(bus:Bus):void{       
     let busDetails =  {
+      selected_bus_name :bus.route,
       from_id: this.from_id,
       to_id:this.to_id,
       to_name: this.to_name,
@@ -113,6 +131,7 @@ export class BusListPage {
       travel_date:this.travel_date,
       selected_vehicle:bus.id
     }
+    console.log('from go to view Details page'+JSON.stringify(busDetails))
     this.modalCtrl.create('BusDetailsPage',{busDetails:busDetails}).present();
   }
 

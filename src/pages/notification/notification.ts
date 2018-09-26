@@ -19,11 +19,9 @@ export class NotificationPage {
 
   // List of Notification
   allNotifications: any = [
-    'The Magnolia Hotel & Spa',
-    'Best Western Oasis Inn',
-    'Georgia Aquarium Admission',
-    'Visit Japan with sightseeing',
-    'Urban Adventure Quest- Atlanta'
+    'Ticket confirmation',
+    'Bonus awarding',
+    'Bus arrival'    
   ];
   constructor(public navCtrl: NavController,
     public navParams: NavParams,

@@ -27,7 +27,8 @@ export class HeaderOneComponent {
    * Open Language Settings Page
    */
   goToLanguageSettingPage() {
-    this.navCtrl.setRoot('LanguagePage');
+    // this.navCtrl.setRoot('LanguagePage');
+    console.log('going to language option')
   }
 
   /**
