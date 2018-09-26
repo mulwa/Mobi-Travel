@@ -19,10 +19,73 @@
 
   <div padding class="contents">
     <ion-grid>
-      <ion-row *ngFor="let seat of seater_49">
-        <ion-col> {{seat}}</ion-col>                                             
-      </ion-row>      
-    </ion-grid>      
+      <ion-row align-items-end >
+        <ion-col> 
+          <ion-grid>
+            <ion-row *ngFor="let item of first_row">
+              <ion-col class="inner-col">{{item}}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+        <ion-col> 
+            <ion-grid>
+              <ion-row *ngFor="let item of second_row">
+                <ion-col class="inner-col">{{item}}</ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+            <ion-col> 
+              <ion-grid >
+                <ion-row *ngFor="let item of third_row">
+                  <ion-col class="inner-col">{{item}}</ion-col>
+                </ion-row>
+            </ion-grid>
+            </ion-col>
+            <ion-col> 
+                <ion-grid>
+                  <ion-row *ngFor="let item of fourth_row">
+                    <ion-col class="inner-col">{{item}}</ion-col>
+                  </ion-row>
+                </ion-grid>
+            </ion-col>
+            <ion-col> 
+                <ion-grid>
+                  <ion-row *ngFor="let item of fifth_row">
+                    <ion-col class="inner-col">{{item}}</ion-col>
+                  </ion-row>
+                </ion-grid>
+            </ion-col>                                                                       
+      </ion-row>           
+    </ion-grid> 
+    
+    <h2>eleven seater Design</h2>
+    
+    <ion-grid>
+      <ion-row align-items-center >
+        <ion-col>
+          <ion-grid>
+            <ion-row *ngFor="let seat of first_col" >
+              <ion-col class="inner-col">{{seat}}</ion-col>
+            </ion-row>
+          </ion-grid>          
+        </ion-col> <!--end 1 col-->
+        <ion-col>
+            <ion-grid>
+              <ion-row *ngFor="let seat of second_col">
+                <ion-col  class="inner-col">{{seat}}</ion-col>                
+              </ion-row>
+            </ion-grid>          
+          </ion-col> <!--end 1 col-->
+          <ion-col>
+              <ion-grid>
+                <ion-row *ngFor="let seat of third_col">
+                  <ion-col class="inner-col">{{seat}}</ion-col>                  
+                </ion-row>
+              </ion-grid>          
+            </ion-col> <!--end 1 col-->           
+
+      </ion-row> <!--11 seater outer row-->
+    </ion-grid>
   </div>
 </ion-content>
 <!-- End Content  -->

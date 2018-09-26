@@ -6,11 +6,20 @@ page-about-us {
             text-align: center;
         }
         .contents {
-            ion-col {
-                background-color: aqua;
-                margin: 5px;
+            .ion-row {
+                margin: 0px;
+                background-color: black;
+                
+                
             }
+            .inner-col {
+                background-color: #e38d25;
+                margin: 2px;
+                justify-content: center;                
+                color: #ffffff;          
+                             
             }
+        }
     }
     
 }
