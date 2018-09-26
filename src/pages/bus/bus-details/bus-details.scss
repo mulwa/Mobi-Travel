@@ -133,4 +133,17 @@ page-bus-details {
     .marginTB10 {
         margin: 10px 0px;
     }
+    .inner-col {
+        background-color: #e38d25;
+        margin: 2px;
+        justify-content: center;                
+        color: #ffffff;      
+                     
+    }
+    .not-booked{
+        background-color: #000000;        
+    }
+    .already-booked{
+        background-color: #ce4844;
+    }
 }

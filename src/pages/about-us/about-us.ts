@@ -35,7 +35,7 @@ export class AboutUsPage implements OnInit {
   constructor(public navCtrl: NavController,
     public navParams: NavParams) {
       
-  }
+  } 
   ngOnInit(): void {
     
       this.first_row  = ['1A','3A','5A','7A','9A','11A','13A','15A','17A','19A','21A','23A'],

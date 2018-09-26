@@ -8,7 +8,7 @@ import { Seats } from './../../../models/seats';
  * File path - '../../src/pages/bus/bus-details/bus-details'
  */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthenticationProvider } from '../../../providers/authentication/authentication';
 
@@ -17,7 +17,7 @@ import { AuthenticationProvider } from '../../../providers/authentication/authen
   selector: 'page-bus-details',
   templateUrl: 'bus-details.html',
 })
-export class BusDetailsPage {
+export class BusDetailsPage implements OnInit { 
   busdetails:any;
   traveldetails:any;
   from_id:number;
@@ -77,8 +77,17 @@ export class BusDetailsPage {
       this.to_name = this.busdetails.to_name;
       this.from_name = this.busdetails.from_name;
 
+      console.log(this.busdetails)
+
     
       this.getVehicleDetails();
+      this.initializeSeater11();
+      this.initializeSeater49();
+      
+  }
+  ngOnInit(): void {
+    this.initializeSeater11();
+    this.initializeSeater49();
   }
 
   initializeSeater49():void{
@@ -89,7 +98,8 @@ export class BusDetailsPage {
     this.fifth_row = ['2B','4B','6B','8B','10B','12B','14B','16B','18B','20B','22B','24B'];
     
     // combine all arrays to make one array
-    this.seater_49_seats = this.fifth_row.concat(this.second_row,this.third_row,this.fourth_row,this.fifth_row);
+    this.seater_49_seats = this.first_row.concat(this.second_row,this.third_row,this.fourth_row,this.fifth_row);
+    console.log(this.seater_49_seats)
   }
   initializeSeater11(){
     this.first_col = ['1','2','5','8'];
@@ -97,6 +107,7 @@ export class BusDetailsPage {
     this.third_col = ['0','4','7','10']; 
     // combine all the 11 seater array to one
     this.seater_11_seats = this.first_col.concat(this.second_col, this.third_col);
+    console.log(this.seater_11_seats)
   }
 
   getVehicleDetails(){
@@ -111,6 +122,7 @@ export class BusDetailsPage {
           this.newBussDetails  =  data.seats;
           this.seater = this.newBussDetails[0].seater;
           console.log('seater is '+this.seater);
+          // this is an array of all available seats
           this.seatsArray = this.newBussDetails[0].name.split(',');
           this.totalSeats  = this.seatsArray.length;
           console.log(this.seatsArray);
@@ -154,6 +166,19 @@ export class BusDetailsPage {
         return 'not-selected'
       }
     }
+  }
+  // 49 seater checking  if its available for booking
+  checkIfAvailable(seatPos){
+    console.log(this.seater_49_seats) 
+    console.log('checking '+ seatPos)   
+      if(this.seater_49_seats.indexOf(seatPos) !== -1){
+        console.log('seat'+seatPos + ' not booked already');
+        return 'not-booked';        
+      }else{
+        console.log('seat'+seatPos + ' is aleady booked ');
+        return 'already-booked'
+      }
+    
   }
   //click handler
   seatSelected(seat){
