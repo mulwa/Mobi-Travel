@@ -60,6 +60,9 @@ export class BusDetailsPage implements OnInit {
   second_col:any;
   third_col:any;
 
+  // icons name
+  icon;
+
   
 
   constructor(public navCtrl: NavController,
@@ -67,6 +70,8 @@ export class BusDetailsPage implements OnInit {
     private loadingCtrl:LoadingController,
     private authProvider: AuthenticationProvider) {
     this.departureDate = new Date();
+
+    this.icon = "close";
 
     this.busdetails = navParams.get('busDetails');
       this.selected_bus_name = this.busdetails.selected_bus_name;
@@ -83,11 +88,13 @@ export class BusDetailsPage implements OnInit {
       this.getVehicleDetails();
       this.initializeSeater11();
       this.initializeSeater49();
+
+     
       
-  }
+  } 
   ngOnInit(): void {
-    this.initializeSeater11();
-    this.initializeSeater49();
+     
+    
   }
 
   initializeSeater49():void{
@@ -98,8 +105,8 @@ export class BusDetailsPage implements OnInit {
     this.fifth_row = ['2B','4B','6B','8B','10B','12B','14B','16B','18B','20B','22B','24B'];
     
     // combine all arrays to make one array
-    this.seater_49_seats = this.first_row.concat(this.second_row,this.third_row,this.fourth_row,this.fifth_row);
-    console.log(this.seater_49_seats)
+    this.seater_49_seats = this.fifth_row.concat(this.first_row,this.third_row,this.fourth_row,this.fifth_row);
+    
   }
   initializeSeater11(){
     this.first_col = ['1','2','5','8'];
@@ -107,7 +114,7 @@ export class BusDetailsPage implements OnInit {
     this.third_col = ['0','4','7','10']; 
     // combine all the 11 seater array to one
     this.seater_11_seats = this.first_col.concat(this.second_col, this.third_col);
-    console.log(this.seater_11_seats)
+   
   }
 
   getVehicleDetails(){
@@ -127,6 +134,13 @@ export class BusDetailsPage implements OnInit {
           this.totalSeats  = this.seatsArray.length;
           console.log(this.seatsArray);
           console.log("No seats available"+this.totalSeats);
+          // initialize bus format based on the number of seats returned
+
+          if(this.seater === '11'){
+            this.initializeSeater11();
+          }else{
+            this.initializeSeater49();
+          }      
 
           }
           
@@ -168,18 +182,27 @@ export class BusDetailsPage implements OnInit {
     }
   }
   // 49 seater checking  if its available for booking
-  checkIfAvailable(seatPos){
-    console.log(this.seater_49_seats) 
-    console.log('checking '+ seatPos)   
+  checkIfAvailable(seatPos):boolean{     
       if(this.seater_49_seats.indexOf(seatPos) !== -1){
         console.log('seat'+seatPos + ' not booked already');
-        return 'not-booked';        
+        return true;        
       }else{
         console.log('seat'+seatPos + ' is aleady booked ');
-        return 'already-booked'
-      }
-    
+        return false;
+      }    
   }
+  // 11 seater checking if its available
+  isElevenSeaterAvailable(seatPos){
+    if(this.seater_11_seats.includes(seatPos)){
+      console.log('include returns true meaning it found');
+      return true;     
+    }else{
+      console.log('include returns false meaning no available');
+      return false;
+    }
+  }
+
+
   //click handler
   seatSelected(seat){
     console.log(seat)

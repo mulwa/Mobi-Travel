@@ -52,8 +52,7 @@ page-bus-details {
     .seat-section{        
         ion-card{            
             ion-card-content{               
-                ion-col{
-                    
+                ion-col{                    
                     margin: 10px;
                     color: #fff;
                     padding: 5px;
@@ -133,11 +132,25 @@ page-bus-details {
     .marginTB10 {
         margin: 10px 0px;
     }
-    .inner-col {
-        background-color: #e38d25;
-        margin: 2px;
-        justify-content: center;                
-        color: #ffffff;      
+    .inner-col {        
+        margin: 2px;        
+        justify-content: center;
+        // height: 50px;
+        background-color: #e38d25;         
+        text-align: center;               
+        color: #ffffff; 
+        
+        p{
+            margin: 0;
+            padding: 0;
+        }
+
+        .selected{
+            background-color: #c7a378;
+        }
+        .not-selected{
+            background-color: #e7840a;
+        }
                      
     }
     .not-booked{
@@ -145,5 +158,6 @@ page-bus-details {
     }
     .already-booked{
         background-color: #ce4844;
+        pointer-events: none;
     }
 }

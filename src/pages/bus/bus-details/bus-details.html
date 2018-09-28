@@ -45,65 +45,72 @@
         </ion-grid>   
   
 
-  <!-- Booking Summery  --> 
-  <div class="seat-section" *ngIf="seatsArray?.length > 0">
-    <ion-card no-padding>
-      <!-- Date and Times  -->
-      <ion-card-content  padding-top>
-        <!-- seat selection  -->         
-          <ion-item>
-            <ion-grid no-padding>
-              <ion-row align-items-center >
-                <ion-col col-2 *ngFor="let item of seatsArray"  [ngClass]="checkIfselected(item)"  (click)="seatSelected(item)">
-                  {{item}}
-                </ion-col>
-              </ion-row>
-              <ion-row   justify-content-center align-items-center *ngIf="seatSelectedForBooking.length > 0">
-                <ion-col>
-                  <button ion-button class="custom-btn" (tap)="clearBooking()"> Cancel </button>
-                </ion-col>
-
-              </ion-row>
-            </ion-grid>           
-          </ion-item>
-          <!-- end first functioning seat selection -->             
-      </ion-card-content>
-    </ion-card>
+  <!-- Booking Summary  --> 
+  <div class="seat-section" *ngIf="seatsArray?.length > 0" class="animated fadeIn">    
     <!-- 49 seater format -->
-    <ion-grid *ngIf="seater === '49'">
+    <ion-grid class="animated fadeIn" *ngIf="seater === '49'" class="animated fadeIn">
         <ion-row align-items-end >
           <ion-col> 
             <ion-grid>
               <ion-row *ngFor="let item of first_row">
-                <ion-col class="inner-col" [ngClass]="checkIfAvailable(item)" (click)="seatSelected(item)">{{item}}</ion-col>
+                <ion-col class="inner-col"  [ngClass]="checkIfselected(item)" (click)="seatSelected(item)" [ngStyle]="{'background-color':checkIfselected(item) === 'selected' ? '#FFCC80' : '#e7840a' }">
+                  <p>
+                    <ion-icon [name]="icon" *ngIf="checkIfAvailable(item) === true"></ion-icon>
+                    <ion-icon name="close" *ngIf="checkIfAvailable(item) === false" ></ion-icon> 
+                  </p>
+                  {{item}}
+                </ion-col>
               </ion-row>
             </ion-grid>
           </ion-col>
           <ion-col> 
               <ion-grid>
                 <ion-row *ngFor="let item of second_row">
-                  <ion-col class="inner-col" [ngClass]="checkIfAvailable(item)">{{item}}</ion-col>
+                  <ion-col class="inner-col"  [ngClass]="checkIfselected(item)" (click)="seatSelected(item)"  [ngStyle]="{'background-color':checkIfselected(item) === 'selected' ? '#FFCC80' : '#e7840a' }">
+                    <p>
+                      <ion-icon name="checkbox-outline" *ngIf="checkIfAvailable(item) ===true"></ion-icon>
+                      <ion-icon name="close" *ngIf="checkIfAvailable(item) === false" ></ion-icon> 
+                    </p>
+                    {{item}}
+                  </ion-col>
                 </ion-row>
               </ion-grid>
             </ion-col>
               <ion-col> 
                 <ion-grid >
                   <ion-row *ngFor="let item of third_row">
-                    <ion-col class="inner-col" [ngClass]="checkIfAvailable(item)">{{item}}</ion-col>
+                    <ion-col class="inner-col" (click)="seatSelected(item)" [ngStyle]="{'background-color':checkIfselected(item) === 'selected' ? '#FFCC80' : '#e7840a' }">
+                        <p>
+                          <ion-icon name="checkbox-outline" *ngIf="checkIfAvailable(item) === true"></ion-icon>
+                          <ion-icon name="close" *ngIf="checkIfAvailable(item) === false" ></ion-icon> 
+                        </p>
+                        {{item}}
+                    </ion-col>
                   </ion-row>
               </ion-grid>
               </ion-col>
               <ion-col> 
                   <ion-grid>
-                    <ion-row *ngFor="let item of fourth_row">
-                      <ion-col class="inner-col" [ngClass]="checkIfAvailable(item)">{{item}}</ion-col>
+                    <ion-row *ngFor="let item of fourth_row" class="inner-col" (click)="seatSelected(item)" [ngStyle]="{'background-color':checkIfselected(item) === 'selected' ? '#FFCC80' : '#e7840a' }">
+                      <ion-col>
+                          <p>
+                            <ion-icon name="checkbox-outline" *ngIf="checkIfAvailable(item) === true"></ion-icon>
+                            <ion-icon name="close" *ngIf="checkIfAvailable(item) === false" ></ion-icon> 
+                          </p>
+                          {{item}}
+                        </ion-col>
                     </ion-row>
                   </ion-grid>
               </ion-col>
               <ion-col> 
                   <ion-grid>
                     <ion-row *ngFor="let item of fifth_row">
-                      <ion-col class="inner-col" [ngClass]="checkIfAvailable(item)">{{item}}</ion-col>
+                      <ion-col class="inner-col" [ngClass]="checkIfselected(item)" (click)="seatSelected(item)" [ngStyle]="{'background-color':checkIfselected(item) === 'selected' ? '#FFCC80' : '#e7840a' }">
+                          <p>
+                              <ion-icon name="checkbox-outline" *ngIf="checkIfAvailable(item) === true"></ion-icon>
+                              <ion-icon name="close" *ngIf="checkIfAvailable(item) === false" ></ion-icon> 
+                          </p>
+                          {{item}}</ion-col>
                     </ion-row>
                   </ion-grid>
               </ion-col>                                                                       
@@ -112,32 +119,33 @@
 
   
        <!-- 11 seater format -->
-    <ion-grid *ngIf="seater === '11'">
+    <ion-grid class="animated fadeIn" *ngIf="seater === '11'" class="animated fadeIn">
       <ion-row align-items-center >
         <ion-col>
           <ion-grid>
-            <ion-row *ngFor="let seat of first_col" >
-              <ion-col class="inner-col">{{seat}}</ion-col>
+            <ion-row *ngFor="let seat of first_col">
+              <ion-col class="inner-col"  (click)="seatSelected(seat)" [ngStyle]="{'background-color':checkIfselected(seat) === 'selected' ? '#FFCC80' : '#e7840a' }">{{seat}}</ion-col>
             </ion-row>
           </ion-grid>          
         </ion-col> <!--end 1 col-->
         <ion-col>
             <ion-grid>
               <ion-row *ngFor="let seat of second_col">
-                <ion-col  class="inner-col">{{seat}}</ion-col>                
+                <ion-col  class="inner-col"   (click)="seatSelected(seat)" [ngStyle]="{'background-color':checkIfselected(seat) === 'selected' ? '#FFCC80' : '#e7840a' }">{{seat}}</ion-col>                
               </ion-row>
             </ion-grid>          
           </ion-col> <!--end 1 col-->
           <ion-col>
               <ion-grid>
                 <ion-row *ngFor="let seat of third_col">
-                  <ion-col class="inner-col">{{seat}}</ion-col>                  
+                  <ion-col class="inner-col"  (click)="seatSelected(seat)" [ngStyle]="{'background-color':checkIfselected(seat) === 'selected' ? '#FFCC80' : '#e7840a' }">{{seat}}</ion-col>                  
                 </ion-row>
               </ion-grid>          
             </ion-col> <!--end 1 col-->           
 
       </ion-row> <!--11 seater outer row-->
-    </ion-grid>         
+    </ion-grid>  
+    <!-- end 11 seater bus         -->
   </div>
   
 </ion-content>
