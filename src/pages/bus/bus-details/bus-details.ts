@@ -113,7 +113,7 @@ export class BusDetailsPage implements OnInit {
     this.second_col = ['1x','3','6','9'];
     this.third_col = ['0','4','7','10']; 
     // combine all the 11 seater array to one
-    this.seater_11_seats = this.first_col.concat(this.second_col, this.third_col);
+    this.seater_11_seats = this.second_col.concat(this.second_col, this.third_col);
    
   }
 
@@ -183,22 +183,18 @@ export class BusDetailsPage implements OnInit {
   }
   // 49 seater checking  if its available for booking
   checkIfAvailable(seatPos):boolean{     
-      if(this.seater_49_seats.indexOf(seatPos) !== -1){
-        console.log('seat'+seatPos + ' not booked already');
-        return true;        
-      }else{
-        console.log('seat'+seatPos + ' is aleady booked ');
-        return false;
+      if(this.seatsArray.indexOf(seatPos) !== -1){        
+        return false;        
+      }else{       
+        return true;
       }    
   }
   // 11 seater checking if its available
   isElevenSeaterAvailable(seatPos){
-    if(this.seater_11_seats.includes(seatPos)){
-      console.log('include returns true meaning it found');
-      return true;     
-    }else{
-      console.log('include returns false meaning no available');
-      return false;
+    if(this.seatsArray.includes(seatPos)){     
+      return false;     
+    }else{      
+      return true;
     }
   }
 
@@ -222,14 +218,11 @@ export class BusDetailsPage implements OnInit {
   }
   
   
-   //Buy button handler
-   showSelected = function() {
-    if(this.selected.length > 0) {
-        alert("Selected Seats: " + this.selected + "\nTotal: "+(this.ticketPrice * this.selected.length + this.convFee));
-    } else {
-        alert("No seats selected!");
-    }
-  }
+   //show seat not available
+   seatNotAvailable(seatNo){
+    this.authProvider.showToast(`Seat Number ${seatNo} is Already Reserved Please Select Another One`);
+   }
+   
   
 
 }

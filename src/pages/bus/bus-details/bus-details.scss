@@ -22,6 +22,12 @@ page-bus-details {
                 line-height: 0;
             }
         }
+        .btn-seat-available{
+            background-color: #000000;
+        }
+        .btn-not-available{
+            background: linear-gradient(to right bottom, color($colors, color1), color($colors, color2));
+        }
         .section-two {
             .card {
                 position: relative !important;
@@ -50,22 +56,20 @@ page-bus-details {
         }
     }
     .seat-section{        
-        ion-card{            
-            ion-card-content{               
-                ion-col{                    
-                    margin: 10px;
-                    color: #fff;
-                    padding: 5px;
-                    align-items: center;
-                }
-                .selected{
-                    background-color: #c7a378;
-                }
-                .not-selected{
-                    background-color: #e7840a;
-                }
+            ion-col{                    
+                margin: 5px !important;
+                color: #fff;
+                padding: 5px !important;
+                align-items: center;
+                border:1px solid green;
             }
-        }
+            .selected{
+                background-color: #c7a378;
+            }
+            .not-selected{
+                background-color: #fff;
+            }         
+        
     }
     ion-footer {
         .price {
@@ -132,13 +136,15 @@ page-bus-details {
     .marginTB10 {
         margin: 10px 0px;
     }
+    
     .inner-col {        
-        margin: 2px;        
+        margin: 0;        
         justify-content: center;
-        // height: 50px;
-        background-color: #e38d25;         
-        text-align: center;               
-        color: #ffffff; 
+        padding-left: 0;
+        margin-bottom: 2px;        
+        padding-right: 0;               
+        text-align: center;                    
+        color: #000; 
         
         p{
             margin: 0;
@@ -150,11 +156,13 @@ page-bus-details {
         }
         .not-selected{
             background-color: #e7840a;
+            padding: 0 !important;
         }
                      
     }
     .not-booked{
-        background-color: #000000;        
+        background-color: #000000;
+        padding: 0 !important;        
     }
     .already-booked{
         background-color: #ce4844;

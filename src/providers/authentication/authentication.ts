@@ -1,3 +1,4 @@
+import { ToastController } from 'ionic-angular';
 import { ReservationRes } from './../../models/reservationResponse';
 import { AvailableBusResponse } from './../../models/availablebuses';
 import { City } from './../../models/city';
@@ -12,7 +13,7 @@ import { travelDateResponse } from '../../models/travelDateResponse';
 
 @Injectable()
 export class AuthenticationProvider {  
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public toastCtrl: ToastController) {
     console.log('Hello AuthenticationProvider Provider');
   }
 
@@ -85,6 +86,15 @@ export class AuthenticationProvider {
     console.log(bookingDetails)  
     return this.http.post<ReservationRes>(baseUrl,bookingDetails)
 
+  }
+
+  showToast(msg:string){
+    let toast = this.toastCtrl.create({
+      message : msg,
+      duration : 5000,
+      position : 'bottom'
+    });
+    toast.present();
   }
 
 }
