@@ -140,7 +140,7 @@ export class BusDetailsPage implements OnInit {
             this.initializeSeater11();
           }else{
             this.initializeSeater49();
-          }      
+          }     
 
           }
           

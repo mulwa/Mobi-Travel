@@ -41,6 +41,8 @@ export class CheckoutPage implements  OnInit {
   passangers: FormArray;
   
   tickeRosMessage:TicketMessage;
+  
+  
 
    
 
@@ -77,13 +79,16 @@ export class CheckoutPage implements  OnInit {
       console.log('Loop seat Number' + this.arrayofseats[num])
       // assign seat to passangers
       let p_seat = this.arrayofseats[num].trim();
-      this.addPassanger(p_seat);
+      this.addPassanger(p_seat);      
+      
+   
     }
      
   }
   initializeForm(){
     this.checkOutForm = this.frmbuilder.group({       
-      payment_method:'',        
+      payment_method:'', 
+      reference_number:this.getReferenceNumber(),       
       passangers: this.frmbuilder.array([])
 
     })
@@ -109,8 +114,14 @@ export class CheckoutPage implements  OnInit {
       insurance_charge:'',
       served_by:'test user',
       amount_charged:'',
-      reference_number:'' 
+      
     });
+  }
+  getReferenceNumber(){
+  this.authProvider.generateReferenceNumber().subscribe(data =>{
+    return  data.reference_number;
+  })
+
   }
   get passanger() {
     return this.checkOutForm.get('passangers') as FormArray;
@@ -145,7 +156,9 @@ export class CheckoutPage implements  OnInit {
   goToPaymentPage() {    
     // this.viewCtrl.dismiss();
     // this.navCtrl.setRoot('PaymentPage');
-    console.log(this.passanger.value[0])
+    console.log(this.checkOutForm.value)
+    // console.log(this.passanger.value[0])
+    return;
     let numOfPassangers = this.checkOutForm.get('passangers').value.length; 
    
     let loader = this.loadingCtrl.create({

@@ -1,3 +1,4 @@
+import { ReferenceRes } from './../../models/ReferenceNumberRes';
 import { ToastController } from 'ionic-angular';
 import { ReservationRes } from './../../models/reservationResponse';
 import { AvailableBusResponse } from './../../models/availablebuses';
@@ -5,7 +6,7 @@ import { City } from './../../models/city';
 import { userAuth } from './../../models/UserAuth';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {baseUrl, username, api_key, hash} from  './../../models/constants';
+import {baseUrl, username, api_key, hash, ReferenceNumberUrl} from  './../../models/constants';
 import { responseI } from '../../models/response';
 import { locationResponse } from '../../models/locationResponse';
 import { travelDateResponse } from '../../models/travelDateResponse';
@@ -87,6 +88,16 @@ export class AuthenticationProvider {
     return this.http.post<ReservationRes>(baseUrl,bookingDetails)
 
   }
+generateReferenceNumber(){
+  
+  let body = {
+    developer_username: username,
+    developer_api_key: api_key,
+    action:"generatereferencenumber"
+  }
+return this.http.put<ReferenceRes>(ReferenceNumberUrl,body);
+
+}
 
   showToast(msg:string){
     let toast = this.toastCtrl.create({
