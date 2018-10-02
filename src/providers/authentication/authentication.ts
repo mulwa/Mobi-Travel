@@ -83,13 +83,11 @@ export class AuthenticationProvider {
     return this.http.post<responseI>(baseUrl,body);
 
   }
-  reserveBooking(bookingDetails:any){
-    console.log(bookingDetails)  
+  reserveBooking(bookingDetails:any){    
     return this.http.post<ReservationRes>(baseUrl,bookingDetails)
 
   }
-generateReferenceNumber(){
-  
+  generateReferenceNumber(){  
   let body = {
     developer_username: username,
     developer_api_key: api_key,

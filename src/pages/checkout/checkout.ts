@@ -11,9 +11,11 @@ import { AuthenticationProvider } from './../../providers/authentication/authent
  */
 
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, LoadingController, ToastController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController, ToastController, AlertController, ModalController } from 'ionic-angular';
 import { hash, api_key, username } from '../../models/constants';
 import { TicketMessage } from '../../models/ticketMessage';
+import { Reservation } from '../../models/reservationI';
+import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
 @Component({
@@ -41,18 +43,20 @@ export class CheckoutPage implements  OnInit {
   passangers: FormArray;
   
   tickeRosMessage:TicketMessage;
+ 
   
   
 
    
 
   constructor(public navCtrl: NavController,
-    public navParams: NavParams,
+    public  navParams: NavParams,
     private frmbuilder:FormBuilder,
     private authProvider:AuthenticationProvider,
-    private  loadingCtrl:LoadingController,
-    private  toastCtrl:ToastController,
+    private loadingCtrl:LoadingController,
+    private toastCtrl:ToastController,
     private alertCtrl:AlertController,
+    private modalCtrl: ModalController,
     public viewCtrl: ViewController) {
     this.paymentTypes = 'card'; // Default Payment Type
 
@@ -72,6 +76,10 @@ export class CheckoutPage implements  OnInit {
     
     this.initializeForm();
 
+    
+
+    
+
   }
   ngOnInit(): void {
     console.log('number of selected seats'+this.arrayofseats.length)
@@ -79,11 +87,9 @@ export class CheckoutPage implements  OnInit {
       console.log('Loop seat Number' + this.arrayofseats[num])
       // assign seat to passangers
       let p_seat = this.arrayofseats[num].trim();
-      this.addPassanger(p_seat);      
-      
+      this.addPassanger(p_seat); 
    
-    }
-     
+    }     
   }
   initializeForm(){
     this.checkOutForm = this.frmbuilder.group({       
@@ -92,25 +98,16 @@ export class CheckoutPage implements  OnInit {
       passangers: this.frmbuilder.array([])
 
     })
+    // call get reference method to get mpesa reference no
+    this.getReferenceNumber()
   }
   createItem(seat): FormGroup {
-    return this.frmbuilder.group({
-      username:username,
-      api_key:api_key,
-      action:'ReserveSeats',
-      from_city:this.from_id,
-      to_city:this.to_id,
-      travel_date:this.travel_date,
-      hash:hash,
-      selected_vehicle:this.selected_vehicle,
-      seater:this.seater,
-      selected_seat:this.selected_seat,
-      selected_ticket_type:'1',
-      payment_method:'3',
+    return this.frmbuilder.group({          
       phone_number:['',Validators.minLength(10)],
       id_number:[''],
       passenger_name:['',Validators.required],
       email_address:[''],
+      selected_seat: seat,
       insurance_charge:'',
       served_by:'test user',
       amount_charged:'',
@@ -118,10 +115,16 @@ export class CheckoutPage implements  OnInit {
     });
   }
   getReferenceNumber(){
-  this.authProvider.generateReferenceNumber().subscribe(data =>{
-    return  data.reference_number;
+  this.authProvider.generateReferenceNumber().subscribe(data =>{    
+    this.checkOutForm.get('reference_number').setValue(data.reference_number);
+    
   })
-
+  }
+  get reference(){
+    return  this.checkOutForm.get('reference_number') as  FormControl;
+  }
+  get payment_method(){
+    return  this.checkOutForm.get('payment_method').value as  FormControl;
   }
   get passanger() {
     return this.checkOutForm.get('passangers') as FormArray;
@@ -156,25 +159,54 @@ export class CheckoutPage implements  OnInit {
   goToPaymentPage() {    
     // this.viewCtrl.dismiss();
     // this.navCtrl.setRoot('PaymentPage');
-    console.log(this.checkOutForm.value)
-    // console.log(this.passanger.value[0])
-    return;
+    // console.log(this.checkOutForm.value)
+    // console.log(this.passanger.value[0])  
+
+   
     let numOfPassangers = this.checkOutForm.get('passangers').value.length; 
    
+   
     let loader = this.loadingCtrl.create({
-      content: "Please Wait Reserving your Ticket"      
+      content: "Please Wait Reserving your Ticket",
+      dismissOnPageChange: true     
     });
     loader.present().then(()=>{
-      for(let pass= 0; pass < numOfPassangers; pass++){      
-        this.authProvider.reserveBooking(this.passanger.value[pass]).subscribe(data =>{  
-          loader.dismiss();        
-          if(data.response_code === 0){          
+      for(let pass= 0; pass < numOfPassangers; pass++){
+        console.log('username'+this.passanger.value[pass].from_city)
+        let passanger_details:Reservation =  {
+          username:username,
+          api_key:api_key,
+          hash:hash,
+          action:'ReserveSeats',
+          from_city:this.from_id,
+          to_city:this.to_id,
+          travel_date:this.travel_date,      
+          selected_vehicle:this.selected_vehicle,
+          seater:this.seater,  
+          selected_ticket_type:1, 
+          selected_seat:this.passanger.value[pass].selected_seat,         
+          payment_method: this.checkOutForm.get('payment_method').value,
+          phone_number: this.passanger.value[pass].phone_number,
+          id_number:this.passanger.value[pass].id_number,
+          passenger_name: this.passanger.value[pass].passenger_name,
+          email_address: this.passanger.value[pass].email_address,
+          insurance_charge: this.passanger.value[pass].insurance_charge,
+          served_by: this.passanger.value[pass].served_by,
+          amount_charged: this.passanger.value[pass].amount_charged,
+          reference_number: this.checkOutForm.get('reference_number').value,
+        }
+
+        
+            
+        this.authProvider.reserveBooking(passanger_details).subscribe(data =>{                  
+          if(data.response_code === 0){                    
             this.tickeRosMessage = data.ticket_message;
             let tick_message = this.tickeRosMessage[0].name;
             this.showToast(tick_message);
+            console.log(tick_message);
             this.checkOutForm.reset();
             setTimeout(()=>{
-              this.navCtrl.setRoot('HomePage');
+              this.openCongratulationPage()
             },3000)
           }else{
             this.showAlert("Reservation failed", data.response_message)
@@ -183,9 +215,12 @@ export class CheckoutPage implements  OnInit {
           loader.dismiss();
           console.log('an  error has occured'+error);
         })
-      }      
+      } 
+      // end of for loop      
     })
+    // loader Present()
   }
+  // end gotopayment()
   showToast(msg:string){
     let toast = this.toastCtrl.create({
       message : msg,
@@ -201,6 +236,9 @@ export class CheckoutPage implements  OnInit {
       buttons:['Ok']
     });
     alert.present();    
+  }
+  openCongratulationPage(){
+    this.modalCtrl.create('CongratulationPage').present();
   }
   
 }

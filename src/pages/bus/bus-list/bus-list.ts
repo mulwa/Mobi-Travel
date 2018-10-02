@@ -73,8 +73,8 @@ export class BusListPage {
           loader.dismiss();         
           
           if(data.response_code ==0){          
-            this.buses = data.bus;
-            console.log(this.buses.price)
+            this.buses = data.bus;            
+            console.log(this.buses[0].price[0].name.split("-")[2])
             
             if(data.bus[0] !== undefined){                           
               console.log(this.buses.departure_time)            
