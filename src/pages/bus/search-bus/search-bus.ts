@@ -1,13 +1,6 @@
 import { Dates } from './../../../models/date';
 import { AuthenticationProvider } from './../../../providers/authentication/authentication';
-/**
-* @author    ThemesBuckets <themebucketbd@gmail.com>
-* @copyright Copyright (c) 2018
-* @license   Fulcrumy
-* 
-* This File Represent Search Page of Bus Component
-* File path - '../../src/pages/bus/search-bus/search-bus'
-*/
+
 
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';

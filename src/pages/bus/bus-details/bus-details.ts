@@ -93,6 +93,7 @@ export class BusDetailsPage implements OnInit {
       
   } 
   ngOnInit(): void {
+   
      
     
   }
@@ -182,8 +183,9 @@ export class BusDetailsPage implements OnInit {
     }
   }
   // 49 seater checking  if its available for booking
-  checkIfAvailable(seatPos):boolean{     
-      if(this.seatsArray.indexOf(seatPos) !== -1){        
+  checkIfAvailable(seatPos):boolean{ 
+    console.log('available seats No :'+this.seatsArray)    
+      if(this.seatsArray.includes(seatPos)){        
         return false;        
       }else{       
         return true;

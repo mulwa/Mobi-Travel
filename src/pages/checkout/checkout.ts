@@ -26,7 +26,6 @@ export class CheckoutPage implements  OnInit {
   // Types of Payment
   paymentTypes: any;
   bookingsDetails;
-
   from_id: number;
   to_id:number;
   travel_date:string;
@@ -34,20 +33,13 @@ export class CheckoutPage implements  OnInit {
   seater:number
   arrayofseats:any;
   selected_seat:number;
-
   ticketCost:number;
-
   ticketDetails:TickeType;
 
   checkOutForm:FormGroup;
   passangers: FormArray;
   
-  tickeRosMessage:TicketMessage;
- 
-  
-  
-
-   
+  tickeRosMessage:TicketMessage;   
 
   constructor(public navCtrl: NavController,
     public  navParams: NavParams,
@@ -157,10 +149,7 @@ export class CheckoutPage implements  OnInit {
    * @method    goToPaymentPage This Function Close Current Modal and Open Payment Page.
    */
   goToPaymentPage() {    
-    // this.viewCtrl.dismiss();
-    // this.navCtrl.setRoot('PaymentPage');
-    // console.log(this.checkOutForm.value)
-    // console.log(this.passanger.value[0])  
+    // this.viewCtrl.dismiss();    
 
    
     let numOfPassangers = this.checkOutForm.get('passangers').value.length; 
@@ -198,16 +187,28 @@ export class CheckoutPage implements  OnInit {
 
         
             
-        this.authProvider.reserveBooking(passanger_details).subscribe(data =>{                  
+        this.authProvider.reserveBooking(passanger_details).subscribe(data =>{
+          console.log(data) 
+          loader.dismiss()                 
           if(data.response_code === 0){                    
             this.tickeRosMessage = data.ticket_message;
             let tick_message = this.tickeRosMessage[0].name;
             this.showToast(tick_message);
             console.log(tick_message);
             this.checkOutForm.reset();
-            setTimeout(()=>{
-              this.openCongratulationPage()
-            },3000)
+
+            // direct users according to payment method
+            console.log('selected payment'+passanger_details.payment_method)
+            if(passanger_details.payment_method ==2){
+              this.openJambopayCheckout(tick_message,2);
+            }else if(passanger_details.payment_method ==1){
+              this.openWalletCheckOut(tick_message,1);
+
+            }else if (passanger_details.payment_method ==3){
+              this.openCongratulationPage();
+            }
+            
+
           }else{
             this.showAlert("Reservation failed", data.response_message)
           }
@@ -237,8 +238,22 @@ export class CheckoutPage implements  OnInit {
     });
     alert.present();    
   }
-  openCongratulationPage(){
+  openCongratulationPage(){   
     this.modalCtrl.create('CongratulationPage').present();
+  }
+  openJambopayCheckout(message, id){
+    let data = {
+      message: message,
+      id:id
+    }
+    this.modalCtrl.create('JambopayCheckoutPage',{data:data}).present();
+  }
+  openWalletCheckOut(message, id){
+    let data = {
+      message: message,
+      id:id
+    }
+    this.modalCtrl.create('WalletCheckoutPage',{data:data}).present();
   }
   
 }

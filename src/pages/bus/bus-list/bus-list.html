@@ -18,19 +18,19 @@
         <ion-item>
           <!-- Bus Icon  -->
           <ion-avatar item-start>
-            <ion-icon color="color3" name="ios-bus" style="zoom:1.5;"></ion-icon>
+              <span><i class="fas fa-shuttle-van fa-3x" style="color:#e38d25" *ngIf="bus.total_seats <= 12"></i></span>
+              <span><i class="fas fa-bus fa-3x" style="color:#e38d25" *ngIf="bus.total_seats > 12"></i></span>            
           </ion-avatar>
     
           <!-- Name of bus  -->
-          <h2 text-wrap>{{bus.route}}</h2>
-    
+          <h2 text-wrap>{{bus.route}}</h2>    
           <!-- Bus Type  -->
           <ion-badge color="color1">{{bus.route}}</ion-badge>
+
+          <h3>seats Available {{bus.seats_available}}</h3>
+          
     
-          <!-- View Details Order Page Button Option  -->
-          <!-- <ion-col text-right item-end>
-            <button ion-button small color="color1" (tap)="goToViewDetailsPage()">View Deal</button>
-          </ion-col> -->
+          
         </ion-item>
     
         <!-- Date/Times  -->

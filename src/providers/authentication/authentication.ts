@@ -96,6 +96,34 @@ export class AuthenticationProvider {
 return this.http.put<ReferenceRes>(ReferenceNumberUrl,body);
 
 }
+authorizeJamboPayment(jambopay_username, password, referenceNo){
+  let body = {
+  username:username,
+	api_key:api_key,
+	action:"AuthorizePayment",
+	payment_method:"2",
+	reference_number:referenceNo,
+  jambopay_wallet_username:jambopay_username,
+  jambopay_wallet_password:password
+}
+console.log('authorizeJamboPayment value set to server'+JSON.stringify(body))
+return this.http.post<responseI>(baseUrl,body);
+
+}
+authorizeWalletPayment(wallet_username, password, referenceNo){
+  let body = {
+  username:username,
+	api_key:api_key,
+	action:"AuthorizePayment",
+	payment_method:"1",
+	reference_number:referenceNo,
+  jambopay_agency_username:wallet_username,
+  jambopay_agency_password:password
+}
+console.log('authorizeWalletPayment value set to server'+JSON.stringify(body))
+return this.http.post<responseI>(baseUrl,body);
+
+}
 
   showToast(msg:string){
     let toast = this.toastCtrl.create({
