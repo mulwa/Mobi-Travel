@@ -148,13 +148,8 @@ export class CheckoutPage implements  OnInit {
    * --------------------------------------------------------------
    * @method    goToPaymentPage This Function Close Current Modal and Open Payment Page.
    */
-  goToPaymentPage() {    
-    // this.viewCtrl.dismiss();    
-
-   
-    let numOfPassangers = this.checkOutForm.get('passangers').value.length; 
-   
-   
+  goToPaymentPage() {   
+    let numOfPassangers = this.checkOutForm.get('passangers').value.length;   
     let loader = this.loadingCtrl.create({
       content: "Please Wait Reserving your Ticket",
       dismissOnPageChange: true     

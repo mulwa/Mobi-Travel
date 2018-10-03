@@ -58,6 +58,9 @@ export class JambopayCheckoutPage {
       .subscribe(data =>{
         loader.dismiss()
         console.log(data)
+        if(data.response_code == 0){
+          this.jamboPayFrm.reset()
+        }
         this.authProv.showToast(data.response_message)
       }, error =>{
         loader.dismiss();

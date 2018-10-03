@@ -49,6 +49,9 @@ export class WalletCheckoutPage {
       .subscribe(data =>{
         loader.dismiss()
         console.log(data)
+        if(data.response_code == 0){
+          this.walletForm.reset();
+        }
         this.authProv.showToast(data.response_message)
       }, error =>{
         loader.dismiss();
