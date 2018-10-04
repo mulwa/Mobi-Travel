@@ -16,11 +16,20 @@ import { App, IonicPage, NavController, NavParams, ViewController } from 'ionic-
   templateUrl: 'congratulation.html',
 })
 export class CongratulationPage {
+  navDetails:any;
+  from:any;
+  message:any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    public appCtrl: App) { }
+    public appCtrl: App) {
+      this.navDetails =  navParams.get('data');
+      this.message = this.navDetails.message;
+      this.from = this.navDetails.from;
+
+     }
+    
 
   /***
    * --------------------------------------------------------------

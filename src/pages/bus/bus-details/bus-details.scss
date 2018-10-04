@@ -24,9 +24,13 @@ page-bus-details {
         }
         .btn-seat-available{
             background-color: #000000;
+            margin-left: 0;
+            
         }
         .btn-not-available{
             background: linear-gradient(to right bottom, color($colors, color1), color($colors, color2));
+            margin-left: 0%;
+            
         }
         .section-two {
             .card {

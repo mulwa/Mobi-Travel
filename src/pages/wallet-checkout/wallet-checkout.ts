@@ -1,7 +1,7 @@
 import { AuthenticationProvider } from './../../providers/authentication/authentication';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController, ModalController } from 'ionic-angular';
 
 
 @IonicPage()
@@ -20,6 +20,7 @@ export class WalletCheckoutPage {
               public authProv: AuthenticationProvider,
               public loadingCtrl: LoadingController,
               public frmBuilder: FormBuilder,
+              public modalCtrl: ModalController,
               public viewCtrl: ViewController,) {
       this.initializeForm();
 
@@ -51,6 +52,8 @@ export class WalletCheckoutPage {
         console.log(data)
         if(data.response_code == 0){
           this.walletForm.reset();
+          this.openCongratulationPage("Wallet",data.response_message)
+          this.dismiss()
         }
         this.authProv.showToast(data.response_message)
       }, error =>{
@@ -62,6 +65,13 @@ export class WalletCheckoutPage {
   dismiss() {
     this.viewCtrl.dismiss();
     // this.appCtrl.getRootNav().setRoot('HomePage');
+  }
+  openCongratulationPage(from, message){
+    let data = {
+      from:from,
+      message:message
+    }   
+    this.modalCtrl.create('CongratulationPage',{data:data}).present();
   }
 
 }

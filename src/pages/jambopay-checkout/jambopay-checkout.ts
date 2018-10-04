@@ -1,7 +1,7 @@
 import { AuthenticationProvider } from './../../providers/authentication/authentication';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, App, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, App, LoadingController, ModalController } from 'ionic-angular';
 
 
 
@@ -21,6 +21,7 @@ export class JambopayCheckoutPage {
               public authProv:AuthenticationProvider,
               public loadingCtrl: LoadingController,
               public frmBuilder:FormBuilder,
+              public modalCtrl:ModalController,
               public viewCtrl: ViewController,
               public appCtrl: App) {
 
@@ -59,14 +60,25 @@ export class JambopayCheckoutPage {
         loader.dismiss()
         console.log(data)
         if(data.response_code == 0){
-          this.jamboPayFrm.reset()
-        }
-        this.authProv.showToast(data.response_message)
+          this.authProv.showToast(data.response_message)
+          this.jamboPayFrm.reset();
+          this.openCongratulationPage("JamboPay",data.response_message);
+        }else{
+          this.authProv.showToast(data.response_message)
+        }        
       }, error =>{
         loader.dismiss();
         console.log('an error has occured'+JSON.stringify(error))
       })
     })
+  }
+  // end doPay
+  openCongratulationPage(from, message){
+    let data = {
+      from:from,
+      message:message
+    }   
+    this.modalCtrl.create('CongratulationPage',{data:data}).present();
   }
 
 }

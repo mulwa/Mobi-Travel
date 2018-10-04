@@ -111,7 +111,7 @@ export class BusDetailsPage implements OnInit {
   }
   initializeSeater11(){
     this.first_col = ['1','2','5','8'];
-    this.second_col = ['1x','3','6','9'];
+    this.second_col = ['1X','3','6','9'];
     this.third_col = ['0','4','7','10']; 
     // combine all the 11 seater array to one
     this.seater_11_seats = this.second_col.concat(this.second_col, this.third_col);
@@ -131,7 +131,7 @@ export class BusDetailsPage implements OnInit {
           this.seater = this.newBussDetails[0].seater;
           console.log('seater is '+this.seater);
           // this is an array of all available seats
-          this.seatsArray = this.newBussDetails[0].name.split(',');
+          this.seatsArray = this.newBussDetails[0].name.split(" ").join("").split(',');
           this.totalSeats  = this.seatsArray.length;
           console.log(this.seatsArray);
           console.log("No seats available"+this.totalSeats);
@@ -183,21 +183,28 @@ export class BusDetailsPage implements OnInit {
     }
   }
   // 49 seater checking  if its available for booking
-  checkIfAvailable(seatPos):boolean{ 
-    console.log('available seats No :'+this.seatsArray)    
+  checkIfAvailable(seatPos):boolean{     
       if(this.seatsArray.includes(seatPos)){        
-        return false;        
+        return true;        
       }else{       
-        return true;
+        return false;
       }    
   }
   // 11 seater checking if its available
   isElevenSeaterAvailable(seatPos){
-    if(this.seatsArray.includes(seatPos)){     
-      return false;     
+    if(this.seatsArray.includes(seatPos)){        
+      return true;     
     }else{      
-      return true;
+      return false;
+      
     }
+  }
+  isDriverSit(seatPos):boolean{    
+    if(seatPos == 0){      
+      return true;
+    }   
+    return false;
+    
   }
 
 
