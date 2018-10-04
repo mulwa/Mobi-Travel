@@ -39,7 +39,9 @@ export class BusListPage {
   to_name:string;
   from_name:string;
 
-  vehicles_found:boolean = true;
+  public noofVehiclesFound:number;
+
+  
 
 
   constructor(public navCtrl: NavController,
@@ -72,12 +74,13 @@ export class BusListPage {
         ,this.to_id,this.travel_date).subscribe(data =>{
           loader.dismiss();         
           
-          if(data.response_code ==0){          
-            this.buses = data.bus;            
-            console.log(this.buses[0].price[0].name.split("-")[2])
+          if(data.response_code ==0){
+            this.noofVehiclesFound = Object.keys(data.bus).length;       
             
-            if(data.bus[0] !== undefined){                           
-              console.log(this.buses.departure_time)            
+            if(this.noofVehiclesFound > 0){                           
+              // console.log(this.buses.departure_time) 
+              this.buses = data.bus;            
+              console.log(this.buses[0].price[0].name.split("-")[2])           
               this.departure_array = this.buses[0].departure_time.split(",");
               this.arrival_array = this.buses[0].arrival_time.split(",");
               console.log(this.departure_array);
