@@ -11,7 +11,7 @@
     <ion-toolbar>
       <div class="contents">
         <div class="left">
-          <img class="logo" src="assets/imgs/avatar.png">
+          <img class="logo" src="assets/imgs/bus.png">
         </div>
         <div class="right">
           <span class="name">Mobi-Ticket</span>          
@@ -33,9 +33,9 @@
 
         <!--  Name of Menu  -->
         <ion-col col-9 class="menu-name">
-          <span ion-text color="color2">
+          <span ion-text color="dark">
             {{p.title}}
-            <ion-icon color="color2" [name]="selectedMenu == i? 'arrow-down' : 'arrow-forward'" *ngIf="p.subPages" float-right></ion-icon>
+            <ion-icon color="color4" [name]="selectedMenu == i? 'arrow-down' : 'arrow-forward'" *ngIf="p.subPages" float-right></ion-icon>
           </span>
 
           <!-- Sub Menus  -->
@@ -59,7 +59,7 @@
   <!-- Footer  -->
   <ion-footer>
     <!-- Logout Option  -->
-    <button ion-button full no-margin color="color1" (click)="logout()">
+    <button ion-button full no-margin color="color4" (click)="logout()">
       <ion-icon name="send"></ion-icon> Logout
     </button>
   </ion-footer>

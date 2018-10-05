@@ -15,15 +15,14 @@
 .menu-inner {
     ion-toolbar {
         height: 160px;
+        padding: 0%;
         .contents {
             width: 100%;
             .left {
                 float: left;
-                width: 30%;
+                width: 100%;
                 img {
-                    width: 70px;
-                    height: 30%;
-                    border-radius: 50%;
+                    width: 100%;         
                     margin-top: 5%;
                 }
             }
@@ -40,7 +39,7 @@
         }
     }
     .toolbar-background {
-        background: linear-gradient(to right bottom, color($colors, color1), color($colors, color2));
+        background: linear-gradient(to right bottom, color($colors, light), color($colors, light));
     }
     ion-content {
         .list {
