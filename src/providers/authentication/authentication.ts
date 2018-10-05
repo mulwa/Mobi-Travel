@@ -12,6 +12,7 @@ import { locationResponse } from '../../models/locationResponse';
 import { travelDateResponse } from '../../models/travelDateResponse';
 
 
+
 @Injectable()
 export class AuthenticationProvider {  
   constructor(public http: HttpClient, public toastCtrl: ToastController) {
@@ -84,10 +85,14 @@ export class AuthenticationProvider {
     return this.http.post<responseI>(baseUrl,body);
 
   }
-  reserveBooking(bookingDetails:any){    
+  reserveBooking(bookingDetails:any){      
     return this.http.post<ReservationRes>(baseUrl,bookingDetails)
-
   }
+  reserveBookingPromise(bookingDetails:any){      
+    return this.http.post(baseUrl,bookingDetails)    
+    .toPromise()
+  }
+  
   generateReferenceNumber(){  
   let body = {
     developer_username: username,

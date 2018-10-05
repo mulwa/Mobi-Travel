@@ -1,3 +1,4 @@
+import { ReservationRes } from './../../models/reservationResponse';
 import { FormBuilder, FormGroup, Validators, FormArray, FormControl, AbstractControl } from '@angular/forms';
 import { TickeType } from './../../models/ticketType';
 import { AuthenticationProvider } from './../../providers/authentication/authentication';
@@ -8,8 +9,10 @@ import { hash, api_key, username } from '../../models/constants';
 import { TicketMessage } from '../../models/ticketMessage';
 import { Reservation } from '../../models/reservationI';
 import { Observable } from 'rxjs/Observable';
-import { map, concatMap, combineLatest,mergeMap } from 'rxjs/operators';
 // import { forkJoin, of, interval } from 'rxjs';
+import 'rxjs/add/observable/forkJoin';
+
+
 
 
 @IonicPage()
@@ -62,6 +65,7 @@ export class CheckoutPage implements  OnInit {
     this.arrayofseats = this.bookingsDetails.arrayofseats;
     this.selected_seat = this.bookingsDetails.selected_seat;
 
+
     console.log('selected seats'+ this.selected_seat);
 
     this.getTicket();
@@ -97,7 +101,7 @@ export class CheckoutPage implements  OnInit {
       email_address:[''],
       selected_seat: seat,
       insurance_charge:'',
-      served_by:'test user',
+      served_by:'Ionic App',
       amount_charged:'',
       
     });
@@ -153,9 +157,9 @@ export class CheckoutPage implements  OnInit {
     });
     loader.present().then(()=>{
       let myRequests = [];
-      for(let pass= 0; pass < numOfPassangers; pass++){
-        console.log('username'+this.passanger.value[pass].from_city)
-        let passanger_details:Reservation =  {
+      let passanger_details:Reservation;
+      for(let pass= 0; pass < numOfPassangers; pass++){        
+        passanger_details =  {
           username:username,
           api_key:api_key,
           hash:hash,
@@ -177,6 +181,7 @@ export class CheckoutPage implements  OnInit {
           amount_charged: this.passanger.value[pass].amount_charged,
           reference_number: this.checkOutForm.get('reference_number').value,
         }
+        // reference_number: this.checkOutForm.get('reference_number').value,
 
         myRequests.push(passanger_details);  
         console.log('to reserve'+JSON.stringify(passanger_details))         
@@ -210,13 +215,24 @@ export class CheckoutPage implements  OnInit {
           loader.dismiss();
           console.log('an  error has occured'+error);
         })
+        
+        
       } // end of for loop 
+      // console.log('outside for loop'+ myRequests.length);      
+      // // muiltipleReq = Observable.forkJoin(this.authProvider.reserveBooking(myRequests));
+      // console.log(myRequests)
+      let myPromises = [];     
+      for(let i=0; i< myRequests.length; i++){
+        myPromises.push(this.authProvider.reserveBookingPromise(myRequests[i]))          
+       Promise.all(myPromises).then(res =>{         
+         console.log("from Promise:"+JSON.stringify(res))
+       })
+      }
       
-    // myRequests.map((p_details, index) =>{
-    //    return this.authProvider.reserveBooking(p_details).subscribe(data =>{
-         
-    //    })        
-    //   })
+
+      
+      
+   
      
       
     })

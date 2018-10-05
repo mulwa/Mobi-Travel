@@ -36,11 +36,15 @@
           <ion-badge color="color1">
               {{bus.seats_available}} seats left
           </ion-badge>
-<!-- 
-          <h3>Seats Available: {{bus.seats_available}}</h3> -->
           
-    
-          
+         <ion-grid>
+           <ion-row>
+            <!-- Per Seat Price  -->
+            <ion-col col-3 text-right>
+              <p class="price">Ksh {{bus.price[0].name.split("-")[2]}}</p>
+            </ion-col>
+           </ion-row>
+         </ion-grid>          
         </ion-item>
     
         <!-- Date/Times  -->
@@ -49,7 +53,7 @@
             <ion-row justify-content-center align-items-center>
     
               <!-- Departure  -->
-              <ion-col col-3 text-center>
+              <ion-col col-4 text-center>
                 <!-- Departure Time  -->
                 <h2 ion-text><b>{{ bus.departure_time.split(",")[1]}}</b></h2>
     
@@ -58,7 +62,7 @@
               </ion-col>
     
               <!-- Total Hour  -->
-              <ion-col col-3 text-center>
+              <ion-col col-4 text-center>
                 <ion-row justify-content-center align-items-center>
                   <img src="assets/imgs/dot.png">
                 </ion-row>
@@ -69,18 +73,13 @@
               </ion-col>
     
               <!-- Arrival  -->
-              <ion-col col-3 text-center>
+              <ion-col col-4 text-center>
                 <!-- Arrival Time  -->
                 <h2 ion-text><b>{{bus.arrival_time.split(",")[1]}}</b></h2>
     
                 <!-- Arrival Location  -->
                 <p>{{bus.to}}</p>
-              </ion-col>
-    
-              <!-- Per Seat Price  -->
-              <ion-col col-3 text-right>
-                <p class="price">Ksh {{bus.price[0].name.split("-")[2]}}</p>
-              </ion-col>
+              </ion-col>         
             </ion-row>
           </ion-grid>
         </ion-card-content>

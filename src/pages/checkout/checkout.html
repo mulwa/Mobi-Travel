@@ -16,20 +16,19 @@
         <h4>{{ticketCost}}</h4>
        </ion-col>      
     </ion-row>
-  </ion-grid> -->
-  <ion-list>
+  </ion-grid> -->  
+  <ion-list>      
     <form [formGroup]="checkOutForm">   
-    <div class="passagerArray" formArrayName="passangers" *ngFor="let item of checkOutForm.get('passangers').controls; let i = index;" >
-      <span *ngFor="let seat of arrayofseats">
-        <fieldset  [formGroupName]="i">
-            <legend>Seat {{seat}}</legend>
+    <div class="passagerArray" formArrayName="passangers" *ngFor="let item of checkOutForm.get('passangers').controls; let i = index;" >             
+        <fieldset  [formGroupName]="i" >
+            <legend >Seat {{i+1}}</legend>
             <ion-item>
               <ion-label floating>Full Name </ion-label>
               <ion-input formControlName="passenger_name" type="text"></ion-input>
             </ion-item>          
             <ion-item >
                 <ion-label floating>ID/Passport No </ion-label>
-                <ion-input formControlName="id_number" type="text"></ion-input>
+                <ion-input formControlName="id_number" type="number"></ion-input>
             </ion-item>
           <ion-item>
               <ion-label floating>Phone Number</ion-label>
@@ -43,8 +42,7 @@
               <ion-label floating>Total Amount</ion-label>
               <ion-input disabled="true" formControlName="amount_charged" type="number" [value]="ticketCost" [(ngModel)]="ticketCost"></ion-input>
           </ion-item> 
-        </fieldset>
-      </span>
+        </fieldset>     
     </div>      
         <!-- Card Options  -->
   <ion-card color="color4">

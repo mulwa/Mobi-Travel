@@ -13,9 +13,8 @@
     },
     "config": {
         "ionic_copy": "./config/copy.config.js",
-        "ionic_sass": "./config/sass.config.js"        
+        "ionic_sass": "./config/sass.config.js"
     },
-   
     "dependencies": {
         "@angular/animations": "5.2.9",
         "@angular/common": "5.2.9",
