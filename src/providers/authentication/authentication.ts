@@ -80,6 +80,7 @@ export class AuthenticationProvider {
       seater:seater     
               
     }
+    console.log(body)
     return this.http.post<responseI>(baseUrl,body);
 
   }

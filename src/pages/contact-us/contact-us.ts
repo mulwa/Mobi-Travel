@@ -1,12 +1,3 @@
-/**
- * @author    ThemesBuckets <themebucketbd@gmail.com>
- * @copyright Copyright (c) 2018
- * @license   Fulcrumy
- * 
- * This File Represent Contact Us Component
- * File path - '../../src/pages/contact-us/contact-us'
- */
-
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 declare var google;
@@ -23,10 +14,10 @@ export class ContactUsPage {
 
   // Contact Information
   contactInfos = {
-    email: 'themebucketbd@gmail.com',
-    phone: '000 000 000',
-    whatsapp: '000 000 000',
-    address: '135 Howard St, American Falls, ID, 83211'
+    email: 'Mobiticket.co.ke',
+    phone: '0707 200 314',
+    whatsapp: '0707 200 314',
+    address: 'ViewPark Towers,Utalii Lane 9th floor,PSC wing Utalii St, Nairobi'
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -47,7 +38,7 @@ export class ContactUsPage {
   loadmap() {
 
     // Set any Latitude and Longitude
-    const latlng = new google.maps.LatLng(49.2882266, -123.1180008);
+    const latlng = new google.maps.LatLng(-1.2820363, 36.8157104);
 
     // Map Styles
     const mapStyle = [
@@ -104,7 +95,7 @@ export class ContactUsPage {
     });
 
     // Content of Marker
-    let content = "<h4>Hello!</h4>";
+    let content = "<h4>Mobiticket Offices</h4>";
 
     // Call Marker Info Window
     this.addInfoWindow(marker, content);

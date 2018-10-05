@@ -23,39 +23,36 @@
 
         <!-- Address  -->
         <ion-item text-wrap>
-          <ion-icon item-start name="pin" color="color1"></ion-icon>
+          <ion-icon item-start name="pin" color="color4"></ion-icon>
           <p>{{contactInfos.address}}</p>
         </ion-item>
 
         <!-- Email  -->
         <ion-item>
-          <ion-icon name="mail" color="primary" item-start></ion-icon>
+          <ion-icon name="mail" color="color4" item-start></ion-icon>
           <p>Email</p>
-          {{contactInfos.email}}
-          <a button ion-button medium color="primary" item-end href="mailto:{{contactInfos.email}}">Send Mail</a>
+          {{contactInfos.email}}         
         </ion-item>
 
         <!-- Mobile  -->
         <ion-item>
-          <ion-icon item-start name="call" color="danger"></ion-icon>
+          <ion-icon item-start name="call" color="color4"></ion-icon>
           <p>Mobile</p>
-          {{contactInfos.phone}}
-          <a button ion-button medium item-end color="danger" href="tel:{{contactInfos.phone}}">Call</a>
+          {{contactInfos.phone}}          
         </ion-item>
 
         <!-- Whatsapp  -->
         <ion-item>
-          <ion-icon item-start name="logo-whatsapp" color="secondary"></ion-icon>
+          <ion-icon item-start name="logo-whatsapp" color="color4"></ion-icon>
           <p>Whatsapp</p>
-          {{contactInfos.whatsapp}}
-          <a button ion-button medium item-end color="secondary" href="whatsapp://send?text=Hello from ThemesBuckets&phone=+{{contactInfos.phone}}&abid=+{{contactInfos.phone}}">Open App</a>
+          {{contactInfos.whatsapp}}          
         </ion-item>
       </ion-list>
     </ion-card>
 
     <!-- Contact Form  -->
     <ion-card class="contact-form" padding-top>
-      <p class="contact-title">FEEL FREE TO DROP US A MESSAGE!</p>
+      <p class="contact-title">Feel Free To Say Hi!</p>
       <form novalidate>
         <ion-row>
           <ion-col>
@@ -63,7 +60,7 @@
               <!-- User Name -->
               <ion-item>
                 <ion-label>
-                  <ion-icon color="color1" name="md-person"></ion-icon>
+                  <ion-icon color="color4" name="md-person"></ion-icon>
                 </ion-label>
                 <ion-input type="text" placeholder="Your Name*">
                 </ion-input>
@@ -72,7 +69,7 @@
               <!-- Email -->
               <ion-item>
                 <ion-label>
-                  <ion-icon color="color1" name="md-mail"></ion-icon>
+                  <ion-icon color="color4" name="md-mail"></ion-icon>
                 </ion-label>
                 <ion-input type="email" placeholder="Your Email*">
                 </ion-input>
@@ -81,7 +78,7 @@
               <!-- Message  -->
               <ion-item>
                 <ion-label>
-                  <ion-icon color="color1" name="chatbubbles"></ion-icon>
+                  <ion-icon color="color4" name="chatbubbles"></ion-icon>
                 </ion-label>
                 <ion-textarea placeholder="Your Message*" rows="3">
                 </ion-textarea>
@@ -93,7 +90,7 @@
         <!-- Button  -->
         <ion-row>
           <ion-col>
-            <button ion-button block round color="color1">Send</button>
+            <button ion-button block round color="color4">Send</button>
           </ion-col>
         </ion-row>
       </form>

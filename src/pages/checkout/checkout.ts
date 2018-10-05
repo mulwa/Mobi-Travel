@@ -178,7 +178,8 @@ export class CheckoutPage implements  OnInit {
           reference_number: this.checkOutForm.get('reference_number').value,
         }
 
-        myRequests.push(passanger_details);           
+        myRequests.push(passanger_details);  
+        console.log('to reserve'+JSON.stringify(passanger_details))         
         this.authProvider.reserveBooking(passanger_details).subscribe(data =>{
           console.log(data) 
           loader.dismiss()                 

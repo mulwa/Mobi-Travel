@@ -17,17 +17,27 @@
         <!-- Bus Infos  -->
         <ion-item>
           <!-- Bus Icon  -->
-          <ion-avatar item-start>
+          <ion-thumbnail  item-start>
+            <span *ngIf="bus.total_seats <= 12">
+                <img src="assets/imgs/shuttle.png" >
+            </span>
+            <span *ngIf="bus.total_seats > 12">
+                <img src="assets/imgs/bus.png" >
+            </span>                         
+          </ion-thumbnail >
+          <!-- <ion-avatar item-start>
               <span><i class="fas fa-shuttle-van fa-3x" style="color:#e38d25" *ngIf="bus.total_seats <= 12"></i></span>
-              <span><i class="fas fa-bus fa-3x" style="color:#e38d25" *ngIf="bus.total_seats > 12"></i></span>            
-          </ion-avatar>
+              <span><i class="fas fa-bus fa-3x" style="color:#e38d25" *ngIf="bus.total_seats > 12"></i></span> 
+          </ion-avatar> -->
     
           <!-- Name of bus  -->
           <h2 text-wrap>{{bus.route}}</h2>    
           <!-- Bus Type  -->
-          <ion-badge color="color1">{{bus.route}}</ion-badge>
-
-          <h3>seats Available {{bus.seats_available}}</h3>
+          <ion-badge color="color1">
+              {{bus.seats_available}} seats left
+          </ion-badge>
+<!-- 
+          <h3>Seats Available: {{bus.seats_available}}</h3> -->
           
     
           
@@ -78,10 +88,8 @@
       <ion-card  color="color4" *ngIf="noofVehiclesFound == 0">
        <ion-grid>
          <ion-row>
-           <ion-col> 
-              <h3>Please Try Again Later or Look for Alternative route</h3>           
-             <p>There Are No Vehicles Available From {{from_name}} To {{to_name}}</p>
-            
+           <ion-col>                        
+             <p>There Are No Vehicles Available From {{from_name}} To {{to_name}}</p>            
            </ion-col>
          </ion-row>
        </ion-grid>

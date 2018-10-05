@@ -26,13 +26,13 @@ export class SettingsPage {
   languages: any = [];
 
   // List of Payment Methods
-  paymentMethods = ['Paypal', 'Credit Card'];
+  paymentMethods = ['JamboPay', 'JamboPay Wallet', 'Mpesa'];
 
   // List if Currencies
-  currencies = ['USD', 'EUR', 'GBP', 'CAD', 'SGD'];
+  currencies = ['Ksh', 'USD', 'GBP', 'CAD', 'SGD'];
 
   // Default Payment Method
-  paymentMethod: any = 'Paypal';
+  paymentMethod: any = 'JamboPay';
 
   // Default Currency
   currency: any = 'USD';

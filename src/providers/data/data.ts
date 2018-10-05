@@ -42,7 +42,7 @@ export class DataProvider {
         }]
       },      
       { title: 'Profile', icon: 'md-person', component: 'ProfilePage' },
-      { title: 'About Us', icon: 'bookmark', component: 'AboutUsPage' },
+      { title: 'Bus Formats', icon: 'bookmark', component: 'AboutUsPage' },
       { title: 'Contact Us', icon: 'call', component: 'ContactUsPage' },     
       { title: 'Settings', icon: 'ios-settings', component: 'SettingsPage' }
     ]
@@ -832,22 +832,22 @@ export class DataProvider {
   getDeals() {
     return [
       {
-        name: 'Japan: 9-Day Trip',
-        details: 'Visit Japan with sightseeing',
+        name: 'Amboseli: 2-Day Trip',
+        details: 'Visit Amboseli with sightseeing',
         price: '1200',
-        image: 'assets/imgs/background/img5.jpeg'
+        image: 'assets/imgs/bus.png'
       },
       {
-        name: 'Iceland: 5-Day Trip',
-        details: 'Visit Iceland, sightseeing tours',
+        name: 'Tsavo: 5-Day Trip',
+        details: 'Visit Tsavo National, sightseeing tours',
         price: '1000',
-        image: 'assets/imgs/background/img6.jpeg'
+        image: 'assets/imgs/shuttle.png'
       },
       {
-        name: 'Australia: 15-Day Trip',
-        details: 'Visit Australia, Queenstown',
+        name: ': 15-Day Trip to Game pack of Your choice',
+        details: 'Visit Game Pack of your Choice, Queenstown',
         price: '900',
-        image: 'assets/imgs/background/img7.jpeg'
+        image: 'assets/imgs/bus.png'
       },
       {
         name: 'Japan: 6-Day Trip',
@@ -866,25 +866,25 @@ export class DataProvider {
   getRecommendDestination() {
     return [
       {
-        country: 'Washington',
+        country: 'Mombasa',
         image: 'assets/imgs/background/img8.jpeg',
         totalHotels: 890,
         avgPrice: 200
       },
       {
-        country: 'Bangkok',
+        country: 'Naivasha',
         image: 'assets/imgs/background/img7.jpeg',
         totalHotels: 900,
         avgPrice: 110
       },
       {
-        country: 'Singapore',
+        country: 'Amboseli',
         image: 'assets/imgs/background/img5.jpeg',
         totalHotels: 690,
         avgPrice: 80
       },
       {
-        country: 'Kathmandu',
+        country: 'Nakuru',
         image: 'assets/imgs/background/img9.jpeg',
         totalHotels: 767,
         avgPrice: 130
