@@ -1,8 +1,8 @@
 {
-    "name": "travelagency",
+    "name": "mobitravel",
     "version": "1.0.0",
-    "author": "IonicBucket",
-    "homepage": "http://ionicbucket.com/",
+    "author": "Christopher Mulwa",
+    "homepage": "http://mobiticket.co.ke/",
     "private": true,
     "scripts": {
         "clean": "ionic-app-scripts clean",
@@ -47,6 +47,7 @@
         "ionicons": "3.0.0",
         "rxjs": "5.5.7",
         "sw-toolbox": "3.6.0",
+        "web-animations-js": "^2.3.1",
         "zone.js": "0.8.20"
     },
     "devDependencies": {
