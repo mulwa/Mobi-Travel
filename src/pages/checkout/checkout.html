@@ -24,7 +24,7 @@
             <legend >Seat {{i+1}}</legend>
             <ion-item>
               <ion-label floating>Full Name </ion-label>
-              <ion-input formControlName="passenger_name" type="text"></ion-input>
+              <ion-input formControlName="passenger_name" type="text" required ></ion-input>
             </ion-item>          
             <ion-item >
                 <ion-label floating>ID/Passport No </ion-label>
@@ -32,7 +32,7 @@
             </ion-item>
           <ion-item>
               <ion-label floating>Phone Number</ion-label>
-              <ion-input  formControlName="phone_number" type="number"  ></ion-input>
+              <ion-input  formControlName="phone_number" type="number" required  ></ion-input>
           </ion-item>
           <ion-item >
               <ion-label floating>Email Address </ion-label>
@@ -50,7 +50,7 @@
         Select Payment Method
       </ion-card-header>
   
-      <ion-row radio-group formControlName="payment_method">  
+      <ion-row radio-group formControlName="payment_method" required>  
         <!-- Master Card  -->
         <ion-col>
           <ion-item>
@@ -82,7 +82,8 @@
 </ion-content>
 <!-- Footer  -->
 <ion-footer>
-  <button ion-button large full no-margin class="custom-btn" (tap)="goToPaymentPage()">
+  <button [disabled]="!checkOutForm.valid" ion-button large full no-margin class="custom-btn" (tap)="goToPaymentPage()">
     Pay Ksh {{ticketCost}} Now
   </button>
 </ion-footer>
+  

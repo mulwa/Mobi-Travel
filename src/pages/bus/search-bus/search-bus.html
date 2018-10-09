@@ -42,15 +42,15 @@
         </ion-input>
       </ion-item>
 
-      <!-- Departure Date  -->   
+      <!-- Departure Date  -->  
       
-      <ion-item >
-          <ion-label floating>Travel Date</ion-label>
-          <ion-select [(ngModel)]="travel_date">
-            <ion-option [value]="date.name" *ngFor="let date of travel_dates">{{date.name}}</ion-option>    
-          </ion-select>
-        </ion-item> 
-
+      <ion-item (tap)="getTravellingDates()">
+        <ion-label>
+          <ion-icon color="color4" name="calendar"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Traveling Date"  [(ngModel)]="travel_date">
+        </ion-input>
+        </ion-item>  
     </ion-list>
   
   </ion-grid>

@@ -18,14 +18,14 @@
         </ion-row>
       </ion-grid>
 
-      <ion-card *ngIf="seatSelectedForBooking.length > 0">
+      <ion-card @summaryState  *ngIf="seatSelectedForBooking.length > 0">
           <ion-card-content>      
             <ion-item>
               <h4>Ticket Price Summary</h4>        
               <!-- Structural directive - only visible on selection -->
               <div class="font14 marginTB10">
                   <div class="wordWrap">No of Seats: {{seatSelectedForBooking.length}} </div>
-                  <div>Ticket Price : {{ticketPrice}} * {{seatSelectedForBooking.length}} = {{currency}}.{{ticketPrice*seatSelectedForBooking.length}} </div>            
+                  <div>Ticket Price : {{ticketPrice}} X {{seatSelectedForBooking.length}} = {{currency}}.{{ticketPrice*seatSelectedForBooking.length}} </div>            
               </div>
             </ion-item>  
           </ion-card-content>

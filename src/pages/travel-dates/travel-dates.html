@@ -1,0 +1,23 @@
+<!-- Location Search Page  -->
+ 
+<!-- Header  -->
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Select Traveling Date</ion-title>    
+    <ion-buttons right>
+      <!-- Modal Close Button  -->
+      <button ion-button color="white" (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<!-- Contents  -->
+<ion-content no-padding>
+  <!-- List Of Traveling Dates  -->
+  <ion-list [virtualScroll]="traveling_dates">
+    <ion-item *virtualItem="let date"  tappable (tap)="chooseDate(date.name)">
+      <h2>{{date.name}}</h2>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,21 +1,28 @@
 import { Seats } from './../../../models/seats';
-/**
- * @author    ThemesBuckets <themebucketbd@gmail.com>
- * @copyright Copyright (c) 2018
- * @license   Fulcrumy
- * 
- * This File Represent Bus Details Component
- * File path - '../../src/pages/bus/bus-details/bus-details'
- */
-
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AuthenticationProvider } from '../../../providers/authentication/authentication';
+import { trigger,state, animate,transition, style} from '@angular/animations';
 
 @IonicPage()
 @Component({
   selector: 'page-bus-details',
   templateUrl: 'bus-details.html',
+  animations:[
+    // animates booking details summary leave and enter
+    trigger('summaryState',[
+      state('void',style({
+        transform: 'translateX(-100%)'
+      })),
+      transition('void => *', animate('500ms ease-out')),
+      transition('* => void', [
+        animate('500ms ease-in', style({
+          transform: 'translateX(100%)'
+        }))
+      ])
+    ]),    
+  ]
+  // end animations
 })
 export class BusDetailsPage implements OnInit { 
   busdetails:any;

@@ -4,10 +4,8 @@ import { AuthenticationProvider } from './../../../providers/authentication/auth
 
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Search } from '../../../models/search';
-import { CalendarModal, CalendarModalOptions } from 'ion2-calendar';
-import { username, api_key, hash } from '../../../models/constants';
+
 
 @IonicPage()
 @Component({
@@ -82,6 +80,15 @@ export class SearchBusPage implements OnInit {
         console.log("destination  id"+data.id);
         this.to_id = data.id;
         this.to_name = data.name;
+      }
+    });
+    modal.present();
+  }
+  getTravellingDates(){
+    let modal = this.modalCtrl.create('TravelDatesPage');
+    modal.onDidDismiss((data) =>{
+      if(data){
+        this.travel_date = data;
       }
     });
     modal.present();

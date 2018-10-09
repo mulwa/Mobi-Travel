@@ -2,6 +2,7 @@ import { Price } from './../../../models/price';
 import { BusProvider } from './../../../providers/bus/bus';
 import { Bus } from './../../../models/bus';
 import { AuthenticationProvider } from './../../../providers/authentication/authentication';
+import { trigger, style,state,transition,animate } from '@angular/animations';
 
 
 import { Component } from '@angular/core';
@@ -12,8 +13,30 @@ import { DataProvider } from '../../../providers/data/data';
 @Component({
   selector: 'page-bus-list',
   templateUrl: 'bus-list.html',
-})
+  animations:[
+    trigger('cardClick',[
+      state('normal',style({
+        opacity: '0.9',
+        transform: 'scale(1.0)'
+      })),
+      state('clicked',style({
+        opacity: '1.3',
+        transform: 'scale(1.0)'
+      })),
+      transition('normal <=> clicked',animate('600ms linear'))
+    ]),
+    // end cardClick Trigger
+    trigger('No-vehicle-state',[ 
+      state('void', style({
+        transform: 'translateX(-100%)'        
+      })),
+      transition('void => *', animate('500ms ease-out'))
+    ])
+    
+  ]
+})  
 export class BusListPage {
+  cardClickState:string = 'normal'
 
   // Array List of Bus
   buses:Bus;
@@ -124,7 +147,9 @@ export class BusListPage {
   /**
    * Open Details Page of Selected Bus
    */ 
-  goToViewDetailsPage(bus:Bus):void{       
+  goToViewDetailsPage(bus:Bus):void{
+    
+    this.cardClickState = 'clicked';
     let busDetails =  {
       selected_bus_name :bus.route,
       from_id: this.from_id,

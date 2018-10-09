@@ -85,7 +85,7 @@ export class CheckoutPage implements  OnInit {
   }
   initializeForm(){
     this.checkOutForm = this.frmbuilder.group({       
-      payment_method:'', 
+      payment_method:['',Validators.required], 
       reference_number:this.getReferenceNumber(),       
       passangers: this.frmbuilder.array([])
 
@@ -135,6 +135,7 @@ export class CheckoutPage implements  OnInit {
           let ticket_price = this.ticketDetails[0].fare_per_ticket;
           this.ticket_type = data.ticket_type[0].id;
           console.log('ticket_type'+this.ticket_type);
+          console.log('seats selected'+this.selected_seat)
           this.ticketCost = parseInt(ticket_price) * this.selected_seat;
           console.log('total cost'+this.ticketCost);
         }
@@ -227,12 +228,7 @@ export class CheckoutPage implements  OnInit {
        Promise.all(myPromises).then(res =>{         
          console.log("from Promise:"+JSON.stringify(res))
        })
-      }
-      
-
-      
-      
-   
+      } 
      
       
     })

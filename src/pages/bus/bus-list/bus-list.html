@@ -1,9 +1,3 @@
-<!-- 
-  - @author    ThemesBuckets <themebucketbd@gmail.com>
-  - @copyright Copyright (c) 2018
-  - @license   Fulcrumy
--->
-
 <!-- Header  -->
 <ion-header no-border >
   <header-three title="{{from_name}}-{{to_name}}"></header-three>
@@ -12,10 +6,10 @@
 <!-- Content  -->
 <ion-content> 
     <!-- List of Bus  -->
-    <ion-card class="animated fadeIn" *ngFor="let bus of buses" (tap)="goToViewDetailsPage(bus)" >
+    <ion-card class="animated fadeIn" *ngFor="let bus of buses" (tap)="goToViewDetailsPage(bus)">
 
         <!-- Bus Infos  -->
-        <ion-item>
+        <ion-item [@cardClick]="cardClickState">
           <!-- Bus Icon  -->
           <ion-thumbnail  item-start>
             <span *ngIf="bus.total_seats <= 12">
@@ -84,7 +78,7 @@
           </ion-grid>
         </ion-card-content>
       </ion-card>
-      <ion-card  color="color4" *ngIf="noofVehiclesFound == 0">
+      <ion-card  color="color4" *ngIf="noofVehiclesFound == 0" @No-vehicle-state>
        <ion-grid>
          <ion-row>
            <ion-col>                        

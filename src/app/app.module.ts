@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -30,6 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     HttpClientModule,
     SwingModule,
+    BrowserAnimationsModule,
     SuperTabsModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
