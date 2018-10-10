@@ -1,3 +1,4 @@
+import { trigger,state,style, transition, animate } from '@angular/animations';
 import { AuthenticationProvider } from './../../providers/authentication/authentication';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
@@ -9,6 +10,19 @@ import { IonicPage, NavController, NavParams, ViewController, App, LoadingContro
 @Component({
   selector: 'page-jambopay-checkout',
   templateUrl: 'jambopay-checkout.html',
+  animations: [
+    trigger('elementEntry',[
+      state('void',style({
+        transform: 'translateX(-100%)'
+      })),
+      transition('void => *', animate('500ms ease-out')),
+      transition('* => void', [
+        animate('500ms ease-in', style({
+          transform: 'translateX(100%)'
+        }))
+      ])
+    ]),    
+  ]
 })
 export class JambopayCheckoutPage {
   public jamboPayFrm:FormGroup;

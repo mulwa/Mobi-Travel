@@ -37,6 +37,7 @@ import { DataProvider } from '../../../providers/data/data';
 })  
 export class BusListPage {
   cardClickState:string = 'normal'
+  
 
   // Array List of Bus
   buses:Bus;
@@ -94,8 +95,8 @@ export class BusListPage {
     });
     loader.present().then(()=>{
       this.busProvider.getSchedule(this.from_id
-        ,this.to_id,this.travel_date).subscribe(data =>{
-          loader.dismiss();         
+        ,this.to_id,this.travel_date).subscribe(data =>{          
+          loader.dismiss();               
           
           if(data.response_code ==0){
             this.noofVehiclesFound = Object.keys(data.bus).length;       

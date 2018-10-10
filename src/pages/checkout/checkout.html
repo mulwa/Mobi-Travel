@@ -7,17 +7,8 @@
 
 <!-- Content  -->
 
-<ion-content>
-  <!-- Price Summery  -->  
-  <!-- <ion-grid>
-    <ion-row>
-      <ion-col col class="bal-section">
-        <h2>Total Cost</h2>
-        <h4>{{ticketCost}}</h4>
-       </ion-col>      
-    </ion-row>
-  </ion-grid> -->  
-  <ion-list>      
+<ion-content>  
+  <ion-list class="animated fadeIn">      
     <form [formGroup]="checkOutForm">   
     <div class="passagerArray" formArrayName="passangers" *ngFor="let item of checkOutForm.get('passangers').controls; let i = index;" >             
         <fieldset  [formGroupName]="i" >
@@ -82,7 +73,7 @@
 </ion-content>
 <!-- Footer  -->
 <ion-footer>
-  <button [disabled]="!checkOutForm.valid" ion-button large full no-margin class="custom-btn" (tap)="goToPaymentPage()">
+  <button  ion-button large full no-margin class="custom-btn" (tap)="goToPaymentPage()">
     Pay Ksh {{ticketCost}} Now
   </button>
 </ion-footer>

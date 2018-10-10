@@ -10,6 +10,7 @@ import {baseUrl, username, api_key, hash, ReferenceNumberUrl} from  './../../mod
 import { responseI } from '../../models/response';
 import { locationResponse } from '../../models/locationResponse';
 import { travelDateResponse } from '../../models/travelDateResponse';
+import { Reservation } from '../../models/reservationI';
 
 
 
@@ -85,8 +86,33 @@ export class AuthenticationProvider {
     return this.http.post<responseI>(baseUrl,body);
 
   }
-  reserveBooking(bookingDetails:any){      
-    return this.http.post<ReservationRes>(baseUrl,bookingDetails)
+  reserveBooking(from_city:number, to_city:number, travel_date:string, selected_vehicle:number, seater:number, selected_ticket_type:number, selected_seat:number, 
+    payment_method:number, phone_number:string, passenger_name:string, email_address:string, id_number:string,
+     insurance_charge:string, served_by:string, amount_charged:string, reference_number:string){
+    let body:Reservation = {
+      username:username,
+      api_key:api_key,
+      hash:hash,
+      action:'ReserveSeats',
+      from_city:from_city,
+      to_city:to_city,
+      travel_date:travel_date,      
+      selected_vehicle:selected_vehicle,
+      seater:seater,  
+      selected_ticket_type:selected_ticket_type, 
+      selected_seat:selected_seat,         
+      payment_method:payment_method,
+      phone_number: phone_number,
+      id_number:id_number,
+      passenger_name:passenger_name,
+      email_address: email_address,
+      insurance_charge:insurance_charge,
+      served_by:served_by,
+      amount_charged: amount_charged,
+      reference_number: reference_number
+    }
+    console.log(body)      
+    return this.http.post<ReservationRes>(baseUrl,body)
   }
   reserveBookingPromise(bookingDetails:any){      
     return this.http.post(baseUrl,bookingDetails)    

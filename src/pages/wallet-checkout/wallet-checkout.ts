@@ -1,6 +1,7 @@
 import { AuthenticationProvider } from './../../providers/authentication/authentication';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
+import { trigger, state, style, transition, animate} from '@angular/animations';
 import { IonicPage, NavController, NavParams, ViewController, LoadingController, ModalController } from 'ionic-angular';
 
 
@@ -8,6 +9,19 @@ import { IonicPage, NavController, NavParams, ViewController, LoadingController,
 @Component({
   selector: 'page-wallet-checkout',
   templateUrl: 'wallet-checkout.html',
+  animations: [
+    trigger('elementEntry',[
+      state('void',style({
+        transform: 'translateX(-100%)'
+      })),
+      transition('void => *', animate('500ms ease-out')),
+      transition('* => void', [
+        animate('500ms ease-in', style({
+          transform: 'translateX(100%)'
+        }))
+      ])
+    ]), 
+  ]
 })
 export class WalletCheckoutPage {
   public walletForm:FormGroup;

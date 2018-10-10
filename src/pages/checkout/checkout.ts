@@ -156,79 +156,65 @@ export class CheckoutPage implements  OnInit {
       content: "Please Wait Reserving your Ticket",
       dismissOnPageChange: true     
     });
-    loader.present().then(()=>{
-      let myRequests = [];
-      let passanger_details:Reservation;
-      for(let pass= 0; pass < numOfPassangers; pass++){        
-        passanger_details =  {
-          username:username,
-          api_key:api_key,
-          hash:hash,
-          action:'ReserveSeats',
-          from_city:this.from_id,
-          to_city:this.to_id,
-          travel_date:this.travel_date,      
-          selected_vehicle:this.selected_vehicle,
-          seater:this.seater,  
-          selected_ticket_type:this.ticket_type, 
-          selected_seat:this.passanger.value[pass].selected_seat,         
-          payment_method: this.checkOutForm.get('payment_method').value,
-          phone_number: this.passanger.value[pass].phone_number,
-          id_number:this.passanger.value[pass].id_number,
-          passenger_name: this.passanger.value[pass].passenger_name,
-          email_address: this.passanger.value[pass].email_address,
-          insurance_charge: this.passanger.value[pass].insurance_charge,
-          served_by: this.passanger.value[pass].served_by,
-          amount_charged: this.passanger.value[pass].amount_charged,
-          reference_number: this.checkOutForm.get('reference_number').value,
-        }
-        // reference_number: this.checkOutForm.get('reference_number').value,
-
-        myRequests.push(passanger_details);  
-        console.log('to reserve'+JSON.stringify(passanger_details))         
-        this.authProvider.reserveBooking(passanger_details).subscribe(data =>{
-          console.log(data) 
-          loader.dismiss()                 
-          if(data.ticket[0].response_code == "0"){                    
-            this.tickeRosMessage = data.ticket_message;
-            // let tick_message = data.ticket[0].description;
-            let tick_message = data.ticket_message[0].name;
-            this.showToast(tick_message);
-            console.log(tick_message);
-            this.checkOutForm.reset();
-
-            // direct users according to payment method
-            console.log('selected payment'+passanger_details.payment_method)
-            if(passanger_details.payment_method ==2){
-              this.openJambopayCheckout(tick_message,2);
-            }else if(passanger_details.payment_method ==1){
-              this.openWalletCheckOut(tick_message,1);
-
-            }else if (passanger_details.payment_method == 3){              
-              this.openCongratulationPage("Mpesa",data.ticket_message[0].name);              
+    loader.present().then(()=>{     
+      for(let pass= 0; pass < numOfPassangers; pass++){
+         let from_city = this.from_id
+         let to_city = this.to_id
+         let travel_date = this.travel_date      
+         let selected_vehicle = this.selected_vehicle
+         let seater = this.seater  
+         let selected_ticket_type = this.ticket_type 
+         let selected_seat = this.passanger.value[pass].selected_seat         
+         let payment_method = this.checkOutForm.get('payment_method').value  
+         let phone_number =this.passanger.value[pass].phone_number; 
+         let passenger_name = this.passanger.value[pass].passenger_name;
+         let email_address =  this.passanger.value[pass].email_address;
+         let id_number =      this.passanger.value[pass].id_number;
+         let insurance_charge = this.passanger.value[pass].insurance_charge;
+         let served_by = this.passanger.value[pass].served_by;
+         let amount_charged =  "";
+         let reference_number =  this.checkOutForm.get('reference_number').value+'_'+pass;
+       
+        
+        
+        
+        
+        // reference_number: this.checkOutForm.get('reference_number').value,       
+        setTimeout(()=>{                 
+          this.authProvider.reserveBooking(from_city, to_city,travel_date,selected_vehicle,seater,selected_ticket_type,selected_seat,payment_method,phone_number,passenger_name, email_address,id_number,insurance_charge,served_by,amount_charged,reference_number).subscribe(data =>{
+            console.log(data) 
+            loader.dismiss()                 
+            if(data.ticket[0].response_code == "0"){                    
+              this.tickeRosMessage = data.ticket_message;
+              // let tick_message = data.ticket[0].description;
+              let tick_message = data.ticket_message[0].name;
+              this.showToast(tick_message);
+              console.log(tick_message);
+              this.checkOutForm.reset();
+  
+              // direct users according to payment method
+              console.log('selected payment'+payment_method)
+              if(payment_method ==2){
+                this.openJambopayCheckout(tick_message,2);
+              }else if(payment_method ==1){
+                this.openWalletCheckOut(tick_message,1);
+  
+              }else if (payment_method == 3){              
+                this.openCongratulationPage("Mpesa",data.ticket_message[0].name);              
+              }              
+  
+            }else{
+              this.showAlert("Reservation failed", data.ticket_message[0].name)
             }
-            
+          },error =>{
+            loader.dismiss();
+            console.log('an  error has occured'+error);
+          })
 
-          }else{
-            this.showAlert("Reservation failed", data.ticket_message[0].name)
-          }
-        },error =>{
-          loader.dismiss();
-          console.log('an  error has occured'+error);
-        })
+        },500);
         
-        
-      } // end of for loop 
-      // console.log('outside for loop'+ myRequests.length);      
-      // // muiltipleReq = Observable.forkJoin(this.authProvider.reserveBooking(myRequests));
-      // console.log(myRequests)
-      let myPromises = [];     
-      for(let i=0; i< myRequests.length; i++){
-        myPromises.push(this.authProvider.reserveBookingPromise(myRequests[i]))          
-       Promise.all(myPromises).then(res =>{         
-         console.log("from Promise:"+JSON.stringify(res))
-       })
-      } 
+      } // end of for loop     
+      
      
       
     })

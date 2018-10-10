@@ -33,6 +33,7 @@ export class BusDetailsPage implements OnInit {
   selected_vehicle:number;
 
   newBussDetails:Seats;
+  doneLoadingBuses:boolean = false;
   
 
   departureDate: any;
@@ -131,7 +132,8 @@ export class BusDetailsPage implements OnInit {
     });
     loader.present().then(()=>{
       this.authProvider.getVehicleDetails(this.from_id
-        ,this.to_id,this.travel_date,this.selected_vehicle).subscribe(data =>{          
+        ,this.to_id,this.travel_date,this.selected_vehicle).subscribe(data =>{
+          this.doneLoadingBuses = true;          
           loader.dismiss();
           if(data.response_code == 0){
           this.newBussDetails  =  data.seats;
@@ -148,8 +150,8 @@ export class BusDetailsPage implements OnInit {
             this.initializeSeater11();
           }else{
             this.initializeSeater49();
-          }     
-
+          }
+          
           }
           
         },erro =>{

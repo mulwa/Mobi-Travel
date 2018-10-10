@@ -11,7 +11,7 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-  <ion-card color="color4">
+  <ion-card color="color4" @elementEntry>
       <ion-grid>
           <ion-row>
             <ion-col>
@@ -20,7 +20,7 @@
           </ion-row>
         </ion-grid>  
   </ion-card>
-  <ion-list>
+  <ion-list class="animated fadeIn">
     <form [formGroup]="jamboPayFrm" (ngSubmit)="doPay()">
     <ion-item>
       <ion-label floating>
