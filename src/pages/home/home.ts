@@ -29,5 +29,8 @@ export class HomePage {
   goToSearchPage() {
     this.navCtrl.setRoot('SearchPage');
   }
+  loadAllTickets(){
+    this.navCtrl.setRoot('SearchTicketPage');
+  }
 }
 

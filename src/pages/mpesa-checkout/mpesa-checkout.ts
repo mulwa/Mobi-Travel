@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, LoadingController, ViewController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 
@@ -19,6 +19,7 @@ export class MpesaCheckoutPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public frmBuilder:FormBuilder,
+              public viewCtrl:ViewController,
               public authProvider: AuthenticationProvider,
               public loadingCtrl:LoadingController,
               public modalCtrl:ModalController,) {            
@@ -40,6 +41,10 @@ export class MpesaCheckoutPage {
     this.mpesaFrm = this.frmBuilder.group({
       mpesa_phone_number:['', Validators.required]
     })
+  }
+  dismiss() {
+    this.viewCtrl.dismiss();
+    // this.appCtrl.getRootNav().setRoot('HomePage');
   }
   doPay(){
     console.log('Reference No:' +this.reference_No)

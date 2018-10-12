@@ -60,11 +60,11 @@ export class SearchTicketPage  {
         console.log(tickets)
       }) 
       
-    })
-     
+    })     
   }
   LoadMoreDetails(){
     // this.navCtrl.setRoot('CarTabsPage')
+    console.log('load ticket details clicked')
     this.modalCtrl.create('TicketDetailsPage')
   }  
   

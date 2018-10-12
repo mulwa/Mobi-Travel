@@ -1,10 +1,3 @@
-<!-- 
-  - @author    ThemesBuckets <themebucketbd@gmail.com>
-  - @copyright Copyright (c) 2018
-  - @license   Fulcrumy
--->
-<!-- Home Page  -->
-
 <!-- Header  -->
 <ion-header no-border>
   <header-one title="Home"></header-one>
@@ -15,32 +8,26 @@
 
   <!-- All Travel Categories -->
   <travel-category></travel-category>
+  <!-- <page-search-bus></page-search-bus> -->
   <!-- You will find this component from components folder -->
   <!-- Source Path - src/components/travel-category  -->
 
   <!-- Recommended Destinations  -->
   <ion-row>
     <ion-col padding-left col-7>
-      <p>Recommended Destinations</p>
+      <p>Your Recently Booked Tickets</p>
     </ion-col>
-    <ion-col text-right padding-top><button ion-button clear color="color4">more</button></ion-col>
+    <ion-col text-right padding-top><button ion-button clear color="color4" (tap)="loadAllTickets()">more</button></ion-col>
   </ion-row>
-
   <!-- Recommended Destinations Slider Component -->
   <recommend-destination></recommend-destination>
   <!-- You will find this component from components folder -->
   <!-- Source Path - src/components/recommend-destination  -->
 
-  <!-- Deals Section  -->
-  <ion-row>
-    <ion-col padding-left>
-      <p>Deals of the Day</p>
-    </ion-col>
-    <ion-col text-right padding-top><button ion-button clear color="color3">more</button></ion-col>
-  </ion-row>
+  <!-- Deals Section  -->  
 
   <!-- Deals Component -->
-  <deals></deals>
+  <!-- <deals></deals> -->
   <!-- You will find this component from components folder -->
   <!-- Source Path - src/components/deals  -->
 </ion-content>

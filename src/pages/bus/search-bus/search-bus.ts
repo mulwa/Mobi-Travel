@@ -20,7 +20,6 @@ export class SearchBusPage implements OnInit {
   from_name:string;
   to_name:string;
   travel_date:any;
-
   travel_dates:Dates[];
 
   constructor(public navCtrl: NavController,

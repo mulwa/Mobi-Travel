@@ -4,14 +4,14 @@ recommend-destination {
         top: 10px;
         left: 10px;
         text-align: left;
-        font: 20px Sans-Serif;
+        // font: 20px Sans-Serif;
         margin: 0;
         color: white;
         text-shadow: 0 1px 0 black;
         p {
-            line-height: 0;
+            line-height: 1.0px;
             margin: 0;
-            font-size: 12px;
+            font-size: 12px;            
         }
     }
     ion-slides,
