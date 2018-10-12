@@ -1,0 +1,39 @@
+
+<ion-header>
+    <ion-navbar color="secondary">
+      <ion-title>Mpesa Payment</ion-title>    
+      <ion-buttons right>
+        <!-- Modal Close Button  -->
+        <button ion-button color="white" (click)="dismiss()">
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding>
+    <ion-card color="color4">
+        <ion-grid>
+            <ion-row>
+              <ion-col>
+                <p>{{checkout_msg}}</p>  
+              </ion-col>
+            </ion-row>
+          </ion-grid>  
+    </ion-card>
+    <ion-list class="animated fadeIn">
+      <form [formGroup]="mpesaFrm" (ngSubmit)="doPay()">
+      <ion-item>
+        <ion-label floating>
+          <ion-icon ios="ios-person" md="md-person" color="color4"></ion-icon>
+          Enter phone number
+        </ion-label>
+        <ion-input type="number" formControlName="mpesa_phone_number" ></ion-input>
+      </ion-item>      
+      <ion-item>
+          <button ion-button large full no-margin color="secondary"  type="submit" [disabled]="!mpesaFrm.valid">Pay</button>
+      </ion-item> 
+      </form>
+    </ion-list>
+  
+  </ion-content>
+  

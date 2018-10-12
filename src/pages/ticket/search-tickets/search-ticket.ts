@@ -24,7 +24,7 @@ export class SearchTicketPage  {
  
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public loadingCtrl:LoadingController,
+    public loadingCtrl:LoadingController,    
     public authProvider:AuthenticationProvider,
     public modalCtrl: ModalController) {
 
@@ -64,7 +64,8 @@ export class SearchTicketPage  {
      
   }
   LoadMoreDetails(){
-    this.navCtrl.setRoot('CarTabsPage')
+    // this.navCtrl.setRoot('CarTabsPage')
+    this.modalCtrl.create('TicketDetailsPage')
   }  
   
 }

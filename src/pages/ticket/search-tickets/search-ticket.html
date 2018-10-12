@@ -8,16 +8,22 @@
   <ion-card *ngFor="let ticket of mytickets" (tap)="LoadMoreDetails()">     
       <ion-card-content>       
           <ion-grid>
+            <ion-row>
+              <ion-col text-center>                  
+                <ion-badge  color="color4" *ngIf="ticket.status ==='confirmed'"> payment status: {{ticket.status}}</ion-badge>
+                <ion-badge  color="color1" *ngIf="ticket.status ==='pending'"> payment status: {{ticket.status}}</ion-badge>                   
+              </ion-col>
+            </ion-row>
               <ion-row>
-                <ion-col text-center><h2 class="title">{{ticket.name}}</h2></ion-col>
+                <ion-col><h2 class="title">{{ticket.name}}</h2></ion-col>                
               </ion-row>
               <ion-row>
-                <ion-col text-center>
+                <ion-col>
                   <h2 class="title"> {{ticket.vehicle_name}}</h2>
                 </ion-col>
               </ion-row>
               <ion-row justify-content-center align-items-center>                
-                <ion-col  text-center>{{ticket.travel_from}}</ion-col>
+                <ion-col >{{ticket.travel_from}}</ion-col>
                 <ion-col  text-center>
                     <ion-row justify-content-center align-items-center>
                       <img src="assets/imgs/dot.png">
@@ -25,26 +31,29 @@
                 </ion-col>
                 <ion-col>{{ticket.travel_to}}</ion-col>
               </ion-row>
-
-              <ion-row justify-content-center align-items-center>
-                <ion-col text-center>                  
-                  <ion-badge  color="color4"> payment status: {{ticket.status}}</ion-badge>                  
-                </ion-col>
+              <ion-row>                
                 <ion-col text-center> <p>Ksh: {{ticket.amount}}</p> </ion-col>                
               </ion-row>
               <ion-row>
-                <ion-col text-center>
-                  <h4>Traveling Date: {{ticket.travel_date}}</h4> 
+                <ion-col>
+                  <h4>Date: {{ticket.travel_date}}</h4> 
+                </ion-col>
+                <ion-col>
+                  <h4>Time: {{ticket.travel_time}}</h4>
                 </ion-col>
               </ion-row>
-          </ion-grid>
-          <ion-item>           
-              <ion-badge color="color1">
-                  Ticket Ref No: {{ticket.reference_number}}
-              </ion-badge>              
-            </ion-item>            
-      </ion-card-content>
-      
+              <ion-row>
+                <ion-col>
+                    <h4>Ticket Ref No: {{ticket.reference_number}} </h4>  
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <h4>Bus Ref No: {{ticket.bus_company_ref_number}}</h4>
+                </ion-col>
+              </ion-row>
+          </ion-grid>           
+      </ion-card-content>      
   </ion-card>
   <ion-card  color="color4" *ngIf="noofTicketsFound == 0" >
       <ion-grid>
@@ -54,8 +63,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-     </ion-card>
- 
+  </ion-card> 
 </ion-content>
 
 

@@ -13,6 +13,7 @@ import { responseI } from '../../models/response';
 import { locationResponse } from '../../models/locationResponse';
 import { travelDateResponse } from '../../models/travelDateResponse';
 import { Reservation } from '../../models/reservationI';
+import { mpesaResponse } from '../../models/mpesaRes';
 
 
 
@@ -190,15 +191,27 @@ console.log('authorizeWalletPayment value set to server'+JSON.stringify(body))
 return this.http.post<responseI>(baseUrl,body);
 
 }
-
-  showToast(msg:string){
-    let toast = this.toastCtrl.create({
-      message : msg,
-      duration : 5000,
-      position : 'bottom'
-    });
-    toast.present();
+mpesaPayment(referenceNo, phone_number){
+  let body = {
+    username:username,
+    api_key:api_key,
+    action:"AuthorizePayment",
+    payment_method:"3",
+    reference_number:referenceNo,
+    mpesa_phone_number:phone_number
   }
+  return this.http.post<mpesaResponse>(baseUrl,body)
+  
+}
+
+showToast(msg:string){
+  let toast = this.toastCtrl.create({
+    message : msg,
+    duration : 5000,
+    position : 'bottom'
+  });
+  toast.present();
+}
 
 getAllCustomerTickets(phone_number:string){
   let body = {

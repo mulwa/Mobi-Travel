@@ -173,10 +173,7 @@ export class CheckoutPage implements  OnInit {
          let insurance_charge = this.passanger.value[pass].insurance_charge;
          let served_by = this.passanger.value[pass].served_by;
          let amount_charged =  "";
-         let reference_number =  this.checkOutForm.get('reference_number').value+'_'+pass;
-       
-        
-        
+         let reference_number =  this.checkOutForm.get('reference_number').value;        
         
         
         // reference_number: this.checkOutForm.get('reference_number').value,       
@@ -188,20 +185,23 @@ export class CheckoutPage implements  OnInit {
               this.tickeRosMessage = data.ticket_message;
               // let tick_message = data.ticket[0].description;
               let tick_message = data.ticket_message[0].name;
+              let reference_no = data.ticket[0].reference_number;
               this.showToast(tick_message);
-              console.log(tick_message);
+              console.log("Reference NO"+reference_no);
               this.checkOutForm.reset();
+
+              console.log()
   
               // direct users according to payment method
               console.log('selected payment'+payment_method)
               if(payment_method ==2){
                 this.openJambopayCheckout(tick_message,2);
               }else if(payment_method ==1){
-                this.openWalletCheckOut(tick_message,1);
-  
-              }else if (payment_method == 3){              
-                this.openCongratulationPage("Mpesa",data.ticket_message[0].name);              
-              }              
+                this.openWalletCheckOut(tick_message,1);  
+              }else if (payment_method == 3){ 
+                console.log('ReferenceNo from Checkout' +reference_no)             
+                this.openMpesaCheckout(tick_message,3,reference_no);              
+              }           
   
             }else{
               this.showAlert("Reservation failed", data.ticket_message[0].name)
@@ -237,12 +237,13 @@ export class CheckoutPage implements  OnInit {
     });
     alert.present();    
   }
-  openCongratulationPage(from,message){ 
-    let data = {
-      from:from,
-      message:message
+  openMpesaCheckout(message,id, reference_no){ 
+    let data = {      
+      message:message,
+      reference_no:reference_no,
+      id:id
     }  
-    this.modalCtrl.create('CongratulationPage',{data:data}).present();
+    this.modalCtrl.create('MpesaCheckoutPage',{data:data}).present();
   }
   openJambopayCheckout(message, id){
     let data = {

@@ -158,14 +158,14 @@
                 <ion-row *ngFor="let seat of third_col">
                   <ion-col class="inner-col"  [ngStyle]="{'background-color':checkIfselected(seat) === 'selected' ? '#e7840a' : '#dee4ed'}">                  
                     <button ion-button class="btn-seat-available" *ngIf="isElevenSeaterAvailable(seat) === true && isDriverSit(seat) === false " (tap)="seatSelected(seat)">
-                        <ion-icon name="checkbox-outline" > <p>{{seat}}</p></ion-icon>                    
+                        <ion-icon name="checkbox-outline"> <p>{{seat}}</p></ion-icon>                    
                     </button>                    
                     <button ion-button class="btn-not-available" *ngIf="isElevenSeaterAvailable(seat) === false && isDriverSit(seat) === false "  (tap)="seatNotAvailable(seat)" >                    
                         <ion-icon name="close"> <p>{{seat}}</p></ion-icon> 
                         
                     </button>
                     <button ion-button class="btn-not-available" *ngIf="isDriverSit(seat) === true">
-                      <ion-icon name="driver" >Driver <i class="fas fa-user-tie"></i> <p>{{seat}}</p></ion-icon>                    
+                      <ion-icon name="driver" >Driver <i class="fa fa-user-tie"></i> <p></p></ion-icon>                    
                   </button>
                   </ion-col>                  
                 </ion-row>
