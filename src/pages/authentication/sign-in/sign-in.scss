@@ -17,7 +17,7 @@ page-sign-in {
             }
         }
         .form-content {
-            height: 65%;
+            height: 25%;
             width: 80%;
             display: inline-block;
             text-align: center;
@@ -33,20 +33,11 @@ page-sign-in {
                     }
                 }
                 .custom-btn {
-                    background-image: linear-gradient(to right bottom, color($colors, color1), color($colors, color2));
+                    background-image: linear-gradient(to right bottom, color($colors, color4), color($colors, color4));
                     padding: 2.2rem 2.2rem;
                     font-size: 16px;
                     font-weight: bold;
-                }
-                .facebook {
-                    background: #3B5998;
-                }
-                .google {
-                    background: red;
-                }
-                .twitter {
-                    background: #1dcaff;
-                }
+                }                
                 .error-message {
                     font-size: 14px;
                     color: color($colors, danger);

@@ -58,9 +58,12 @@
 
   <!-- Footer  -->
   <ion-footer>
-    <!-- Logout Option  -->
-    <button ion-button full no-margin color="color4" (click)="logout()">
-      <ion-icon name="send"></ion-icon> Logout
+    <!-- Logout Option  -->        
+    <button ion-button full no-margin color="color4" (click)="logout()" *ngIf="login_status == true">
+       Log Out
+    </button>
+    <button ion-button full no-margin color="color4" (click)="login()" *ngIf="login_status == false">
+      Log In
     </button>
   </ion-footer>
 </ion-menu>

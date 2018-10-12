@@ -28,12 +28,8 @@ export class DataProvider {
       {
         title: 'Search', icon: 'search',
         subPages: [{
-          title: 'Flight',
-          icon: 'fa fa-fighter-jet',
-          component: 'SearchFlightPage',
-        }, {
-          title: 'Car',
-          icon: 'fa fa-car',
+          title: 'Train',
+          icon: 'fa fa-train',
           component: 'SearchCarPage',
         }, {
           title: 'Bus',
@@ -42,8 +38,9 @@ export class DataProvider {
         }]
       },      
       { title: 'Profile', icon: 'md-person', component: 'ProfilePage' },
-      { title: 'Bus Formats', icon: 'bookmark', component: 'AboutUsPage' },
-      { title: 'Contact Us', icon: 'call', component: 'ContactUsPage' },     
+      // { title: 'Bus Formats', icon: 'bookmark', component: 'AboutUsPage' },
+      { title: 'Contact Us', icon: 'call', component: 'ContactUsPage' }, 
+      { title: 'My Tickets', icon: 'book', component: 'SearchTicketPage' },    
       { title: 'Settings', icon: 'ios-settings', component: 'SettingsPage' }
     ]
   }

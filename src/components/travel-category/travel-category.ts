@@ -9,11 +9,10 @@ export class TravelCategoryComponent {
 
   text: string;
 
-  categories: any = [      
-    { icon: 'fa fa-car', name: 'CAR', component: 'SearchCarPage' },
+  categories: any = [   
     { icon: 'fa fa-bus', name: 'BUS', component: 'SearchBusPage' },
     { icon: 'fa fa-train', name: 'TRAIN', component: 'SearchTrainPage' },  
-    { icon: 'fa fa-cog', name: 'VACATION', component: 'SearchActivitiesPage' }
+    
   ];
 
   constructor(public navCtrl: NavController) { }

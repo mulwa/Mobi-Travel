@@ -1,10 +1,12 @@
+import { TicketResponse } from './../../models/ticketRes';
+import { AuthResponse } from './../../models/AuthRes';
 import { ReferenceRes } from './../../models/ReferenceNumberRes';
 import { ToastController } from 'ionic-angular';
 import { ReservationRes } from './../../models/reservationResponse';
 import { AvailableBusResponse } from './../../models/availablebuses';
 import { City } from './../../models/city';
 import { userAuth } from './../../models/UserAuth';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {baseUrl, username, api_key, hash, ReferenceNumberUrl} from  './../../models/constants';
 import { responseI } from '../../models/response';
@@ -15,15 +17,40 @@ import { Reservation } from '../../models/reservationI';
 
 
 @Injectable()
-export class AuthenticationProvider {  
+export class AuthenticationProvider {   
   constructor(public http: HttpClient, public toastCtrl: ToastController) {
     console.log('Hello AuthenticationProvider Provider');
-  }
+    console.log('user Phone Number'+ this.getUserPhoneNumber())
+    console.log('Authentication status'+ this.isAuthenticated())
 
-  authUser(user:userAuth){
-    return  this.http.post<responseI>(baseUrl,user)
     
   }
+  // authenticating users
+  authUser(user:userAuth){
+    return  this.http.post<AuthResponse>(baseUrl,user)    
+  }
+  // stores users phone number on successfull login
+  storeUserCredentials(phone_number:string, user_email:string){
+    window.localStorage.setItem('user_phone_number', phone_number);
+    window.localStorage.setItem('user_email_address', user_email);
+  }
+  logOut(){
+    return window.localStorage.removeItem('user_phone_number')
+  }
+  getUserPhoneNumber(){
+    return window.localStorage.getItem('user_phone_number')
+  }
+  getUserEmailAddress(){
+    return window.localStorage.getItem('user_email_address')
+  }
+  // checks if user is authenticated
+  isAuthenticated():boolean {
+    if (this.getUserPhoneNumber() == null){
+      return false;
+    }
+    return true;
+  }
+  // gets all available cities
   getCitites(){   
     const cityParams = {
       username: username,
@@ -111,8 +138,15 @@ export class AuthenticationProvider {
       amount_charged: amount_charged,
       reference_number: reference_number
     }
+    const httpOptions = {
+      headers : new HttpHeaders({
+        'Content-Type':  'application/json',
+        'User-Agent':'ionic'
+
+      })
+    }
     console.log(body)      
-    return this.http.post<ReservationRes>(baseUrl,body)
+    return this.http.post<ReservationRes>(baseUrl,body,httpOptions)
   }
   reserveBookingPromise(bookingDetails:any){      
     return this.http.post(baseUrl,bookingDetails)    
@@ -165,5 +199,18 @@ return this.http.post<responseI>(baseUrl,body);
     });
     toast.present();
   }
+
+getAllCustomerTickets(phone_number:string){
+  let body = {
+    username:username,
+    api_key:api_key,
+    action:"SearchTicket",
+    identifier:phone_number
+  }
+  
+  return this.http.post<TicketResponse>(baseUrl,body)
+}
+
+
 
 }

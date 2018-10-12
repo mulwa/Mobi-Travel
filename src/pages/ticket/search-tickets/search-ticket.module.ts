@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { SearchCarPage } from './search-car';
 import { ComponentsModule } from '../../../components/components.module';
+import { SearchTicketPage } from './search-ticket';
 
 @NgModule({
   declarations: [
-    SearchCarPage,
+    SearchTicketPage,
   ],
   imports: [
-    IonicPageModule.forChild(SearchCarPage),
+    IonicPageModule.forChild(SearchTicketPage),
     ComponentsModule
   ],
 })

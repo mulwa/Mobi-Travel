@@ -1,14 +1,7 @@
 import { HomePage } from './../../home/home';
 import { userAuth } from './../../../models/UserAuth';
 import { AuthenticationProvider } from './../../../providers/authentication/authentication';
-/**
- * @author    ThemesBuckets <themebucketbd@gmail.com>
- * @copyright Copyright (c) 2018
- * @license   Fulcrumy
- * 
- * This File Represent Sign In Component
- * File path - '../../../src/pages/authentication/sign-in/sign-in'
- */
+
 
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, ToastController,App } from 'ionic-angular';
@@ -76,7 +69,7 @@ export class SignInPage {
    * ** You can call any backend API into this function. **
    */
   doLogin() {   
-    this.navCtrl.setRoot('HomePage');   
+    // this.navCtrl.setRoot('HomePage');   
     console.log(this.signInForm.value)    
     let loader = this.loadingCtrl.create({
       content: "Checking Credentials"      
@@ -87,8 +80,9 @@ export class SignInPage {
         loader.dismiss();
         let response =  result.response_code;
         const msg = result.response_message;
-        if(response == 1){
-          this.showToast(msg);          
+        if(response == 0){
+          this.showToast(msg); 
+          this.authProvider.storeUserCredentials(result.phone_number,result.email_address)         
           this.navCtrl.setRoot(HomePage);
           
         }else{

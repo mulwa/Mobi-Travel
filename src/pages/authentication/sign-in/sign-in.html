@@ -8,10 +8,9 @@
 
 <ion-content>
   <div class="container">
-
     <!-- Title of Page  -->
     <div class="top-content" text-center>
-      <div class="animated fadeInDown title">SIGN IN</div>
+      <!-- <div class="animated fadeInDown title">SIGN IN</div> -->
     </div>
 
     <!-- Sign In Form  -->
@@ -22,7 +21,7 @@
           <!-- Email Address -->
           <ion-item>
             <ion-label>
-              <ion-icon name="md-mail" color="color2"></ion-icon>
+              <ion-icon name="person" color="color4"></ion-icon>
             </ion-label>
             <ion-input type="text" placeholder="Your Mobile No" name="email" formControlName="clerk_username" [(ngModel)]="signInForm.clerk_username"
               [class.invalid]="!signInForm.controls.clerk_username.valid && signInForm.controls.clerk_username.dirty"></ion-input>
@@ -36,7 +35,7 @@
           <!-- Password -->
           <ion-item>
             <ion-label>
-              <ion-icon name="md-eye" color="color2"></ion-icon>
+              <ion-icon name="md-eye" color="color4"></ion-icon>
             </ion-label>
             <ion-input type="password" placeholder="Your Password"  formControlName="clerk_password" [(ngModel)]="signInForm.clerk_password"
               [class.invalid]="!signInForm.controls.clerk_password.valid && signInForm.controls.clerk_password.dirty"></ion-input>
@@ -49,7 +48,7 @@
 
           <!-- Forget Password Button  -->
           <ion-item no-lines text-right>
-            <button ion-button clear color="color3" (tap)="goToForgetPasswordPage()">Forget Password?</button>
+            <button ion-button clear color="color4" (tap)="goToForgetPasswordPage()">Forget Password?</button>
           </ion-item>
         </ion-list>
 
@@ -63,25 +62,7 @@
           <button ion-button clear type="button" color="color3" (tap)="goToSignUpPage()">
               Dont have an account? Sign Up
           </button>
-        </ion-row>
-
-        <p text-center>Or Sign Up Using</p>
-
-        <!-- Social Buttons  -->
-        <ion-row justify-content-center align-items-center>
-          <!-- Facebook  -->
-          <button ion-fab mini class="facebook">
-            <span class="fa fa-facebook " aria-hidden="true"></span>
-          </button>
-          <!-- Google  -->
-          <button ion-fab mini class="google">
-            <span class="fa fa-google " aria-hidden="true"></span>
-          </button>
-          <!-- Twitter  -->
-          <button ion-fab mini class="twitter">
-            <span class="fa fa-twitter " aria-hidden="true"></span>
-          </button>
-        </ion-row>
+        </ion-row>        
       </form>
     </div>
   </div>

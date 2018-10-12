@@ -1,0 +1,61 @@
+<!-- Header  -->
+<ion-header no-border>
+  <header-one title="My Tickets"></header-one>
+</ion-header>
+
+<!-- Content  -->
+<ion-content padding>  
+  <ion-card *ngFor="let ticket of mytickets" (tap)="LoadMoreDetails()">     
+      <ion-card-content>       
+          <ion-grid>
+              <ion-row>
+                <ion-col text-center><h2 class="title">{{ticket.name}}</h2></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col text-center>
+                  <h2 class="title"> {{ticket.vehicle_name}}</h2>
+                </ion-col>
+              </ion-row>
+              <ion-row justify-content-center align-items-center>                
+                <ion-col  text-center>{{ticket.travel_from}}</ion-col>
+                <ion-col  text-center>
+                    <ion-row justify-content-center align-items-center>
+                      <img src="assets/imgs/dot.png">
+                    </ion-row>                    
+                </ion-col>
+                <ion-col>{{ticket.travel_to}}</ion-col>
+              </ion-row>
+
+              <ion-row justify-content-center align-items-center>
+                <ion-col text-center>                  
+                  <ion-badge  color="color4"> payment status: {{ticket.status}}</ion-badge>                  
+                </ion-col>
+                <ion-col text-center> <p>Ksh: {{ticket.amount}}</p> </ion-col>                
+              </ion-row>
+              <ion-row>
+                <ion-col text-center>
+                  <h4>Traveling Date: {{ticket.travel_date}}</h4> 
+                </ion-col>
+              </ion-row>
+          </ion-grid>
+          <ion-item>           
+              <ion-badge color="color1">
+                  Ticket Ref No: {{ticket.reference_number}}
+              </ion-badge>              
+            </ion-item>            
+      </ion-card-content>
+      
+  </ion-card>
+  <ion-card  color="color4" *ngIf="noofTicketsFound == 0" >
+      <ion-grid>
+        <ion-row>
+          <ion-col>                        
+            <p>You haven't Booked Ticket Yet</p>            
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+     </ion-card>
+ 
+</ion-content>
+
+

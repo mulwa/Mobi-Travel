@@ -1,17 +1,10 @@
-/**
- * @author    ThemesBuckets <themebucketbd@gmail.com>
- * @copyright Copyright (c) 2018
- * @license   Fulcrumy
- * 
- * File path - '../../src/app/app.component'
- */
-
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateService } from '@ngx-translate/core';
 import { DataProvider } from '../providers/data/data';
+import { AuthenticationProvider } from '../providers/authentication/authentication';
 
 @Component({
   templateUrl: 'app.html'
@@ -28,11 +21,13 @@ export class MyApp {
 
   // Selected Side Menu
   selectedMenu: any;
+  login_status:boolean;
 
   constructor(public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     public menuCtrl: MenuController,
+    public authProvider:AuthenticationProvider,
     public translateService: TranslateService,
     public dataProvider: DataProvider) {
     this.initializeApp();
@@ -42,6 +37,8 @@ export class MyApp {
 
     // Get List of Side Menu Data
     this.getSideMenuData();
+
+    this.login_status = this.authProvider.isAuthenticated();
   }
 
   initializeApp() {
@@ -83,6 +80,12 @@ export class MyApp {
 
   // Logout
   logout() {
-    this.nav.setRoot('LandingPage');
+    this.authProvider.logOut();
+    setTimeout(()=>{
+      this.nav.setRoot('HomePage')      
+    },1500)
+  }
+  login(){
+    this.nav.setRoot('SignInPage')
   }
 }
