@@ -26,7 +26,7 @@ export class SearchTicketPage  {
     public navParams: NavParams,
     public loadingCtrl:LoadingController,    
     public authProvider:AuthenticationProvider,
-    public modalCtrl: ModalController) {
+    public modalCtrl:ModalController) {
 
   }
   ionViewCanEnter(){    
@@ -66,6 +66,7 @@ export class SearchTicketPage  {
     // this.navCtrl.setRoot('CarTabsPage')
     console.log('load ticket details clicked')
     this.modalCtrl.create('TicketDetailsPage')
+    // this.navCtrl.setRoot('TicketDetailsPage')
   }  
   
 }
