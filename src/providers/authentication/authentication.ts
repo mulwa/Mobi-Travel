@@ -31,18 +31,63 @@ export class AuthenticationProvider {
     return  this.http.post<AuthResponse>(baseUrl,user)    
   }
   // stores users phone number on successfull login
-  storeUserCredentials(phone_number:string, user_email:string){
+  storeUserCredentials(phone_number:string, user_email:string,
+    first_name:string, last_name:string, id_number:string,postal_address:string,
+    postal_code:string, city:string, country:string, username:string){
     window.localStorage.setItem('user_phone_number', phone_number);
     window.localStorage.setItem('user_email_address', user_email);
+    window.localStorage.setItem('first_name', first_name)
+    window.localStorage.setItem('last_name',last_name)
+    window.localStorage.setItem('id_number', id_number)
+    window.localStorage.setItem('postal_address', postal_address)
+    window.localStorage.setItem('postal_code', postal_code)
+    window.localStorage.setItem('city', city)
+    window.localStorage.setItem('country',country)
+    window.localStorage.setItem('username',username)
   }
-  logOut(){
-    return window.localStorage.removeItem('user_phone_number')
+  getFirstName(){
+    return window.localStorage.getItem('first_name')
   }
+  getLastName(){
+    return window.localStorage.getItem('last_name')
+  }
+  getIdNumber(){
+    return window.localStorage.getItem('id_number')
+  }
+  getPostalAddress(){
+    return window.localStorage.getItem('postal_address')
+  }
+  getPostalCode(){
+    return window.localStorage.getItem('postal_code')
+  }
+  getCity(){
+    return window.localStorage.getItem('city')
+  }
+  getCountry(){
+    return window.localStorage.getItem('country')
+  }
+  getUsername(){
+    return window.localStorage.getItem('username')
+  }
+ 
   getUserPhoneNumber(){
     return window.localStorage.getItem('user_phone_number')
   }
   getUserEmailAddress(){
     return window.localStorage.getItem('user_email_address')
+  }
+  logOut(){
+    window.localStorage.removeItem('user_phone_number')
+    window.localStorage.removeItem('user_phone_number');
+    window.localStorage.removeItem('user_email_address');
+    window.localStorage.removeItem('first_name')
+    window.localStorage.removeItem('last_name')
+    window.localStorage.removeItem('id_number')
+    window.localStorage.removeItem('postal_address')
+    window.localStorage.removeItem('postal_code')
+    window.localStorage.removeItem('city')
+    window.localStorage.removeItem('country')
+    window.localStorage.removeItem('username')
   }
   // checks if user is authenticated
   isAuthenticated():boolean {

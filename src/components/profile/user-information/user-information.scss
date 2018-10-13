@@ -1,19 +1,15 @@
 user-information {
     .container {
         text-align: center;
-        .contents {
-            display: inline-block;
-            text-align: center;
-            width: 80%;
-            form {
-                ion-list {
-                    .item {
-                        padding-left: 0;
-                        margin-bottom: 10px;
-                        .text-input {
-                            padding: 5px;
-                        }
-                    }
+        ion-list {
+            ion-item {
+                h2 {
+                    font-size: 18px;
+                    margin-bottom: 5px;
+                }
+                p {
+                 line-break: 1.5pt;
+                    
                 }
             }
         }

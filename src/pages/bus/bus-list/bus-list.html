@@ -11,18 +11,18 @@
         <!-- Bus Infos  -->
         <ion-item [@cardClick]="cardClickState">
           <!-- Bus Icon  -->
-          <ion-thumbnail  item-start>
+          <!-- <ion-thumbnail  item-start>
             <span *ngIf="bus.total_seats <= 12">
                 <img src="assets/imgs/shuttle.png" >
             </span>
             <span *ngIf="bus.total_seats > 12">
                 <img src="assets/imgs/bus.png" >
             </span>                         
-          </ion-thumbnail >
-          <!-- <ion-avatar item-start>
+          </ion-thumbnail > -->
+          <ion-avatar item-start>
               <span><i class="fas fa-shuttle-van fa-3x" style="color:#e38d25" *ngIf="bus.total_seats <= 12"></i></span>
               <span><i class="fas fa-bus fa-3x" style="color:#e38d25" *ngIf="bus.total_seats > 12"></i></span> 
-          </ion-avatar> -->
+          </ion-avatar>
     
           <!-- Name of bus  -->
           <h2 text-wrap>{{bus.route}}</h2>    

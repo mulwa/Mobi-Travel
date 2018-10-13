@@ -51,8 +51,7 @@ export class RecommendDestinationComponent {
           this.authProvider.showToast(tickets.response_message)
         }
         console.log(tickets)
-      }) 
-      
+      })      
     })     
   }
 

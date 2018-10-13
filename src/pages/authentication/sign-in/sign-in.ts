@@ -82,7 +82,8 @@ export class SignInPage {
         const msg = result.response_message;
         if(response == 0){
           this.showToast(msg); 
-          this.authProvider.storeUserCredentials(result.phone_number,result.email_address)         
+          this.authProvider.storeUserCredentials(result.phone_number,result.email_address,result.first_name,result.last_name,
+             result.id_number,result.postal_address,result.postal_code, result.city, result.country, result.username)         
           this.navCtrl.setRoot(HomePage);
           
         }else{
