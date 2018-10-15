@@ -1,3 +1,70 @@
 page-ticket-details {
+    .header{
+        background-color:#e38d25;
+
+        h4{
+            color: #ffffff;
+            text-align: center;
+            padding: 5px;
+        }
+    }
+    ion-grid{
+        // border:1px solid black;        
+        ion-col{            
+            text-align: center;
+            margin: 0px !important;
+            padding: 0px !important;
+            // border:1px solid black;
+            .logo{
+                width: 60%;
+                margin: auto;
+                margin-bottom: 5px;
+            }
+            .right-content{
+                align-items: flex-end;
+                text-align: right;
+            }
+            .heading{           
+                font-size: 16px;
+                font-weight: 600;
+                margin: 0px !important;
+                padding: 0px !important;
+                color: rgb(122, 108, 108);
+                
+            }
+            .heading-two {                
+                text-align: center;
+                font-size: 18px;
+                line-height: 1.5em;
+                margin: 0px !important;
+                padding: 0px !important;
+                font-weight: 800;
+                
+            }
+            .heading-three{
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 1.5em;
+                margin: 0px !important;
+                padding: 0px !important;
+            }
+            .head{
+                font-size: 16px;
+                font-weight: 700;
+                margin: 0px !important;
+                padding: 0px !important;
+            }
+            .sub-head{
+                font-size: 16px;
+                color: #e38d25;
+                text-align: center;
+            }
+            
+        }
+        // ion-col
+        ion-row {
+            margin: 1px !important;
+        }
+    }
 
 }

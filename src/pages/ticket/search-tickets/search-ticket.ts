@@ -20,8 +20,7 @@ import { Ticket } from '../../../models/ticketRes';
 export class SearchTicketPage  {
   public phone_number:string
   mytickets:Ticket[];
-  noofTicketsFound:number;
- 
+  noofTicketsFound:number; 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public loadingCtrl:LoadingController,    
@@ -62,11 +61,11 @@ export class SearchTicketPage  {
       
     })     
   }
-  LoadMoreDetails(){
-    // this.navCtrl.setRoot('CarTabsPage')
+  LoadMoreDetails(ticket:Ticket){    
     console.log('load ticket details clicked')
-    this.modalCtrl.create('TicketDetailsPage')
-    // this.navCtrl.setRoot('TicketDetailsPage')
+   this.modalCtrl.create('TicketDetailsPage',{data:ticket}).present()
+  
+   
   }  
   
 }
