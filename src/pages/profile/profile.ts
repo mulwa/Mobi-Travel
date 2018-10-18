@@ -1,3 +1,4 @@
+import { AuthenticationProvider } from './../../providers/authentication/authentication';
 /**
  * @author    ThemesBuckets <themebucketbd@gmail.com>
  * @copyright Copyright (c) 2018
@@ -21,6 +22,20 @@ export class ProfilePage {
   options: any = 'User Info';
 
   constructor(public navCtrl: NavController,
+    public authProv:AuthenticationProvider,
     public navParams: NavParams) {
   }
+  ionViewCanEnter(){
+    if(this.authProv.isAuthenticated() == true){
+      console.log("User Is Authenticated")      
+    }else{
+      console.log("user is not authenticated")
+      this.authProv.showToast('Please Login first')
+      
+      this.navCtrl.setRoot('SignInPage')
+     
+    }
+
+  }
+  
 }

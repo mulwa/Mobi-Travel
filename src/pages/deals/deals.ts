@@ -9,7 +9,7 @@
 
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { DataProvider } from '../../providers/data/data';
+
 
 @IonicPage()
 @Component({
@@ -18,24 +18,12 @@ import { DataProvider } from '../../providers/data/data';
 })
 export class DealsPage {
 
-  // Array list of Deals
-  deals: any = [];
+  
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    public dataProvider: DataProvider) {
-    this.getDeals();
+  constructor(public navCtrl: NavController) {
+    
   }
 
-  /**
-   * -----------------------------------------------------------
-   * Get List of Deals
-   * -----------------------------------------------------------
-   * From Data Provider Service Call `getDeals` method that Give You List of Deals
-   * 
-   * You get `DataProvider` Service at - 'src/providers/data/data';
-   */
-  getDeals() {
-    this.deals = this.dataProvider.getDeals();
-  }
+ 
+  
 }

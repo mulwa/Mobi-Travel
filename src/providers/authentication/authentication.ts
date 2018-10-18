@@ -89,6 +89,15 @@ export class AuthenticationProvider {
     window.localStorage.removeItem('country')
     window.localStorage.removeItem('username')
   }
+  disableSlide(){
+    return window.localStorage.setItem('showSlide', 'true');    
+  }
+  showSlide():boolean {
+    if(window.localStorage.getItem('showSlide') == null){
+      return true;
+    }
+    return false;
+  }
   // checks if user is authenticated
   isAuthenticated():boolean {
     if (this.getUserPhoneNumber() == null){
@@ -268,6 +277,8 @@ getAllCustomerTickets(phone_number:string){
   
   return this.http.post<TicketResponse>(baseUrl,body)
 }
+
+
 
 
 

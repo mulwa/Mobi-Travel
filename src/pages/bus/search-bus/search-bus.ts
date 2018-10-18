@@ -93,14 +93,6 @@ export class SearchBusPage implements OnInit {
     modal.present();
   }
 
-
-  /**
-   * -------------------------------------------------------------
-   * Open Calendar and Pick Dates
-   * -------------------------------------------------------------
-   */
- 
-
   /**
    * -------------------------------------------------------------
    * Find Bus
@@ -114,9 +106,29 @@ export class SearchBusPage implements OnInit {
       to_name: this.to_name,
       from_name:this.from_name
     }
-    console.log(this.from_id + 'destination id'+ this.to_id + 'date'+this.travel_date)    
-    const modal = this.modalCtrl.create('BusListPage', {travelDetails:travelDetails});
-    modal.present();
+    if(this.validateInputs()){
+      console.log(this.from_id + 'destination id'+ this.to_id + 'date'+this.travel_date)    
+      const modal = this.modalCtrl.create('BusListPage', {travelDetails:travelDetails});
+      modal.present();
+    }
+  }
+  validateInputs():boolean{
+    if(this.from_id == null){
+      this.authProvider.showToast(' Select  Pick Up Location')
+      return false;
+    }
+    if(this.to_id == null){
+      this.authProvider.showToast('Select Drop Off Location')
+      return false;
+    }
+    if(this.to_id == this.from_id){
+      this.authProvider.showToast('Pick Up location and Drop Off location Cannot be the same');
+      return false;
+    }
+    if(this.travel_date == null){
+      this.authProvider.showToast('Select Traveling Date')
+    }
+    return true;
   }
 
 }

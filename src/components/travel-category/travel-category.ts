@@ -84,8 +84,29 @@ export class TravelCategoryComponent {
       to_name: this.to_name,
       from_name:this.from_name
     }
-    console.log(this.from_id + 'destination id'+ this.to_id + 'date'+this.travel_date)    
-    const modal = this.modalCtrl.create('BusListPage', {travelDetails:travelDetails});
-    modal.present();
+    if(this.validateInput()){
+      console.log(this.from_id + 'destination id'+ this.to_id + 'date'+this.travel_date)    
+      const modal = this.modalCtrl.create('BusListPage', {travelDetails:travelDetails});
+      modal.present();
+    }
+    
+  }
+  validateInput():boolean{
+    if(this.travel_date == null){
+      this.authProvider.showToast("Select Traveling Date")
+      return false;
+    }
+    if(this.to_id == null){
+      this.authProvider.showToast('Please Select Your Destination')
+      return false;
+    }
+    if(this.to_id == this.from_id){
+      this.authProvider.showToast("Pick Up location cannot be the same as Drop off location")
+    }
+    if(this.from_id == null){
+      this.authProvider.showToast("Please Select Pick Location")
+      return false;
+    }
+    return true;
   }
 }

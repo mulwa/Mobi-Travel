@@ -1,6 +1,6 @@
 travel-category {    
     ion-grid {
-        background-color: black !important;
+        background-color: #e6e6ff !important;
         text-align: center;
         padding: 30px 0px !important;
         ion-row {
@@ -11,6 +11,8 @@ travel-category {
             p {
                 font-size: 1.2rem !important;
                 color: color($colors, color3);
+            }
+            ion-col {                
             }
         }
     }

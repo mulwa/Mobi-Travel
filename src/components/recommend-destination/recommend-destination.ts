@@ -15,8 +15,9 @@ export class RecommendDestinationComponent {
   // List of Recommend Destination
   recommendDestination: any = [];
   public phone_number:string
-  mytickets:Ticket[];
+  mytickets:Ticket[] = [];
   noofTicketsFound:number;
+  showLoading:boolean = true;
 
   constructor(public dataProvider: DataProvider,
      public authProvider:AuthenticationProvider,
@@ -37,13 +38,9 @@ export class RecommendDestinationComponent {
   getRecommendDestination() {
     this.recommendDestination = this.dataProvider.getRecommendDestination();
   }
-  getAllTickets(){
-    let loader = this.loadingCtrl.create({
-      content:'Please Wait ... Searching For Tickets'
-    });
-    loader.present().then(()=>{
+  getAllTickets(){    
       this.authProvider.getAllCustomerTickets('0707200314').subscribe(tickets =>{
-        loader.dismissAll();
+        this.showLoading = false;        
         if(tickets.response_code == 0){
           this.mytickets = tickets.tickets;
           this.noofTicketsFound = this.mytickets.length;
@@ -52,7 +49,7 @@ export class RecommendDestinationComponent {
         }
         console.log(tickets)
       })      
-    })     
+        
   }
 
   LoadMoreDetails(){

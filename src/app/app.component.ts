@@ -1,5 +1,6 @@
+import { NetworkProvider } from './../providers/network/network';
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, MenuController } from 'ionic-angular';
+import { Nav, Platform, MenuController, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,7 +15,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // Root Page of Application
-  rootPage: any = 'LandingPage';
+  rootPage: any ;
 
   // Side Menu Pages
   pages: any;
@@ -29,11 +30,21 @@ export class MyApp {
     public menuCtrl: MenuController,
     public authProvider:AuthenticationProvider,
     public translateService: TranslateService,
+    public networkProvider:NetworkProvider,
+    public event:Events,
     public dataProvider: DataProvider) {
     this.initializeApp();
 
     // Set Default Language
-    translateService.setDefaultLang('en');
+    // translateService.setDefaultLang('en');
+    if(authProvider.showSlide()){
+      this.rootPage =  'LandingPage' 
+      this.authProvider.disableSlide() 
+      console.log('showing slide'+this.authProvider.showSlide())    
+    }else{
+      this.rootPage = 'HomePage'
+      console.log('not showing Slide'+this.authProvider.showSlide())
+    }
 
     // Get List of Side Menu Data
     this.getSideMenuData();
@@ -47,6 +58,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      
     });
   }
 
@@ -83,7 +95,7 @@ export class MyApp {
     this.authProvider.logOut();
     setTimeout(()=>{
       this.nav.setRoot('HomePage')      
-    },1500)
+    },1000)
   }
   login(){
     this.nav.setRoot('SignInPage')

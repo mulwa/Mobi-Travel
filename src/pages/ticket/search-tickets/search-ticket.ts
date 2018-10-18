@@ -34,13 +34,11 @@ export class SearchTicketPage  {
       this.phone_number = this.authProvider.getUserPhoneNumber();
       this.getAllTickets();
     }else{
-      console.log("User is not authenticated")
-      this.authProvider.showToast("Please Log in First")
-      setTimeout(() =>{
-        this.navCtrl.setRoot('SignInPage')
-      },2000)
+      console.log("User is not authenticated")     
+      this.navCtrl.setRoot('SignInPage')
       
-    }
+      
+    } 
   }
 
   getAllTickets(){

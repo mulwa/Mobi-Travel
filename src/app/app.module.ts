@@ -1,3 +1,4 @@
+import { Network } from '@ionic-native/network';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -16,6 +17,7 @@ import { SuperTabsModule } from 'ionic2-super-tabs';
 import { CalendarModule } from "ion2-calendar";
 import { AuthenticationProvider } from '../providers/authentication/authentication';
 import { BusProvider } from '../providers/bus/bus';
+import { NetworkProvider } from '../providers/network/network';
 
 // By default TranslateLoader will look for translation json files in i18n/
 // So change this lool in the src/assets directory.
@@ -58,7 +60,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClient,
     DataProvider,
     AuthenticationProvider,
-    BusProvider
+    BusProvider,
+    Network,
+    NetworkProvider
   ]
 })
 export class AppModule { }

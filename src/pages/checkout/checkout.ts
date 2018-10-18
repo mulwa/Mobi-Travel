@@ -67,6 +67,7 @@ export class CheckoutPage implements  OnInit {
 
 
     console.log('selected seats'+ this.selected_seat);
+    
 
     this.getTicket();
     
@@ -105,6 +106,19 @@ export class CheckoutPage implements  OnInit {
       amount_charged:'',
       
     });
+  }
+  get passenger_name(){
+    return this.checkOutForm.get('passangers').get('passenger_name') as FormControl
+
+  }
+  get phone_number(){
+    return this.checkOutForm.get('passangers').get('phone_numbers') as FormControl
+  }
+  get id_number(){
+    return this.checkOutForm.get('passenger').get('id_number') as FormControl
+  }
+  get email_address(){
+    return this.checkOutForm.get('passenger').get('email_address') as FormControl
   }
   getReferenceNumber(){
   this.authProvider.generateReferenceNumber().subscribe(data =>{    

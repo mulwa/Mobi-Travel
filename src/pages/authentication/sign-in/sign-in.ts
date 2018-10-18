@@ -84,7 +84,7 @@ export class SignInPage {
           this.showToast(msg); 
           this.authProvider.storeUserCredentials(result.phone_number,result.email_address,result.first_name,result.last_name,
              result.id_number,result.postal_address,result.postal_code, result.city, result.country, result.username)         
-          this.navCtrl.setRoot(HomePage);
+          this.navCtrl.setRoot('HomePage');
           
         }else{
           this.showToast(msg);
