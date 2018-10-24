@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate} from '@angular/animations';
 import { IonicPage, NavController, NavParams, ViewController, LoadingController, ModalController } from 'ionic-angular';
+import { NetworkProvider } from '../../providers/network/network';
 
 
 @IonicPage()
@@ -35,6 +36,7 @@ export class WalletCheckoutPage {
               public loadingCtrl: LoadingController,
               public frmBuilder: FormBuilder,
               public modalCtrl: ModalController,
+              public networkProvider:NetworkProvider,
               public viewCtrl: ViewController,) {
       this.initializeForm();
 
@@ -48,6 +50,15 @@ export class WalletCheckoutPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WalletCheckoutPage');
+  }
+  ionViewDidEnter(){
+    this.networkProvider.checkOnDisconnectionStatus()
+    this.networkProvider.checkOnConnectionStatus()
+
+  }
+  ionViewWillLeave(){
+    this.networkProvider.unSubscribeNetwork()
+
   }
   initializeForm(){
     this.walletForm = this.frmBuilder.group({

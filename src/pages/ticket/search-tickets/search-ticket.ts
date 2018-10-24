@@ -1,3 +1,4 @@
+import { NetworkProvider } from './../../../providers/network/network';
 import { AuthenticationProvider } from './../../../providers/authentication/authentication';
 /**
 * @author    ThemesBuckets <themebucketbd@gmail.com>
@@ -25,6 +26,7 @@ export class SearchTicketPage  {
     public navParams: NavParams,
     public loadingCtrl:LoadingController,    
     public authProvider:AuthenticationProvider,
+    private networkProvider:NetworkProvider,
     public modalCtrl:ModalController) {
 
   }
@@ -35,10 +37,16 @@ export class SearchTicketPage  {
       this.getAllTickets();
     }else{
       console.log("User is not authenticated")     
-      this.navCtrl.setRoot('SignInPage')
-      
+      this.navCtrl.setRoot('SignInPage')  
       
     } 
+  }
+  ionViewDidEnter(){
+    this.networkProvider.checkOnConnectionStatus()
+    this.networkProvider.checkOnDisconnectionStatus()
+  }
+  ionViewWillLeave(){
+    this.networkProvider.unSubscribeNetwork()
   }
 
   getAllTickets(){

@@ -1,3 +1,4 @@
+import { NetworkProvider } from './../../../providers/network/network';
 import { Price } from './../../../models/price';
 import { BusProvider } from './../../../providers/bus/bus';
 import { Bus } from './../../../models/bus';
@@ -64,10 +65,6 @@ export class BusListPage {
   from_name:string;
 
   public noofVehiclesFound:number;
-
-  
-
-
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
@@ -76,6 +73,7 @@ export class BusListPage {
     private busProvider:BusProvider,
     private loadingCtrl:LoadingController,
     public modalCtrl: ModalController,
+    public networkProvider:NetworkProvider,
     public dataProvider: DataProvider) {
 
       this.traveldetails = navParams.get('travelDetails');
@@ -87,6 +85,13 @@ export class BusListPage {
       this.from_name = this.traveldetails.from_name;    
 
     this.getAllBuses();
+  }
+  ionViewDidEnter(){
+    this.networkProvider.checkOnConnectionStatus()
+    this.networkProvider.checkOnDisconnectionStatus()
+  }
+  ionViewWillLeave(){
+    this.networkProvider.unSubscribeNetwork()
   }  
  
   getAllBuses(){
@@ -108,8 +113,7 @@ export class BusListPage {
               this.departure_array = this.buses[0].departure_time.split(",");
               this.arrival_array = this.buses[0].arrival_time.split(",");
               console.log(this.departure_array);
-            }else{
-              
+            }else{              
               this.showToast(`There are No Available Vehicles For the Selected Route`)
             }        
               

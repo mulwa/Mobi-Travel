@@ -1,3 +1,4 @@
+import { NetworkProvider } from './../../providers/network/network';
 import { trigger,state,style, transition, animate } from '@angular/animations';
 import { AuthenticationProvider } from './../../providers/authentication/authentication';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -37,6 +38,7 @@ export class JambopayCheckoutPage {
               public frmBuilder:FormBuilder,
               public modalCtrl:ModalController,
               public viewCtrl: ViewController,
+              public networkProvider:NetworkProvider,
               public appCtrl: App) {
 
     this.inializeForm();
@@ -52,6 +54,13 @@ export class JambopayCheckoutPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad JambopayCheckoutPage');
+  }
+  ionViewDidEnter(){
+    this.networkProvider.checkOnConnectionStatus()
+    this.networkProvider.checkOnDisconnectionStatus()
+  }
+  ionViewWillLeave(){
+    this.networkProvider.unSubscribeNetwork()
   }
   inializeForm(){
     this.jamboPayFrm = this.frmBuilder.group({

@@ -1,0 +1,26 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+    <ion-buttons right>
+      <!-- Modal Close Button  -->
+      <button ion-button color="white" (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content fullscreen class="animated fadeIn">
+    <p class="title">Connection Error</p>
+    <div class="contents">
+      <p class="sub-title">
+        <img src="assets/imgs/noconnection.png" >
+      </p>
+      <p>Can't connect to server Make sure you have intenet connection</p>
+    </div>
+
+</ion-content>
+<!-- Footer  -->
+<ion-footer>
+  <button ion-button clear type="button" color="white" (click)="dismiss()">
+      close
+  </button>
+</ion-footer>

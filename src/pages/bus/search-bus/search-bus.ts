@@ -1,3 +1,4 @@
+import { NetworkProvider } from './../../../providers/network/network';
 import { Dates } from './../../../models/date';
 import { AuthenticationProvider } from './../../../providers/authentication/authentication';
 
@@ -23,7 +24,8 @@ export class SearchBusPage implements OnInit {
   travel_dates:Dates[];
 
   constructor(public navCtrl: NavController,
-    public navParams: NavParams, 
+    public navParams: NavParams,
+    public networkProvider:NetworkProvider, 
     private authProvider: AuthenticationProvider,   
     public modalCtrl: ModalController) {
     this.searchObjects.tripType = 'oneWay'; // Default Trip Type
@@ -34,6 +36,15 @@ export class SearchBusPage implements OnInit {
   initForm(){
 
   }
+  ionViewDidEnter(){
+    this.networkProvider.checkOnConnectionStatus();
+    this.networkProvider.checkOnDisconnectionStatus();    
+  }
+  ionViewWillLeave(){
+    this.networkProvider.unSubscribeNetwork() 
+  }
+
+  
 
   getTravelDates(){
     this.authProvider.getTravelDates().subscribe(data=>{

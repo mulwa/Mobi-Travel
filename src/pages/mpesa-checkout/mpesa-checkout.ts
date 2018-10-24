@@ -1,3 +1,4 @@
+import { NetworkProvider } from './../../providers/network/network';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, LoadingController, ViewController } from 'ionic-angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -22,6 +23,7 @@ export class MpesaCheckoutPage {
               public viewCtrl:ViewController,
               public authProvider: AuthenticationProvider,
               public loadingCtrl:LoadingController,
+              private networkProvider:NetworkProvider,
               public modalCtrl:ModalController,) {            
     
     // initialize form
@@ -35,6 +37,14 @@ export class MpesaCheckoutPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MpesaCheckoutPage');
+  }
+  ionViewDidEnter(){
+    this.networkProvider.checkOnConnectionStatus()
+    this.networkProvider.checkOnDisconnectionStatus()
+
+  }
+  ionViewWillLeave(){
+    this.networkProvider.unSubscribeNetwork()
   }
 
   initializeForm(){

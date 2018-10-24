@@ -1,3 +1,4 @@
+import { NetworkProvider } from './../../providers/network/network';
 import { AuthenticationProvider } from './../../providers/authentication/authentication';
 import { Component } from '@angular/core';
 import {Network} from '@ionic-native/network';
@@ -15,49 +16,29 @@ export class HomePage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public network:Network,
+    public networkProvider:NetworkProvider,
     public authProvider:AuthenticationProvider,
     public menuCtrl: MenuController) {
     this.menuCtrl.enable(true); // Enable SideMenu
   }
   ionViewDidLoad() {
     if(this.authProvider.isAuthenticated() != true){
-      this.loadingSearchPage()
-      this.checkOnConnectionStatus();
-      this.checkOnDisconnectionStatus();
+      this.loadingSearchPage()      
     }
   }
   ionViewDidEnter(){
-    this.checkOnConnectionStatus();
-    this.checkOnDisconnectionStatus();
+    this.networkProvider.checkOnConnectionStatus();
+    this.networkProvider.checkOnDisconnectionStatus();    
   }
   ionViewWillLeave(){
-    this.connectSubscription.unsubscribe()
-    this.disconnectSubscription.unsubscribe()
-
+    this.networkProvider.unSubscribeNetwork() 
   }
 
   /**
    * Open Search Page
    */
-  checkOnDisconnectionStatus(){    
-    this.disconnectSubscription = this.network.onDisconnect().subscribe((data) =>{
-      console.log('You have no internet connection'+data)
-      this.authProvider.showToast('You Are Now Offline')
-    }, error =>{
-      console.log('an Error has occured on OnDisconnect Method'+error)
-    })
-
-  }
-  checkOnConnectionStatus(){
-    this.connectSubscription = this.network.onConnect().subscribe((data)=>{
-      console.log(data)
-      // console.log('You have Intenet connection: '+this.network.type)
-      this.authProvider.showToast('You are No Online'+data.type)
-    }, error =>{
-      console.log('an error has occured on Onconnect Method')
-    })
-
-  }
+  
+  
   goToSearchPage() {
     this.navCtrl.setRoot('SearchPage');
   }

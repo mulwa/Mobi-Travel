@@ -11,9 +11,7 @@ import { Reservation } from '../../models/reservationI';
 import { Observable } from 'rxjs/Observable';
 // import { forkJoin, of, interval } from 'rxjs';
 import 'rxjs/add/observable/forkJoin';
-
-
-
+import { NetworkProvider } from '../../providers/network/network';
 
 @IonicPage()
 @Component({
@@ -41,7 +39,6 @@ export class CheckoutPage implements  OnInit {
   
   ticket_type:any;
 
-
   responseCollection:Observable<any>;   
 
   constructor(public navCtrl: NavController,
@@ -52,6 +49,7 @@ export class CheckoutPage implements  OnInit {
     private toastCtrl:ToastController,
     private alertCtrl:AlertController,
     private modalCtrl: ModalController,
+    private networkProvider:NetworkProvider,
     public viewCtrl: ViewController) {
     this.paymentTypes = 'card'; // Default Payment Type
 
@@ -83,6 +81,13 @@ export class CheckoutPage implements  OnInit {
       this.addPassanger(p_seat); 
    
     }     
+  }
+  ionViewDidEnter(){
+    this.networkProvider.checkOnConnectionStatus()
+    this.networkProvider.checkOnDisconnectionStatus()
+  }
+  ionViewWillLeave(){
+    this.networkProvider.unSubscribeNetwork()
   }
   initializeForm(){
     this.checkOutForm = this.frmbuilder.group({       
