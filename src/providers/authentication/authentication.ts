@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { TicketResponse } from './../../models/ticketRes';
 import { AuthResponse } from './../../models/AuthRes';
 import { ReferenceRes } from './../../models/ReferenceNumberRes';
@@ -14,11 +15,14 @@ import { locationResponse } from '../../models/locationResponse';
 import { travelDateResponse } from '../../models/travelDateResponse';
 import { Reservation } from '../../models/reservationI';
 import { mpesaResponse } from '../../models/mpesaRes';
+import { BehaviorSubject, Subject} from 'rxjs';
 
 
 
 @Injectable()
-export class AuthenticationProvider {   
+export class AuthenticationProvider {
+  isLoginSubject = new BehaviorSubject<boolean>(this.isAuthenticated()); 
+
   constructor(public http: HttpClient, public toastCtrl: ToastController) {
     console.log('Hello AuthenticationProvider Provider');
     console.log('user Phone Number'+ this.getUserPhoneNumber())
@@ -44,6 +48,8 @@ export class AuthenticationProvider {
     window.localStorage.setItem('city', city)
     window.localStorage.setItem('country',country)
     window.localStorage.setItem('username',username)
+    // setIsLogedIn subject to true
+    this.isLoginSubject.next(true)
   }
   getFirstName(){
     return window.localStorage.getItem('first_name')
@@ -76,7 +82,8 @@ export class AuthenticationProvider {
   getUserEmailAddress(){
     return window.localStorage.getItem('user_email_address')
   }
-  logOut(){
+
+  logOut():void{
     window.localStorage.removeItem('user_phone_number')
     window.localStorage.removeItem('user_phone_number');
     window.localStorage.removeItem('user_email_address');
@@ -88,6 +95,11 @@ export class AuthenticationProvider {
     window.localStorage.removeItem('city')
     window.localStorage.removeItem('country')
     window.localStorage.removeItem('username')
+
+    this.isLoginSubject.next(false)
+  }  
+  isLoggedIn() : Observable<boolean> {
+    return this.isLoginSubject.asObservable();
   }
   disableSlide(){
     return window.localStorage.setItem('showSlide', 'true');    
@@ -273,8 +285,7 @@ getAllCustomerTickets(phone_number:string){
     api_key:api_key,
     action:"SearchTicket",
     identifier:phone_number
-  }
-  
+  }  
   return this.http.post<TicketResponse>(baseUrl,body)
 }
 
