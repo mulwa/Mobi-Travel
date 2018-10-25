@@ -26,23 +26,36 @@
             </ion-row>
             <ion-row>
               <ion-col>
-                <p>{{slide.name}}</p>
+                <h2>{{slide.name}}</h2>
               </ion-col>              
             </ion-row>
             <ion-row justify-content-center align-items-center>                
-                <ion-col > <p>{{slide.travel_from}}</p> </ion-col>
+                <ion-col> 
+                  <p class="head">{{slide.travel_from}}</p>
+                 </ion-col>
                 <ion-col  text-center>
                     <ion-row justify-content-center align-items-center>
                       <img src="assets/imgs/dot.png">
                     </ion-row>                    
                 </ion-col>
-                <ion-col> <p>{{slide.travel_to}}</p> </ion-col>
+                <ion-col> 
+                  <p class="head">{{slide.travel_to}}</p> 
+                </ion-col>
             </ion-row>
             <ion-row>                
-                <ion-col text-center> <p>Ksh: {{slide.amount}}</p> </ion-col>                
+                <ion-col text-center> 
+                  <p class="head-two">Ksh {{slide.amount}}</p> 
+                </ion-col>                
             </ion-row>
             <ion-row>
-              <ion-col text-center> <p>Ticket Reference No: {{slide.reference_number}}</p> </ion-col>
+              <ion-col>
+                <p class="head">{{slide.reference_number}}</p>
+                <h4 class="head-two">Ref No</h4>
+              </ion-col>
+              <ion-col>
+                  <p class="head">{{slide.travel_date}}</p>
+                  <h4 class="head-two">Date</h4>
+                </ion-col>
             </ion-row>
           </ion-grid>           
     </div>      

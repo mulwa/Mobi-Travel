@@ -17,7 +17,7 @@ export class RecommendDestinationComponent {
   public phone_number:string
   mytickets:Ticket[] = [];
   noofTicketsFound:number;
-  bg_image:string = '/assets/imgs/background/img8.jpeg';
+  bg_image:string = 'assets/imgs/background/img8.jpeg';
   showLoading:boolean = true;
 
   constructor(public dataProvider: DataProvider,

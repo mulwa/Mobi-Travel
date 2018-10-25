@@ -34,7 +34,7 @@ export class SearchTicketPage  {
     if(this.authProvider.isAuthenticated() == true){
       console.log("User Is  Authenticated")
       this.phone_number = this.authProvider.getUserPhoneNumber();
-      this.getAllTickets();
+      this.getAllTickets(this.phone_number);
     }else{
       console.log("User is not authenticated")     
       this.navCtrl.setRoot('SignInPage')  
@@ -49,12 +49,12 @@ export class SearchTicketPage  {
     this.networkProvider.unSubscribeNetwork()
   }
 
-  getAllTickets(){
+  getAllTickets(phone_number){
     let loader = this.loadingCtrl.create({
       content:'Please Wait ... Searching For Tickets'
     });
     loader.present().then(()=>{
-      this.authProvider.getAllCustomerTickets('0707200314').subscribe(tickets =>{
+      this.authProvider.getAllCustomerTickets(phone_number).subscribe(tickets =>{
         loader.dismissAll();
         if(tickets.response_code == 0){
           this.mytickets = tickets.tickets;

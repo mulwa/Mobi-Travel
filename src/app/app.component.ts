@@ -98,9 +98,11 @@ export class MyApp {
   // Logout
   logout(){
     this.authProvider.logOut()
+    this.menuCtrl.close();
   }
   
-  login(){    
+  login(){
+    this.menuCtrl.close();    
     this.nav.setRoot('SignInPage')
     
   }
