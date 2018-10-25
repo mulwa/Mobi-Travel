@@ -15,7 +15,7 @@
       </p>
     </div>
   </ion-slide>
-  <ion-slide *ngFor="let slide of mytickets" [ngStyle]="{'background' : 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('+assets/imgs/background/img9 + ')'}" >
+  <ion-slide *ngFor="let slide of mytickets" [ngStyle]="{'background' : 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(' + bg_image + ')'}">
     <div class="contents">
       <ion-grid>
             <ion-row>
@@ -25,7 +25,9 @@
               </ion-col>
             </ion-row>
             <ion-row>
-              <ion-col><p>{{slide.name}}</p></ion-col>              
+              <ion-col>
+                <p>{{slide.name}}</p>
+              </ion-col>              
             </ion-row>
             <ion-row justify-content-center align-items-center>                
                 <ion-col > <p>{{slide.travel_from}}</p> </ion-col>

@@ -12,8 +12,11 @@ travel-category {
                 font-size: 1.2rem !important;
                 color: color($colors, color3);
             }
-            ion-col {                
+            ion-col {
+                .custom-btn{
+                    height: 100%;
+                }                
             }
         }
-    }
+    } 
 }

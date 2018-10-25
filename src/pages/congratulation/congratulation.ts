@@ -37,9 +37,11 @@ export class CongratulationPage {
    * --------------------------------------------------------------
    * @method    dismiss
    */
-  dismiss() {
-    this.viewCtrl.dismiss();
-    this.appCtrl.getRootNav().setRoot('HomePage');
+  goHome() {
+    // this.viewCtrl.dismiss();
+    this.navCtrl.setRoot('HomePage');
+    
   }
+  
 
 }

@@ -6,6 +6,26 @@ page-search-ticket {
                 ion-col {                    
                     // padding: 0px !important;
                     margin: 0px !important;
+                    .head{
+                        font-size: 16px;
+                        font-weight: 600;
+                        margin: 0px !important;
+                        padding: 0px !important;
+                    }
+                    .head-two{
+                        font-size: 14px;
+                        font-weight: 400;
+                        margin: 0px !important;
+                        padding: 0px !important;
+                    }
+                    .heading-three{
+                        font-size: 13px;
+                        font-weight: 500;
+                        line-height: 1.5em;
+                        color: #520621;
+                        margin: 0px !important;
+                        padding: 0px !important;
+                    }
                 }
             }
         }

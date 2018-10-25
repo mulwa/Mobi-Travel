@@ -4,7 +4,6 @@ import { Ticket } from '../../models/ticketRes';
 import { AuthenticationProvider } from '../../providers/authentication/authentication';
 
 
-
 @IonicPage()
 @Component({
   selector: 'page-ticket-details',
