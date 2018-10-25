@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { NetworkProvider } from './../providers/network/network';
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, MenuController, Events } from 'ionic-angular';
@@ -23,6 +24,7 @@ export class MyApp {
   // Selected Side Menu
   selectedMenu: any;
   login_status:boolean;
+  isLoggedIn : Observable<boolean>;
 
   constructor(public platform: Platform,
     public statusBar: StatusBar,
@@ -34,6 +36,8 @@ export class MyApp {
     public event:Events,
     public dataProvider: DataProvider) {
     this.initializeApp();
+
+    this.isLoggedIn = this.authProvider.isLoggedIn()
 
     // Set Default Language
     // translateService.setDefaultLang('en');
@@ -92,13 +96,12 @@ export class MyApp {
   }
 
   // Logout
-  logout() {
-    this.authProvider.logOut();
-    setTimeout(()=>{
-      this.nav.setRoot('HomePage')      
-    },1000)
+  logout(){
+    this.authProvider.logOut()
   }
-  login(){
+  
+  login(){    
     this.nav.setRoot('SignInPage')
+    
   }
 }
