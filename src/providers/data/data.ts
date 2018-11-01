@@ -22,26 +22,12 @@ export class DataProvider {
    */
   getSideMenus() {
     return [
-      {
-        title: 'Home', icon: 'home', component: 'HomePage'
-      },
-      {
-        title: 'Search', icon: 'search',
-        subPages: [{
-          title: 'Train',
-          icon: 'fa fa-train',
-          component: 'SearchBusPage',
-        }, {
-          title: 'Bus',
-          icon: 'fa fa-bus',
-          component: 'SearchBusPage',
-        }]
-      },      
-      { title: 'Profile', icon: 'md-person', component: 'ProfilePage' },
-      // { title: 'Bus Formats', icon: 'bookmark', component: 'AboutUsPage' },
+      {title: 'Book', icon: 'bus', component:'SearchBusPage'}, 
+      { title: 'My Tickets', icon: 'search', component: 'SearchTicketPage' },     
+      { title: 'My Profile', icon: 'md-person', component: 'ProfilePage' },      
       { title: 'Contact Us', icon: 'call', component: 'ContactUsPage' }, 
-      { title: 'My Tickets', icon: 'book', component: 'SearchTicketPage' },    
-      // { title: 'Settings', icon: 'ios-settings', component: 'SettingsPage' }
+          
+      
     ]
   }
 

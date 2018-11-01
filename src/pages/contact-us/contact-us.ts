@@ -14,10 +14,10 @@ export class ContactUsPage {
 
   // Contact Information
   contactInfos = {
-    email: 'Mobiticket.co.ke',
-    phone: '0707 200 314',
-    whatsapp: '0707 200 314',
-    address: 'ViewPark Towers,Utalii Lane 9th floor,PSC wing Utalii St, Nairobi'
+    email: 'http://enacoach.com',
+    phone: '041226620',
+    whatsapp: '041226620',
+    address: 'Location: KPCU Building (Wakulima House), Ground Floor Along Haile Selassie Avenue'
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -38,7 +38,7 @@ export class ContactUsPage {
   loadmap() {
 
     // Set any Latitude and Longitude
-    const latlng = new google.maps.LatLng(-1.2820363, 36.8157104);
+    const latlng = new google.maps.LatLng(-1.2878905,36.8307583);
 
     // Map Styles
     const mapStyle = [

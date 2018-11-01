@@ -145,7 +145,6 @@ export class AuthenticationProvider {
       travel_date:travel_date    
     }
     return this.http.post<AvailableBusResponse>(baseUrl,body);
-
   }
 
   getVehicleDetails(from:number,to_id:number, travel_date:string,selected_vehicle:number){

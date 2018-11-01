@@ -31,8 +31,8 @@
         <h4 class="heading-three">Ref No: {{my_ticket.reference_number}}</h4>
       </ion-col>
       <ion-col>
-          <span><ion-badge  color="color4" *ngIf="my_ticket.status ==='confirmed'" >{{my_ticket.status}}</ion-badge></span>
-          <span><ion-badge  color="color1" *ngIf="my_ticket.status ==='pending'" >{{my_ticket.status}}</ion-badge></span>
+          <span><ion-badge  color="colorgreen" *ngIf="my_ticket.status ==='confirmed'" >{{my_ticket.status}}</ion-badge></span>
+          <span><ion-badge  color="colorred" *ngIf="my_ticket.status ==='pending'" >{{my_ticket.status}}</ion-badge></span>
       </ion-col>
     </ion-row>
     <ion-row>

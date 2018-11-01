@@ -20,8 +20,8 @@
       <ion-grid>
             <ion-row>
               <ion-col text-center>                  
-                <ion-badge  color="color4" *ngIf="slide.status ==='confirmed'"> payment status: {{slide.status}}</ion-badge>
-                <ion-badge  color="color1" *ngIf="slide.status ==='pending'"> payment status: {{slide.status}}</ion-badge>                   
+                <ion-badge  color="colorgreen" *ngIf="slide.status ==='confirmed'">{{slide.status}}</ion-badge>
+                <ion-badge  color="colorred" *ngIf="slide.status ==='pending'">{{slide.status}}</ion-badge>                   
               </ion-col>
             </ion-row>
             <ion-row>

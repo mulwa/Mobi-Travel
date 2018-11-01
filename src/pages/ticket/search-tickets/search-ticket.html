@@ -12,8 +12,8 @@
                   <h2 class="head">{{ticket.name}}</h2>
                 </ion-col> 
                 <ion-col text-end>                  
-                    <ion-badge  color="color4" *ngIf="ticket.status ==='confirmed'"> {{ticket.status}}</ion-badge>
-                    <ion-badge  color="color1" *ngIf="ticket.status ==='pending'">  {{ticket.status}}</ion-badge>                   
+                    <ion-badge  color="colorgreen" *ngIf="ticket.status ==='confirmed'"> {{ticket.status}}</ion-badge>
+                    <ion-badge  color="colorred" *ngIf="ticket.status ==='pending'">  {{ticket.status}}</ion-badge>                   
                 </ion-col>                  
               </ion-row>
               <ion-row>

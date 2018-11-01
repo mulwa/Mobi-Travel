@@ -13,8 +13,7 @@ export class RecommendDestinationComponent {
   @ViewChild('slider') slider: Slides;
 
   // List of Recommend Destination
-  recommendDestination: any = [];
-  public phone_number:string
+  recommendDestination: any = []; 
   mytickets:Ticket[] = [];
   noofTicketsFound:number;
   bg_image:string = 'assets/imgs/background/img8.jpeg';
@@ -38,9 +37,9 @@ export class RecommendDestinationComponent {
 
   getRecommendDestination() {
     this.recommendDestination = this.dataProvider.getRecommendDestination();
-  }
-  getAllTickets(){    
-      this.authProvider.getAllCustomerTickets('0707200314').subscribe(tickets =>{
+  } 
+  getAllTickets(){     
+      this.authProvider.getAllCustomerTickets(this.authProvider.getUserPhoneNumber() ).subscribe(tickets =>{
         this.showLoading = false;        
         if(tickets.response_code == 0){
           this.mytickets = tickets.tickets;

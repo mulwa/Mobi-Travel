@@ -85,7 +85,7 @@ export class JambopayCheckoutPage {
         if(data.response_code == 0){
           this.authProv.showToast(data.response_message)
           this.jamboPayFrm.reset();
-          this.openCongratulationPage("JamboPay",data.response_message);
+          this.openCongratulationPage(this.reference_No);
         }else{
           this.authProv.showToast(data.response_message)
         }        
@@ -96,12 +96,8 @@ export class JambopayCheckoutPage {
     })
   }
   // end doPay
-  openCongratulationPage(from, message){
-    let data = {
-      from:from,
-      message:message
-    }   
-    this.modalCtrl.create('CongratulationPage',{data:data}).present();
+  openCongratulationPage(reference_no){       
+    this.modalCtrl.create('CongratulationPage',{data:reference_no}).present();
   }
 
 }

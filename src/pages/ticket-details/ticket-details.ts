@@ -42,9 +42,7 @@ export class TicketDetailsPage {
       },error =>{
         this.authProvider.showToast('An Error Has Occured Please Try Later'+error)
       })
-    })
-    
-    
+    })  
   }
 
 }

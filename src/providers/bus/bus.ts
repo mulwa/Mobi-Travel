@@ -21,7 +21,6 @@ export class BusProvider {
       travel_date:travel_date,               
     }
     return this.http.post<BusDetails>(baseUrl,body);
-
   }
 
 }

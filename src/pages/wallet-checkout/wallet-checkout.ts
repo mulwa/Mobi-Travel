@@ -77,7 +77,7 @@ export class WalletCheckoutPage {
         console.log(data)
         if(data.response_code == 0){
           this.walletForm.reset();
-          this.openCongratulationPage("Wallet",data.response_message)
+          this.openCongratulationPage(this.reference_No)
           this.dismiss()
         }
         this.authProv.showToast(data.response_message)
@@ -91,12 +91,8 @@ export class WalletCheckoutPage {
     this.viewCtrl.dismiss();
     // this.appCtrl.getRootNav().setRoot('HomePage');
   }
-  openCongratulationPage(from, message){
-    let data = {
-      from:from,
-      message:message
-    }   
-    this.modalCtrl.create('CongratulationPage',{data:data}).present();
+  openCongratulationPage(reference_no){     
+    this.modalCtrl.create('CongratulationPage',{data:reference_no}).present();
   }
 
 }

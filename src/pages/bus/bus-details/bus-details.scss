@@ -21,14 +21,14 @@ page-bus-details {
                 font-weight: 500;
                 line-height: 0;
             }
-        }
+        } 
         .btn-seat-available{
-            background-color: #000000;
+            background-color: #1B5E20;
             margin-left: 0;
             
         }
         .btn-not-available{
-            background: linear-gradient(to right bottom, color($colors, color1), color($colors, color2));
+            background: linear-gradient(to right bottom, color($colors, colorred), color($colors, colorred));
             margin-left: 0%;
             
         }
@@ -172,4 +172,7 @@ page-bus-details {
         background-color: #ce4844;
         pointer-events: none;
     }
+   .seat-label{
+       font-size: 11px;       
+   }
 }

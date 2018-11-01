@@ -1,8 +1,6 @@
-<!-- Congratulation Page  -->
-
-<!-- Header  -->
 <ion-header no-border>
-  <ion-navbar transparent>
+  <ion-navbar color="secondary">
+      <ion-title>Boarding Pass</ion-title>   
     <ion-buttons right>
       <!-- Modal Close Button  -->
       <button ion-button color="white" (click)="goHome()">
@@ -12,20 +10,135 @@
   </ion-navbar>
 </ion-header>
 
-<!-- Content  -->
-<ion-content fullscreen class="animated fadeIn">
-  <p class="title">Congratulations</p>
-  <div class="contents">
-    <p class="sub-title">
-      {{message}}
-    </p>
-    <p>If you Have further inquiries, please don’t hesitate to contact us. @mobiticket</p>
-  </div>
-</ion-content>
+<ion-content no-padding>  
+<ion-card *ngFor="let my_ticket of my_ticket">
+<ion-grid align-items-center>
+  <ion-row>
+    <ion-col>
+      <img class="logo" src="assets/imgs/avatar.png" alt="company logo" width="50px">
+      <h4 class="heading">{{my_ticket.transport_company}}</h4>
+      <h4 class="heading-three">{{my_ticket.bus_company_ref_number}}</h4>
+    </ion-col>
+  </ion-row> 
+  <ion-row>
+    <ion-col col-12>
+      <hr><hr>
+    </ion-col>
+  </ion-row>   
+  <!-- end header -->
+  <ion-row class="right-content">
+    <ion-col>
+      <h4 class="heading-three">Ref No: {{my_ticket.reference_number}}</h4>
+    </ion-col>
+    <ion-col>
+        <span><ion-badge  color="colorgreen" *ngIf="my_ticket.status ==='confirmed'" >{{my_ticket.status}}</ion-badge></span>
+        <span><ion-badge  color="colorred" *ngIf="my_ticket.status ==='pending'" >{{my_ticket.status}}</ion-badge></span>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-4>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <p class="heading-three">Departure</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <p class="head">{{my_ticket.travel_from}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <p class="head">{{my_ticket.travel_time}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-col>
+    <!-- end departure -->
+    <ion-col col-4>
+        <ion-grid>
+            <ion-row>
+              <ion-col>
+                <p class="heading-three">Bus</p>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="heading-two">
+                <span><i class="fas fa-bus fa-2x" style="color:#e38d25"></i></span> 
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col >
+                <p class="head">{{my_ticket.vehicle_name}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+    </ion-col>
+    <ion-col col-4>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <p class="heading-three">Arrival</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p class="head">{{my_ticket.travel_to}}</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p class="head">{{my_ticket.travel_time}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>      
+    </ion-col>     
+  </ion-row>
+  <ion-row>
+    <ion-col col-12>          
+      <hr><hr>   
+    </ion-col>
+  </ion-row>
+     <!-- end horizontal line -->
+     <ion-row>
+       <ion-col>
+         <h4 class="head">{{my_ticket.seat}}</h4>
+         <p class="heading-three">Seat No</p>
+       </ion-col>
+       <ion-col>
+         <h4 class="head">{{my_ticket.amount}}</h4>
+         <p class="heading-three">Amount</p>
+       </ion-col>
+       <ion-col>
+         <h4 class="head">{{my_ticket.reg_number}}</h4>
+         <p class="heading-three">Reg No</p>
+       </ion-col>
+     </ion-row>
+     <ion-row>
+       <ion-col col-12>
+         <hr>
+       </ion-col>
+     </ion-row> 
 
-<!-- Footer  -->
-<ion-footer>
-  <button ion-button clear type="button" color="white" (click)="goHome()">
-      close
-  </button>
-</ion-footer>
+  <ion-row>
+    <ion-col>
+      <ion-col>        
+        <img src="{{my_ticket.qr_code}}"/>
+      </ion-col>        
+    </ion-col>
+    <ion-col>
+      <p class="head">{{my_ticket.travel_date}}</p>
+      <p class="heading-three">Date</p>
+      <p class="head">{{my_ticket.name}}</p>
+      <p class="heading-three">Passager Name </p>
+      <p class="head">30632145</p>        
+      <p class="heading-three">Id Number</p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    
+  </ion-row>
+</ion-grid>
+</ion-card> 
+</ion-content>

@@ -67,7 +67,7 @@ export class MpesaCheckoutPage {
         loader.dismiss();
         if(data.response_code == 0){
           this.mpesaFrm.reset();
-          this.openCongratulationPage('Mpesa CheckOut', data.response_message);
+          this.openCongratulationPage(data.tickets[0].reference_number);
 
         }else{
           this.authProvider.showToast(data.response_message)
@@ -78,12 +78,8 @@ export class MpesaCheckoutPage {
     })
   }
   // end doPay
-  openCongratulationPage(from, message){
-    let data = {
-      from:from,
-      message:message
-    }   
-    this.modalCtrl.create('CongratulationPage',{data:data}).present();
+  openCongratulationPage(reference_no){       
+    this.modalCtrl.create('CongratulationPage',{data:reference_no}).present();
   }
 
 }
