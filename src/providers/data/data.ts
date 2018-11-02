@@ -22,7 +22,7 @@ export class DataProvider {
    */
   getSideMenus() {
     return [
-      {title: 'Book', icon: 'bus', component:'SearchBusPage'}, 
+      {title: 'Buy Ticket', icon: 'book', component:'SearchBusPage'}, 
       { title: 'My Tickets', icon: 'search', component: 'SearchTicketPage' },     
       { title: 'My Profile', icon: 'md-person', component: 'ProfilePage' },      
       { title: 'Contact Us', icon: 'call', component: 'ContactUsPage' }, 
