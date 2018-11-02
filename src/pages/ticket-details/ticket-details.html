@@ -17,7 +17,9 @@
       <ion-col>
         <img class="logo" src="assets/imgs/avatar.png" alt="company logo" width="50px">
         <h4 class="heading">{{my_ticket.transport_company}}</h4>
-        <h4 class="heading-three">{{my_ticket.bus_company_ref_number}}</h4>
+        <span><ion-badge  color="colorgreen" *ngIf="my_ticket.status ==='confirmed'" >{{my_ticket.status}}</ion-badge></span>
+        <span><ion-badge  color="colorred" *ngIf="my_ticket.status ==='pending'" >{{my_ticket.status}}</ion-badge></span>
+        
       </ion-col>
     </ion-row> 
     <ion-row>
@@ -28,12 +30,12 @@
     <!-- end header -->
     <ion-row class="right-content">
       <ion-col>
-        <h4 class="heading-three">Ref No: {{my_ticket.reference_number}}</h4>
+        <!-- <h4 class="heading-three">Ref No: {{my_ticket.reference_number}}</h4> -->
       </ion-col>
-      <ion-col>
+      <!-- <ion-col text-end>
           <span><ion-badge  color="colorgreen" *ngIf="my_ticket.status ==='confirmed'" >{{my_ticket.status}}</ion-badge></span>
           <span><ion-badge  color="colorred" *ngIf="my_ticket.status ==='pending'" >{{my_ticket.status}}</ion-badge></span>
-      </ion-col>
+      </ion-col> -->
     </ion-row>
     <ion-row>
       <ion-col col-4>
@@ -104,10 +106,10 @@
        <ion-row>
          <ion-col>
            <h4 class="head">{{my_ticket.seat}}</h4>
-           <p class="heading-three">Seat No</p>
+           <p class="heading-three">Seat</p>
          </ion-col>
          <ion-col>
-           <h4 class="head">{{my_ticket.amount}}</h4>
+           <h4 class="head">Ksh {{my_ticket.amount}}</h4>
            <p class="heading-three">Amount</p>
          </ion-col>
          <ion-col>
@@ -128,12 +130,17 @@
         </ion-col>        
       </ion-col>
       <ion-col>
-        <p class="head">{{my_ticket.travel_date}}</p>
-        <p class="heading-three">Date</p>
         <p class="head">{{my_ticket.name}}</p>
-        <p class="heading-three">Passager Name </p>
-        <p class="head">30632145</p>        
-        <p class="heading-three">Id Number</p>
+        <p class="heading-three">Passenger Name</p>
+
+        <p class="head">{{my_ticket.travel_date}}</p>
+        <p class="heading-three">Traveling Date</p>
+        
+        <p class="head">{{my_ticket.reference_number}}</p>        
+        <p class="heading-three">Ref No</p>
+        
+        <p class="head">{{my_ticket.bus_company_ref_number}}</p>        
+        <p class="heading-three">Ticket No</p>
       </ion-col>
     </ion-row>
     <ion-row>
