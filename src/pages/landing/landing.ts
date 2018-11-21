@@ -21,22 +21,18 @@ export class LandingPage {
   slideIndex = 0;
 
   // Slider Data
-  slides = [
+  slides = [   
     {
-      text: 'Get A  Ride',
-      imageUrl: 'assets/imgs/background/img3.jpeg',
-    },
-    {
-      text: 'Find the best deals of Flight, Hotels, Car, Bus, Train, Vacation, Cruise and Activities',
+      text: 'Book & Pay 100% Online',
       imageUrl: 'assets/imgs/background/img1.jpeg'
     },
     {
-      text: 'Filter for reviews, star categories, ratings and much more',
+      text: 'our brand new effective transport service is powered by effortless booking and payment. book, make payments and receive your tickets quickly',
       imageUrl: 'assets/imgs/background/img4.jpeg',
     },
     {
-      text: 'Book the best trip on your demand',
-      imageUrl: 'assets/imgs/background/img2.jpeg',
+      text: '',
+      imageUrl: 'assets/imgs/background/img2.png',
     }
   ];
 

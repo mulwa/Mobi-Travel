@@ -7,7 +7,7 @@
 <!-- Content  -->
 
 <ion-content>  
-  <ion-list class="animated fadeIn">      
+  <ion-list class="animated fadeIn">       
     <form [formGroup]="checkOutForm">   
     <div class="passagerArray" formArrayName="passangers" *ngFor="let item of checkOutForm.get('passangers').controls; let i = index;" >             
         <fieldset  [formGroupName]="i" >

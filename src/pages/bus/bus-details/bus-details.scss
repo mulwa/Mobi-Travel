@@ -23,11 +23,13 @@ page-bus-details {
             }
         } 
         .btn-seat-available{
-            background-color: #1B5E20;
+            background-color: #fff;
             margin-left: 0;
+            
             
         }
         .btn-not-available{
+            padding: 5px;
             background: linear-gradient(to right bottom, color($colors, colorred), color($colors, colorred));
             margin-left: 0%;
             
@@ -173,6 +175,13 @@ page-bus-details {
         pointer-events: none;
     }
    .seat-label{
-       font-size: 11px;       
+       font-size: 11px;              
+   }
+   .fa-couch{
+       color: #e38d25;
+       font-size: 20px;       
+   }
+   ion-button{
+       box-shadow: 0px !important;
    }
 }

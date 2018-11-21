@@ -1,9 +1,9 @@
 <!-- Recommend Destination Slider  -->
 <!-- deal component used as Loading component -->
 <deals *ngIf="showLoading"></deals>
-<ion-slides  padding-left padding-right #slider spaceBetween="10" slidesPerView="1.2" loop="true" effect="slide" autoplay="5000"
+<ion-slides *ngIf="mytickets && mytickets.length"  padding-left padding-right #slider spaceBetween="10" slidesPerView="1.2" loop="true" effect="slide" autoplay="5000"
   style="direction:ltr">
-  <ion-slide *ngFor="let slide of recommendDestination" [ngStyle]="{'background' : 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(' + slide.image + ')'}">
+  <!-- <ion-slide *ngFor="let slide of recommendDestination" [ngStyle]="{'background' : 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(' + slide.image + ')'}">
     <div class="contents">
       <h2>{{slide.country}}</h2>
       <p>
@@ -14,8 +14,8 @@
         <ion-icon ios="logo-usd" md="logo-usd" color="color4"></ion-icon> {{slide.avgPrice}}
       </p>
     </div>
-  </ion-slide>
-  <ion-slide *ngFor="let slide of mytickets" [ngStyle]="{'background' : 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(' + bg_image + ')'}">
+  </ion-slide> --> 
+  <ion-slide *ngFor="let slide of mytickets " [ngStyle]="{'background' : 'linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(' + checkStatus(slide) + ')'}">
     <div class="contents">
       <ion-grid>
             <ion-row>

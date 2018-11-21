@@ -143,7 +143,7 @@ export class CheckoutPage implements  OnInit {
   
   addPassanger(p_seat):void{
     this.passangers = this.checkOutForm.get('passangers') as FormArray;    
-    this.passangers.push(this.createItem(p_seat))
+    this.passangers.push(this.createItem(p_seat))    
   }
   getTicket(){
     console.log("calling get ticket details");

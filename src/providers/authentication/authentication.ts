@@ -161,7 +161,8 @@ export class AuthenticationProvider {
     return this.http.post<responseI>(baseUrl,body);
 
   }
-  getTicketDetails(from:number,to_id:number, travel_date:string,selected_vehicle:number,seater:number,selected_seat:number){
+  getTicketDetails(from:number,to_id:number, travel_date:string,selected_vehicle:number,
+    seater:number,selected_seat:number){
     let body = {
       username: username,
       api_key: api_key,
@@ -177,8 +178,8 @@ export class AuthenticationProvider {
     }
     console.log(body)
     return this.http.post<responseI>(baseUrl,body);
-
   }
+  
   reserveBooking(from_city:number, to_city:number, travel_date:string, selected_vehicle:number, seater:number, selected_ticket_type:number, selected_seat:number, 
     payment_method:number, phone_number:string, passenger_name:string, email_address:string, id_number:string,
      insurance_charge:string, served_by:string, amount_charged:string, reference_number:string){

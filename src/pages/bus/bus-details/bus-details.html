@@ -51,11 +51,11 @@
             <ion-grid no-padding>
               <ion-row *ngFor="let item of first_row">
                 <ion-col class="inner-col">
-                    <button [ngStyle]="{'background-color':checkIfselected(item) === 'selected' ? '#BDBDBD' : '#1B5E20' }" ion-button class="btn-seat-available" *ngIf="checkIfAvailable(item)  === true" (tap)="seatSelected(item)">
+                    <button  ion-button clear class="btn-seat-available" *ngIf="checkIfAvailable(item)  === true" (tap)="seatSelected(item)">
                         <!-- <ion-icon name="checkbox-outline" ><p>{{item}}</p> </ion-icon> -->                        
-                        <i class="fas fa-couch"><p class="seat-label">{{item}}</p></i>
+                        <i class="fas fa-couch" [ngStyle]="{'color':checkIfselected(item) === 'selected' ? '#BDBDBD' : '#1B5E20' }"><p class="seat-label">{{item}}</p></i>
                     </button>
-                    <button  ion-button class="btn-not-available" *ngIf="checkIfAvailable(item)  === false" (tap)="seatNotAvailable(item)" >                    
+                    <button  ion-button clear class="btn-not-available" *ngIf="checkIfAvailable(item)  === false" (tap)="seatNotAvailable(item)" >                    
                         <ion-icon name="close"> </ion-icon> 
                     </button>                  
                 </ion-col>
@@ -66,11 +66,11 @@
               <ion-grid no-padding>
                 <ion-row *ngFor="let item of second_row">
                   <ion-col class="inner-col">
-                      <button [ngStyle]="{'background-color':checkIfselected(item) === 'selected' ? '#BDBDBD' : '#1B5E20' }" ion-button class="btn-seat-available" *ngIf="checkIfAvailable(item)  === true" (tap)="seatSelected(item)">
+                      <button  ion-button clear class="btn-seat-available" *ngIf="checkIfAvailable(item)  === true" (tap)="seatSelected(item)">
                           <!-- <ion-icon name="checkbox-outline" > <p>{{item}}</p>  </ion-icon>-->
-                          <i class="fas fa-couch"><p class="seat-label">{{item}}</p></i>
+                          <i class="fas fa-couch" [ngStyle]="{'color':checkIfselected(item) === 'selected' ? '#BDBDBD' : '#1B5E20' }"><p class="seat-label">{{item}}</p></i>
                       </button>
-                      <button ion-button class="btn-not-available" *ngIf="checkIfAvailable(item)  === false" (tap)="seatNotAvailable(item)" >                    
+                      <button ion-button clear class="btn-not-available" *ngIf="checkIfAvailable(item)  === false" (tap)="seatNotAvailable(item)" >                    
                           <ion-icon name="close">  </ion-icon> 
                       </button>                 
                   </ion-col>
@@ -81,11 +81,11 @@
                 <ion-grid no-padding >
                   <ion-row *ngFor="let item of third_row">
                     <ion-col class="inner-col" >
-                        <button [ngStyle]="{'background-color':checkIfselected(item) === 'selected' ? '#BDBDBD' : '#1B5E20' }" ion-button class="btn-seat-available" *ngIf="checkIfAvailable(item)  === true" (tap)="seatSelected(item)">
+                        <button ion-button clear class="btn-seat-available" *ngIf="checkIfAvailable(item)  === true" (tap)="seatSelected(item)">
                             <!-- <ion-icon name="checkbox-outline" > <p>{{item}}</p>  </ion-icon>                     -->
-                          <i class="fas fa-couch"><p class="seat-label">{{item}}</p></i>
+                          <i class="fas fa-couch" [ngStyle]="{'color':checkIfselected(item) === 'selected' ? '#BDBDBD' : '#1B5E20' }"><p class="seat-label">{{item}}</p></i>
                         </button>
-                        <button ion-button class="btn-not-available" *ngIf="checkIfAvailable(item)  === false" (tap)="seatNotAvailable(item)" >                    
+                        <button ion-button clear class="btn-not-available" *ngIf="checkIfAvailable(item)  === false" (tap)="seatNotAvailable(item)" >                    
                             <ion-icon name="close"> </ion-icon> 
                         </button>                      
                     </ion-col>
@@ -96,11 +96,11 @@
                   <ion-grid no-padding>
                     <ion-row *ngFor="let item of fourth_row" class="inner-col">
                       <ion-col>
-                          <button [ngStyle]="{'background-color':checkIfselected(item) === 'selected' ? '#BDBDBD' : '#1B5E20' }" ion-button class="btn-seat-available" *ngIf="checkIfAvailable(item)  === true" (tap)="seatSelected(item)">
+                          <button  ion-button clear class="btn-seat-available" *ngIf="checkIfAvailable(item)  === true" (tap)="seatSelected(item)">
                               <!-- <ion-icon name="checkbox-outline" > <p>{{item}}</p>  </ion-icon>                    -->
-                              <i class="fas fa-couch"><p class="seat-label">{{item}}</p></i>
+                              <i class="fas fa-couch" [ngStyle]="{'color':checkIfselected(item) === 'selected' ? '#BDBDBD' : '#1B5E20' }"><p class="seat-label">{{item}}</p></i>
                           </button>
-                          <button ion-button class="btn-not-available" *ngIf="checkIfAvailable(item)  === false" (tap)="seatNotAvailable(item)" >                    
+                          <button ion-button clear class="btn-not-available" *ngIf="checkIfAvailable(item)  === false" (tap)="seatNotAvailable(item)" >                    
                               <ion-icon name="close"> </ion-icon> 
                           </button>                          
                         </ion-col>
@@ -111,11 +111,11 @@
                   <ion-grid no-padding>
                     <ion-row *ngFor="let item of fifth_row">
                       <ion-col class="inner-col">
-                          <button [ngStyle]="{'background-color':checkIfselected(item) === 'selected' ? '#BDBDBD' : '#1B5E20' }" ion-button class="btn-seat-available" *ngIf="checkIfAvailable(item)  === true" (tap)="seatSelected(item)">
+                          <button ion-button clear class="btn-seat-available" *ngIf="checkIfAvailable(item)  === true" (tap)="seatSelected(item)">
                               <!-- <ion-icon name="checkbox-outline" > <p>{{item}}</p> </ion-icon>                     -->
-                              <i class="fas fa-couch"><p class="seat-label">{{item}}</p></i>
+                              <i class="fas fa-couch" [ngStyle]="{'color':checkIfselected(item) === 'selected' ? '#BDBDBD' : '#1B5E20' }"><p class="seat-label">{{item}}</p></i>
                           </button>
-                          <button ion-button class="btn-not-available" *ngIf="checkIfAvailable(item)  === false" (tap)="seatNotAvailable(item)" >                    
+                          <button ion-button clear class="btn-not-available" *ngIf="checkIfAvailable(item)  === false" (tap)="seatNotAvailable(item)" >                    
                               <ion-icon name="close"> <p></p> </ion-icon> 
                           </button>                   
                           
@@ -134,13 +134,13 @@
           <ion-grid no-padding>
             <ion-row *ngFor="let seat of first_col">
               <ion-col class="inner-col" >               
-                <button [ngStyle]="{'background-color':checkIfselected(seat) === 'selected' ? '#BDBDBD' : '#1B5E20' }" ion-button class="btn-seat-available" *ngIf="isElevenSeaterAvailable(seat) === true" (tap)="seatSelected(seat)">
+                <div [ngStyle]="{'background-color': '#ffffff'}" ion-button clear class="btn-seat-available" *ngIf="isElevenSeaterAvailable(seat) === true" (tap)="seatSelected(seat)">
                     <!-- <ion-icon name="checkbox-outline" > <p>{{seat}}</p></ion-icon>                     -->
-                    <i class="fas fa-couch"><p>{{seat}}</p></i>
-                </button>
-                <button ion-button class="btn-not-available" *ngIf="isElevenSeaterAvailable(seat) === false" (tap)="seatNotAvailable(seat)" >                    
+                   <i class="fas fa-couch" [ngStyle]="{'color':checkIfselected(seat) === 'selected' ? '#BDBDBD' : '#1B5E20' }"><p class="seat-label">{{seat}}</p></i>
+                </div>
+                <button ion-button clear class="btn-not-available" *ngIf="isElevenSeaterAvailable(seat) === false" (tap)="seatNotAvailable(seat)" >                    
                     <ion-icon name="close"> <p></p> </ion-icon> 
-                </button>
+                </button>              
               </ion-col>
             </ion-row>
           </ion-grid>          
@@ -149,13 +149,13 @@
             <ion-grid no-padding>
               <ion-row *ngFor="let seat of second_col">
                 <ion-col  class="inner-col">                 
-                    <button [ngStyle]="{'background-color':checkIfselected(seat) === 'selected' ? '#BDBDBD' : '#1B5E20' }" ion-button class="btn-seat-available" *ngIf="isElevenSeaterAvailable(seat) === true" (tap)="seatSelected(seat)">
+                    <button ion-button clear class="btn-seat-available" *ngIf="isElevenSeaterAvailable(seat) === true" (tap)="seatSelected(seat)">
                         <!-- <ion-icon name="checkbox-outline" > <p>{{seat}}</p> </ion-icon> -->
-                        <i class="fas fa-couch"><p>{{seat}}</p></i>                                          
+                        <i class="fas fa-couch" [ngStyle]="{'color':checkIfselected(seat) === 'selected' ? '#BDBDBD' : '#1B5E20' }" ><p class="seat-label">{{seat}}</p></i>                                          
                     </button>
-                    <button ion-button class="btn-not-available" *ngIf="isElevenSeaterAvailable(seat) === false" (tap)="seatNotAvailable(seat)" >                    
+                    <button ion-button clear class="btn-not-available" *ngIf="isElevenSeaterAvailable(seat) === false" (tap)="seatNotAvailable(seat)" >                    
                         <ion-icon name="close"> <p></p> </ion-icon> 
-                    </button>
+                    </button>                
                 </ion-col>                
               </ion-row>
             </ion-grid>          
@@ -164,17 +164,17 @@
               <ion-grid no-padding>
                 <ion-row *ngFor="let seat of third_col">
                   <ion-col class="inner-col">                  
-                    <button [ngStyle]="{'background-color':checkIfselected(seat) === 'selected' ? '#BDBDBD' : '#1B5E20' }" ion-button class="btn-seat-available" *ngIf="isElevenSeaterAvailable(seat) === true && isDriverSit(seat) === false " (tap)="seatSelected(seat)">
+                    <button  ion-button clear class="btn-seat-available" *ngIf="isElevenSeaterAvailable(seat) === true && isDriverSit(seat) === false " (tap)="seatSelected(seat)">
                         <!-- <ion-icon name="checkbox-outline"> <p>{{seat}}</p></ion-icon>                     -->
-                        <i class="fas fa-couch"><p>{{seat}}</p></i>
+                        <i class="fas fa-couch" [ngStyle]="{'color':checkIfselected(seat) === 'selected' ? '#BDBDBD' : '#1B5E20' }"><p class="seat-label">{{seat}}</p></i>
                     </button>                    
-                    <button ion-button class="btn-not-available" *ngIf="isElevenSeaterAvailable(seat) === false && isDriverSit(seat) === false "  (tap)="seatNotAvailable(seat)" >                    
+                    <button ion-button clear class="btn-not-available" *ngIf="isElevenSeaterAvailable(seat) === false && isDriverSit(seat) === false "  (tap)="seatNotAvailable(seat)" >                    
                         <ion-icon name="close"> <p></p></ion-icon> 
                         
                     </button>
-                    <button ion-button class="btn-not-available" *ngIf="isDriverSit(seat) === true">
+                    <button ion-button clear class="btn-not-available" *ngIf="isDriverSit(seat) === true">
                       <ion-icon name="driver" >Driver <p></p></ion-icon>                    
-                  </button>
+                  </button>                  
                   </ion-col>                  
                 </ion-row>
               </ion-grid>          

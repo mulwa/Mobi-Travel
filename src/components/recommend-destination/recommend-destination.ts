@@ -16,7 +16,7 @@ export class RecommendDestinationComponent {
   recommendDestination: any = []; 
   mytickets:Ticket[] = [];
   noofTicketsFound:number;
-  bg_image:string = 'assets/imgs/background/img8.jpeg';
+  bg_image:string = 'assets/imgs/background/';  
   showLoading:boolean = true;
 
   constructor(public dataProvider: DataProvider,
@@ -27,17 +27,18 @@ export class RecommendDestinationComponent {
 
   /** Do any initialization */
   ngOnInit() {
-    this.getRecommendDestination();
+    // this.getRecommendDestination();
     this.getAllTickets();
   }
-
   ngAfterViewInit() {
-    this.slider.freeMode = true;
+    // this.slider.freeMode = true;
   }
 
-  getRecommendDestination() {
-    this.recommendDestination = this.dataProvider.getRecommendDestination();
-  } 
+  checkStatus(ticket:Ticket):string{
+    let image;    
+    ticket.status == 'pending' ? image = "confirmed_ticket.png": image = "img9.jpeg"
+    return this.bg_image+image;
+  }
   getAllTickets(){     
       this.authProvider.getAllCustomerTickets(this.authProvider.getUserPhoneNumber() ).subscribe(tickets =>{
         this.showLoading = false;        
@@ -45,7 +46,7 @@ export class RecommendDestinationComponent {
           this.mytickets = tickets.tickets;
           this.noofTicketsFound = this.mytickets.length;
         }else{
-          this.authProvider.showToast(tickets.response_message)
+          // this.authProvider.showToast(tickets.response_message)
         }
         console.log(tickets)
       })      
