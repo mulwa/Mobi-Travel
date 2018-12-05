@@ -1,0 +1,22 @@
+seater-fiveteen {
+    ion-col {
+        // background-color: aqua;
+        border: 5% solid black;
+        margin: 2px !important;
+        padding: 5%;
+        justify-content: center;
+        align-items: center;       
+        
+    }
+    .seat-area{
+        // background-color: aqua;
+        border: 1px solid #fff;
+        height: 50px;
+        text-align: center;
+        background-size: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+        // background-image: url('../../assets/imgs/seat/selected.png')
+    }
+
+}

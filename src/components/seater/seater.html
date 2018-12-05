@@ -1,0 +1,74 @@
+<!-- Generated template for the SeaterFiveteenComponent component -->
+<div>  
+  <ion-grid>
+    <ion-row justify-content-between>
+      <ion-col col-3 *ngFor="let seat of first_row">
+        <div class="seat-available" *ngIf="checkIfAvailable(seat)"  (click)="selectSeat(seat)">
+          <div class="seat-area" [ngStyle]="{'background-image':'url('+checkIfselected(seat)+')'}" *ngIf="isDriverSeat(seat) === false">
+            <p>{{seat}}</p>
+          </div>
+        </div>
+        <div class="seat-area" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" *ngIf="isDriverSeat(seat) === true">
+            <p>Driver</p>                   
+         </div> 
+        <div class="seat-area" *ngIf=" ! checkIfAvailable(seat)  && !isDriverSeat(seat)" [ngStyle]="{'background-image':'url('+seat_not_available+')'}">
+          <p>{{seat}}</p>
+        </div>
+      </ion-col>      
+    </ion-row>
+    <ion-row justify-content-between>
+      <ion-col col-3 *ngFor="let seat of second_row">
+          <div class="seat-available" *ngIf="checkIfAvailable(seat)"  (click)="selectSeat(seat)" >
+              <div class="seat-area" [ngStyle]="{'background-image':'url('+checkIfselected(seat)+')'}">
+                <p>{{seat}}</p>
+              </div>
+            </div>
+            <div class="seat-area" *ngIf="!checkIfAvailable(seat)" [ngStyle]="{'background-image':'url('+seat_not_available+')'}">
+              <p>{{seat}}</p>
+            </div>
+      </ion-col>      
+    </ion-row>
+    <ion-row justify-content-between>
+      <ion-col col-3 *ngFor="let seat of third_row">
+          <div class="seat-available" *ngIf="checkIfAvailable(seat)"  (click)="selectSeat(seat)">
+              <div class="seat-area" [ngStyle]="{'background-image':'url('+checkIfselected(seat)+')'}">
+                <p>{{seat}}</p>
+              </div>
+            </div>
+            <div class="seat-area" *ngIf="!checkIfAvailable(seat)"  [ngStyle]="{'background-image':'url('+seat_not_available+')'}">
+              <p>{{seat}}</p>
+            </div>
+      </ion-col>      
+    </ion-row>
+    <ion-row justify-content-between>
+      <ion-col col-3 *ngFor="let seat of fourth_row">
+          <div class="seat-available" *ngIf="checkIfAvailable(seat)"  (click)="selectSeat(seat)">
+              <div class="seat-area" [ngStyle]="{'background-image':'url('+checkIfselected(seat)+')'}">
+                <p>{{seat}}</p>
+              </div>
+            </div>
+            <div class="seat-area" *ngIf="!checkIfAvailable(seat)"  [ngStyle]="{'background-image':'url('+seat_not_available+')'}">
+              <p>{{seat}}</p>
+            </div>
+      </ion-col>      
+    </ion-row>
+    <ion-row justify-content-between>
+      <ion-col col-3 *ngFor="let seat of fifth_row">
+          <div class="seat-available" *ngIf="checkIfAvailable(seat)"  (click)="selectSeat(seat)">
+              <div class="seat-area" [ngStyle]="{'background-image':'url('+checkIfselected(seat)+')'}">
+                <p>{{seat}}</p>
+              </div>
+            </div>
+            <div class="seat-area" *ngIf="!checkIfAvailable(seat)"  [ngStyle]="{'background-image':'url('+seat_not_available+')'}">
+              <p>{{seat}}</p>
+            </div>
+      </ion-col>      
+    </ion-row>
+  </ion-grid>
+</div>
+
+
+
+
+  
+

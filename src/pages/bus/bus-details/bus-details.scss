@@ -22,18 +22,12 @@ page-bus-details {
                 line-height: 0;
             }
         } 
-        .btn-seat-available{
-            background-color: #fff;
+        .btn-seat-available{            
             margin-left: 0;
             
             
         }
-        .btn-not-available{
-            padding: 5px;
-            background: linear-gradient(to right bottom, color($colors, colorred), color($colors, colorred));
-            margin-left: 0%;
-            
-        }
+        
         .section-two {
             .card {
                 position: relative !important;
@@ -63,9 +57,9 @@ page-bus-details {
     }
     .seat-section{        
             ion-col{                    
-                margin: 5px !important;
+                // margin: 5px !important;
                 color: #fff;
-                padding: 5px !important;
+                // padding: 5px !important;
                 align-items: center;
                 border:1px solid green;
             }
@@ -74,8 +68,9 @@ page-bus-details {
             }
             .not-selected{
                 background-color: #fff;
-            }         
-        
+            }
+            
+            
     }
     ion-footer {
         .price {
@@ -131,7 +126,7 @@ page-bus-details {
         background-color: #e38d25;
     }
     .reservedSeat {
-        color: #ce4844;
+        background-image: url('/assets/imgs/seat/not-available.png');
     }
     .selectedSeat {
         color: #5cb85c;
@@ -142,20 +137,23 @@ page-bus-details {
     .marginTB10 {
         margin: 10px 0px;
     }
+    ion-row{ 
+        padding: 0 !important;
+        margin: 0 !important;
+    }
     
     .inner-col {        
-        margin: 0;        
+        margin: 0; 
+        padding: 0 !important;       
         justify-content: center;
-        padding-left: 0;
-        margin-bottom: 2px;        
-        padding-right: 0;               
-        text-align: center;                    
-        color: #000; 
+        padding-left: 0;        
+        // margin-bottom: 2px;             
+        padding-right: 0;
+        // border: 1px solid black;
+        // padding-top: 40px; 
+        // background-color: #000000;           
+        color: #000;      
         
-        p{
-            margin: 0;
-            padding: 0;
-        }
 
         .selected{
             background-color: #c7a378;
@@ -163,6 +161,19 @@ page-bus-details {
         .not-selected{
             background-color: #e7840a;
             padding: 0 !important;
+        }
+        .seat-area{
+            height: 50px;
+            background-size: 60%; 
+            background-position: center;
+            // background-color: #ce4844;
+            text-align: center;
+            background-repeat: no-repeat; 
+            
+            p{
+                color: #e7840a;
+                padding-top: 10px;
+            }
         }
                      
     }

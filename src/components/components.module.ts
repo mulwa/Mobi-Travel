@@ -9,6 +9,8 @@ import { HeaderThreeComponent } from './header-three/header-three';
 import { UserInformationComponent } from './profile/user-information/user-information';
 import { CardInformationComponent } from './profile/card-information/card-information';
 import { ChangePasswordComponent } from './profile/change-password/change-password';
+import { SeaterComponent } from './seater/seater';
+import { SeaterFiveteenComponent } from './seater-fiveteen/seater-fiveteen';
 
 @NgModule({
 	declarations: [HeaderOneComponent,
@@ -19,7 +21,9 @@ import { ChangePasswordComponent } from './profile/change-password/change-passwo
 		HeaderThreeComponent,
 		UserInformationComponent,
 		CardInformationComponent,
-		ChangePasswordComponent],
+		ChangePasswordComponent,    
+		SeaterComponent,
+		SeaterFiveteenComponent],
 	imports: [IonicModule],
 	exports: [HeaderOneComponent,
 		HeaderTwoComponent,
@@ -29,6 +33,8 @@ import { ChangePasswordComponent } from './profile/change-password/change-passwo
 		HeaderThreeComponent,
 		UserInformationComponent,
 		CardInformationComponent,
-		ChangePasswordComponent]
+		ChangePasswordComponent,    
+		SeaterComponent,
+		SeaterFiveteenComponent]
 })
 export class ComponentsModule { }

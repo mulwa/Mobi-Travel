@@ -70,6 +70,9 @@ export class BusDetailsPage implements OnInit {
 
   // icons name
   icon;
+  seat_selected = 'assets/imgs/seat/selected.png';
+  seat_not_available = 'assets/imgs/seat/not-available.png';
+  seat_available = 'assets/imgs/seat/available.png';
 
   
 
@@ -185,9 +188,12 @@ export class BusDetailsPage implements OnInit {
   checkIfselected(seatPos){
     if(this.seatSelectedForBooking){
       if(this.seatSelectedForBooking.indexOf(seatPos) !== -1){
-        return 'selected';
+        console.log(this.seat_selected)
+        return this.seat_selected;
+        
       }else{
-        return 'not-selected'
+        console.log(this.seat_available)
+        return this.seat_available;
       }
     }
   }
@@ -215,6 +221,18 @@ export class BusDetailsPage implements OnInit {
     return false;
     
   }
+  onSeatSelected($event){
+    console.log(`seat Selected ${$event}`)
+    let index = this.seatSelectedForBooking.indexOf($event);
+      if(index == -1){
+          this.seatSelectedForBooking.push($event)       
+          
+      }else{
+          this.seatSelectedForBooking.splice(index,1)
+          console.log(`Removing Seat ${$event}`)         
+          
+      }
+  }
 
 
   //click handler
@@ -239,6 +257,9 @@ export class BusDetailsPage implements OnInit {
    //show seat not available
    seatNotAvailable(seatNo){
     this.authProvider.showToast(`Seat Number ${seatNo} is Already Reserved Please Select Another One`);
+   }
+   onseatSelection($event){
+     console.log('seat clicked')
    }
    
   
