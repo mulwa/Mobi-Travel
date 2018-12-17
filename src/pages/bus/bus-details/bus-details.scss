@@ -141,17 +141,15 @@ page-bus-details {
         padding: 0 !important;
         margin: 0 !important;
     }
+    ion-col{        
+        padding: 0px !important;
+        
+    }
     
     .inner-col {        
         margin: 0; 
         padding: 0 !important;       
-        justify-content: center;
-        padding-left: 0;        
-        // margin-bottom: 2px;             
-        padding-right: 0;
-        // border: 1px solid black;
-        // padding-top: 40px; 
-        // background-color: #000000;           
+        // justify-content: center;               
         color: #000;      
         
 
@@ -164,10 +162,23 @@ page-bus-details {
         }
         .seat-area{
             height: 50px;
-            background-size: 60%; 
-            background-position: center;
-            // background-color: #ce4844;
+            background-size: 90%; 
+            background-position: center;            
             text-align: center;
+            // padding: 0% !important;
+            background-repeat: no-repeat; 
+            
+            p{
+                color: #e7840a;
+                padding-top: 10px;
+            }
+        }
+        .seat-area15{
+            height: 50px;
+            background-size: 55%; 
+            background-position: center;            
+            text-align: center;
+            // padding: 0% !important;
             background-repeat: no-repeat; 
             
             p{

@@ -2,7 +2,7 @@
 <div>  
   <ion-grid>
     <ion-row justify-content-between > 
-      <ion-col *ngFor="let seat of first_row">
+      <ion-col col-3 *ngFor="let seat of first_row">
         <div class="seat-available" *ngIf=" checkIfAvailable(seat)"  (click)="selectSeat(seat)">
           <div class="seat-area" [ngStyle]="{'background-image':'url('+checkIfselected(seat)+')'}" *ngIf="isDriverSeat(seat) === false">
             <p>{{seat}}</p>
@@ -17,7 +17,7 @@
       </ion-col>      
     </ion-row>
     <ion-row justify-content-between>
-      <ion-col *ngFor="let seat of second_row">
+      <ion-col col-3 *ngFor="let seat of second_row">
           <div class="seat-available" *ngIf=" checkIfAvailable(seat)"  (click)="selectSeat(seat)">
               <div class="seat-area" [ngStyle]="{'background-image':'url('+checkIfselected(seat)+')'}">
                 <p>{{seat}}</p>
@@ -29,7 +29,7 @@
       </ion-col>      
     </ion-row>
     <ion-row justify-content-between >
-      <ion-col *ngFor="let seat of third_row">
+      <ion-col col-3 *ngFor="let seat of third_row">
           <div class="seat-available" *ngIf="checkIfAvailable(seat)"  (click)="selectSeat(seat)" >
               <div class="seat-area" [ngStyle]="{'background-image':'url('+checkIfselected(seat)+')'}">
                 <p>{{seat}}</p>
@@ -40,8 +40,8 @@
             </div>
       </ion-col>      
     </ion-row>
-    <ion-row>
-      <ion-col *ngFor="let seat of fourth_row">
+    <ion-row justify-content-between>
+      <ion-col col-3 *ngFor="let seat of fourth_row">
           <div class="seat-available" *ngIf="checkIfAvailable(seat)"  (click)="selectSeat(seat)">
               <div class="seat-area" [ngStyle]="{'background-image':'url('+checkIfselected(seat)+')'}">
                 <p>{{seat}}</p>
@@ -52,8 +52,8 @@
             </div>
       </ion-col>      
     </ion-row>
-    <ion-row>
-      <ion-col *ngFor="let seat of fifth_row">
+    <ion-row justify-content-between>
+      <ion-col col-3 *ngFor="let seat of fifth_row">
           <div class="seat-available" *ngIf="checkIfAvailable(seat)"  (click)="selectSeat(seat)">
               <div class="seat-area" [ngStyle]="{'background-image':'url('+checkIfselected(seat)+')'}">
                 <p>{{seat}}</p>
