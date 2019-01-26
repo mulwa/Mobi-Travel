@@ -48,7 +48,7 @@ export class BusDetailsPage implements OnInit {
   from_name:string;
   selected_bus_name:string;
 
-  ticketPrice: number = 10;  
+  ticketPrice: number;  
   totalPrice: number = 0;
   currency: string = "Ksh"; 
 
@@ -73,6 +73,7 @@ export class BusDetailsPage implements OnInit {
   seat_selected = 'assets/imgs/seat/selected.png';
   seat_not_available = 'assets/imgs/seat/not-available.png';
   seat_available = 'assets/imgs/seat/available.png';
+  staff = 'assets/imgs/seat/staff.png';
 
   
 
@@ -92,6 +93,7 @@ export class BusDetailsPage implements OnInit {
       this.selected_vehicle  = this.busdetails.selected_vehicle;
       this.to_name = this.busdetails.to_name;
       this.from_name = this.busdetails.from_name;
+      this.ticketPrice = this.busdetails.ticketPrice;
 
       console.log(this.busdetails)
 
@@ -125,8 +127,7 @@ export class BusDetailsPage implements OnInit {
     this.second_col = ['1X','3','6','9'];
     this.third_col = ['0','4','7','10']; 
     // combine all the 11 seater array to one
-    this.seater_11_seats = this.second_col.concat(this.second_col, this.third_col);
-   
+    this.seater_11_seats = this.second_col.concat(this.second_col, this.third_col);   
   }
 
   getVehicleDetails(){
@@ -136,7 +137,8 @@ export class BusDetailsPage implements OnInit {
     loader.present().then(()=>{
       this.authProvider.getVehicleDetails(this.from_id
         ,this.to_id,this.travel_date,this.selected_vehicle).subscribe(data =>{
-          this.doneLoadingBuses = true;          
+          this.doneLoadingBuses = true;  
+          console.log(data)        
           loader.dismiss();
           if(data.response_code == 0){
           this.newBussDetails  =  data.seats;
@@ -147,6 +149,8 @@ export class BusDetailsPage implements OnInit {
           this.totalSeats  = this.seatsArray.length;
           console.log(this.seatsArray);
           console.log("No seats available"+this.totalSeats);
+          this.totalPrice = this.ticketPrice *  this.seatSelectedForBooking.length;
+          console.log('ticket price '+this.totalPrice)
           // initialize bus format based on the number of seats returned
 
           if(this.seater === '11'){
@@ -214,12 +218,22 @@ export class BusDetailsPage implements OnInit {
       
     }
   }
+  isstaffSeat(seatPos):boolean{
+    if(seatPos == '1A' || seatPos == '2A' ){      
+      return true;
+    }   
+    return false;
+
+  }
   isDriverSit(seatPos):boolean{    
     if(seatPos == 0){      
       return true;
     }   
     return false;
     
+  }
+  onselectingStaff(){
+    this.authProvider.showToast("Preserved for Staff")
   }
   onSeatSelected($event){
     console.log(`seat Selected ${$event}`)

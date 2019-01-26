@@ -1,17 +1,17 @@
 <!-- Header  -->
-<ion-header no-border >
+<ion-header no-border>
   <header-three title="{{from_name}}-{{to_name}}"></header-three>
 </ion-header>
 
 <!-- Content  -->
-<ion-content> 
-    <!-- List of Bus  -->
-    <ion-card class="animated fadeIn" *ngFor="let bus of buses" (tap)="goToViewDetailsPage(bus)">
+<ion-content>
+  <!-- List of Bus  -->
+  <ion-card class="animated fadeIn" *ngFor="let bus of buses" (tap)="goToViewDetailsPage(bus)">
 
-        <!-- Bus Infos  -->
-        <ion-item [@cardClick]="cardClickState">
-          <!-- Bus Icon  -->
-          <!-- <ion-thumbnail  item-start>
+    <!-- Bus Infos  -->
+    <ion-item [@cardClick]="cardClickState">
+      <!-- Bus Icon  -->
+      <!-- <ion-thumbnail  item-start>
             <span *ngIf="bus.total_seats <= 12">
                 <img src="assets/imgs/shuttle.png" >
             </span>
@@ -19,70 +19,73 @@
                 <img src="assets/imgs/bus.png" >
             </span>                         
           </ion-thumbnail > -->
-          <ion-avatar item-start>
-              <span><i class="fas fa-shuttle-van fa-3x" style="color:#e38d25" *ngIf="bus.total_seats <= 12"></i></span>
-              <span><i class="fas fa-bus fa-3x" style="color:#e38d25" *ngIf="bus.total_seats > 12"></i></span> 
-          </ion-avatar>
-    
-          <!-- Name of bus  -->
-          <h2 text-wrap>{{bus.route}}</h2>    
-          <!-- Bus Type  -->
-          <ion-badge color="color1">
-              {{bus.seats_available}} seats left
-          </ion-badge>
-          
-         <ion-grid>
-           <ion-row>
-            <!-- Per Seat Price  -->
-            <ion-col col-3 text-right>
-              <p class="price">Ksh {{bus.price[0].name.split("-")[2]}}</p>
-            </ion-col>
-           </ion-row>
-         </ion-grid>          
-        </ion-item>
-    
-        <!-- Date/Times  -->
-        <ion-card-content>
-          <ion-grid>
-            <ion-row justify-content-center align-items-center>    
-              <!-- Departure  -->
-              <ion-col col-4 text-center>
-                <!-- Departure Time  -->
-                <h2 ion-text><b>{{ bus.departure_time.split(",")[1]}}</b></h2>    
-                <!--  Departure Location -->
-                <p>{{bus.from}}</p>
-              </ion-col>
-    
-              <!-- Total Hour  -->
-              <ion-col col-4 text-center>
-                <ion-row justify-content-center align-items-center>
-                  <img src="assets/imgs/dot.png">
-                </ion-row>
-    
-                <ion-row justify-content-center align-items-center>
-                  <p><b>{{ calculateTimeDiff(bus.departure_time.split(",")[1] , bus.arrival_time.split(",")[1])}}</b></p>
-                </ion-row>
-              </ion-col>
-    
-              <!-- Arrival  -->
-              <ion-col col-4 text-center>
-                <!-- Arrival Time  -->
-                <h2 ion-text><b>{{bus.arrival_time.split(",")[1]}}</b></h2>
-    
-                <!-- Arrival Location  -->
-                <p>{{bus.to}}</p>
-              </ion-col>         
+      <ion-avatar item-start>
+        <span><i class="fas fa-shuttle-van fa-3x" style="color:#e38d25" *ngIf="bus.total_seats <= 12"></i></span>
+        <span><i class="fas fa-bus fa-3x" style="color:#e38d25" *ngIf="bus.total_seats > 12"></i></span>
+      </ion-avatar>
+
+      <!-- Name of bus  -->
+      <h2 text-wrap>{{bus.route}}</h2>
+      <!-- Bus Type  -->
+      <ion-badge color="color1" *ngIf="bus.seats_available > 2">
+        {{bus.seats_available - 2}} seats left
+      </ion-badge>
+      <ion-badge color="color1" *ngIf="bus.seats_available <= 2">
+        fully booked
+      </ion-badge>
+
+      <ion-grid>
+        <ion-row>
+          <!-- Per Seat Price  -->
+          <ion-col col-3 text-right>
+            <p class="price">Ksh {{bus.price[0].name.split("-")[2]}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <!-- Date/Times  -->
+    <ion-card-content>
+      <ion-grid>
+        <ion-row justify-content-center align-items-center>
+          <!-- Departure  -->
+          <ion-col col-4 text-center>
+            <!-- Departure Time  -->
+            <h2 ion-text><b>{{ bus.departure_time.split(",")[1]}}</b></h2>
+            <!--  Departure Location -->
+            <p>{{bus.from}}</p>
+          </ion-col>
+
+          <!-- Total Hour  -->
+          <ion-col col-4 text-center>
+            <ion-row justify-content-center align-items-center>
+              <img src="assets/imgs/dot.png">
             </ion-row>
-          </ion-grid>
-        </ion-card-content>
-      </ion-card>
-      <ion-card  color="color4" *ngIf="noofVehiclesFound == 0" @No-vehicle-state>
-       <ion-grid>
-         <ion-row>
-           <ion-col>                        
-             <p>There Are No Vehicles Available From {{from_name}} To {{to_name}}</p>            
-           </ion-col>
-         </ion-row>
-       </ion-grid>
-      </ion-card>
+
+            <ion-row justify-content-center align-items-center>
+              <p><b>{{ calculateTimeDiff(bus.departure_time.split(",")[1] , bus.arrival_time.split(",")[1])}}</b></p>
+            </ion-row>
+          </ion-col>
+
+          <!-- Arrival  -->
+          <ion-col col-4 text-center>
+            <!-- Arrival Time  -->
+            <h2 ion-text><b>{{bus.arrival_time.split(",")[1]}}</b></h2>
+
+            <!-- Arrival Location  -->
+            <p>{{bus.to}}</p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="color4" *ngIf="noofVehiclesFound == 0" @No-vehicle-state>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <p>There Are No Vehicles Available From {{from_name}} To {{to_name}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 </ion-content>

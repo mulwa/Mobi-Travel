@@ -56,7 +56,7 @@ export class SignInPage {
       api_key: api_key, 
       action:"UserLogin",           
       clerk_username: ['', Validators.compose([Validators.minLength(10), Validators.required])],
-      clerk_password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+      clerk_password: ['']
     });
   }
 
@@ -115,7 +115,8 @@ export class SignInPage {
    * -------------------------------------------------------------
    */
   goToSignUpPage() {
-    this.navCtrl.setRoot('SignUpPage');
+    this.navCtrl.setRoot('HomePage');
+    // this.navCtrl.setRoot('SignUpPage');
   }
   showAlert(title:string, msg:string){
     const alert = this.alertCtrl.create({

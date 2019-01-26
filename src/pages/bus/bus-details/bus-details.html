@@ -51,14 +51,17 @@
             <ion-grid no-padding>
               <ion-row *ngFor="let item of first_row">
                 <ion-col class="inner-col">
-                  <div class="btn-seat-available" *ngIf="checkIfAvailable(item)  === true" (tap)="seatSelected(item)">
+                  <div class="btn-seat-available" *ngIf="checkIfAvailable(item)  === true && ! isstaffSeat(item)" (tap)="seatSelected(item)">
                       <div class="seat-area" [ngStyle]="{'background-image':'url('+checkIfselected(item)+')'}">
                         <p>{{item}}</p>
                       </div>             
                   </div>                    
                   <div class="seat-area btn-not-available" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" *ngIf="checkIfAvailable(item)  === false" (tap)="seatNotAvailable(item)" >                    
                     <p>{{item}}</p> 
-                  </div>                 
+                  </div>
+                  <div class="seat-area btn-not-available" [ngStyle]="{'background-image':'url('+staff+')'}" *ngIf="isstaffSeat(item)" (tap)="onselectingStaff()" >                    
+                    <!-- <p>{{item}}</p>  -->
+                  </div>                  
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -67,14 +70,17 @@
               <ion-grid no-padding>
                 <ion-row *ngFor="let item of second_row">
                   <ion-col class="inner-col">
-                    <div class="btn-seat-available" *ngIf="checkIfAvailable(item)  === true" (tap)="seatSelected(item)">
+                    <div class="btn-seat-available" *ngIf="checkIfAvailable(item)  === true && ! isstaffSeat(item)" (tap)="seatSelected(item)">
                         <div class="seat-area" [ngStyle]="{'background-image':'url('+checkIfselected(item)+')'}">
                           <p>{{item}}</p>
                         </div>             
                     </div>                    
                     <div class="seat-area btn-not-available" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" *ngIf="checkIfAvailable(item)  === false" (tap)="seatNotAvailable(item)" >                    
                       <p>{{item}}</p> 
-                    </div>                 
+                    </div>
+                    <div class="seat-area btn-not-available" [ngStyle]="{'background-image':'url('+staff+')'}" *ngIf="isstaffSeat(item)" (tap)="onselectingStaff()" >                    
+                      <!-- <p>{{item}}</p>  -->
+                    </div>                  
                   </ion-col>
                 </ion-row>
               </ion-grid>
@@ -144,8 +150,8 @@
                     <p>{{seat}}</p>
                   </div>             
                 </div>
-                <div class="seat-area btn-not-available" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" *ngIf="isElevenSeaterAvailable(seat) === false" (tap)="seatNotAvailable(seat)" >                    
-                    <ion-icon name="close"> <p></p> </ion-icon> 
+                <div class="seat-area15 btn-not-available" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" *ngIf="isElevenSeaterAvailable(seat) === false" (tap)="seatNotAvailable(seat)" >                    
+                    <p>{{seat}}</p> 
                 </div>              
               </ion-col>
             </ion-row>
@@ -180,7 +186,7 @@
                         <p>{{seat}}</p>
                         
                     </div>
-                    <div class="seat-area15 btn-not-available" [ngStyle]="{'background-image':'url('+seat_not_available+')'}" *ngIf="isDriverSit(seat) === true">
+                    <div class="seat-area15 btn-not-available" [ngStyle]="{'background-image':'url('+staff+')'}" *ngIf="isDriverSit(seat) === true" (tap)="onselectingStaff()">
                        <p>Driver</p>                   
                     </div>                  
                   </ion-col>                  

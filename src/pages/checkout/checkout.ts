@@ -29,7 +29,7 @@ export class CheckoutPage implements OnInit {
   seater: number
   arrayofseats: any;
   selected_seat: number;
-  ticketCost: number;
+  ticketCost: any;
   ticketDetails: TickeType;
 
   checkOutForm: FormGroup;
@@ -148,6 +148,7 @@ export class CheckoutPage implements OnInit {
     this.authProvider.getTicketDetails(this.from_id
       , this.to_id, this.travel_date, this.selected_vehicle, this.seater, this.selected_seat).subscribe(data => {
         if (data.response_code == 0) {
+          console.log(data)
           this.ticketDetails = data.ticket_type;
           let ticket_price = this.ticketDetails[0].fare_per_ticket;
           this.ticket_type = data.ticket_type[0].id;
